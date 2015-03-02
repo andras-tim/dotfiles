@@ -1,0 +1,28 @@
+[user]
+    name = Andras Tim
+[gui]
+    fontui = -family \"DejaVu Sans\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff = -family \"DejaVu Sans Mono\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
+[guitool "[Edit] Current file"]
+    cmd = komodo \"$FILENAME\"
+    noconsole = yes
+[guitool "[Git] Reset & Clean"]
+    cmd = git reset --hard; git clean -df
+[guitool "[Git] Rebase - to origin-master"]
+    cmd = git rebase origin/master
+[guitool "[Git] Rebase - Continue"]
+    cmd = git rebase --continue
+[guitool "[Git] Rebase - Abort"]
+    cmd = git rebase --abort
+[guitool "[Git] Rebase - Skip"]
+    cmd = git rebase --skip
+[guitool "[FS] Open parent directory"]
+    cmd = thunar \"$(dirname $FILENAME)\"
+    needsfile = yes
+    noconsole = yes
+[difftool "idiff"]
+    cmd = diff -ui $LOCAL $REMOTE
+[difftool]
+    prompt = 0
+[color]
+    ui = true
