@@ -64,3 +64,11 @@ alias sl=ls
 alias dc=cd
 
 function add-gitignore() { curl "http://www.gitignore.io/api/$@" ;}
+
+
+######
+# Host specific settings
+#
+if [ -f "${HOME}/.myrc_host" ]; then
+    . "${HOME}/.myrc_host"
+fi
