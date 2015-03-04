@@ -1,0 +1,23 @@
+- clean: ["~"]
+
+- shell:
+    - ["mkdir -p ~/bin", "Creating scripts directories"]
+
+- link:
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.oh-my-zsh: oh-my-zsh
+    ~/.zshrc: zshrc
+    ~/.myrc: myrc
+
+    ~/.gitconfig: gitconfig
+    ~/.gitk: gitk
+
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.quiltrc: quiltrc
+    ~/.conkyrc: conkyrc
+    ~/.xbindkeysrc: xbindkeysrc
+
+- shell:
+    - ["git submodule update --init --recursive", "Installing/updating submodules"]
