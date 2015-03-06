@@ -12,6 +12,7 @@
 
     ~/.gitconfig: gitconfig
     ~/.gitk: gitk
+    ~/.hgrc: hgrc
 
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
