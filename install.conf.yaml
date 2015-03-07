@@ -4,21 +4,27 @@
     - ["mkdir -p ~/bin", "Creating scripts directories"]
 
 - link:
+    # Shell
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zshrc: zshrc
     ~/.myrc: myrc
 
+    # VCS
     ~/.gitconfig: gitconfig
     ~/.gitk: gitk
     ~/.hgrc: hgrc
 
+    # Other console apps
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.quiltrc: quiltrc
-    ~/.conkyrc: conkyrc
-    ~/.xbindkeysrc: xbindkeysrc
 
 - shell:
     - ["git submodule update --init --recursive", "Installing/updating submodules"]
+
+- link:
+    # GUI tools
+    ~/.conkyrc: conkyrc
+    ~/.xbindkeysrc: xbindkeysrc
