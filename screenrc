@@ -1,0 +1,71 @@
+# No "New screen..." message at startup
+startup_message off
+
+# Set shell
+shell /bin/zsh
+
+# Longer scroll history
+defscrollback 999999
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+#hardstatus string '%{= mK}%-Lw%{= KW}%50>%n%f* %t%{= mK}%+Lw%< %{= kG}%-=%D %d %M %Y %c:%s%{-}'
+#hardstatus lastline "%-Lw%{= KW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus lastline "%{= KW}%-w%{= WK}%n zsh%{-}%+w"
+#hardstatus lastline "%-Lw%{= KW}%50>%n%f* %t%{-}%+Lw%<"
+
+# No annoying window flashes
+#vbell off
+#bell_msg ""
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+#termcapinfo xterm|xterms|xs|rxvt|aterm ti@:te@
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+# set TERM
+term xterm-256color
+
+# New tab
+bindkey "^t" screen
+
+# Switch screens with Ctrl-[/]
+bindkey "^[" prev
+bindkey "^]" next
+
+# Switch screens with Ctrl-PageUp/PageDown
+#bindkey ^[[5;5~ prev
+#bindkey ^[[6;5~ next
+
+# Scroll up and down with Shift-PageUp/PageDown
+bindkey "^[[5;2~" eval "copy" "stuff ^u"
+bindkey -m "^[[5;2~" stuff ^u
+bindkey -m "^[[6;2~" stuff ^d
+
+# Scroll up
+bindkey -d "^[[5S" eval copy "stuff 5\025"
+bindkey -m "^[[5S" stuff 5\025
+
+# Scroll down
+bindkey -d "^[[5T" eval copy "stuff 5\004"
+bindkey -m "^[[5T" stuff 5\004
+
+# Scroll up more
+bindkey -d "^[[25S" eval copy "stuff \025"
+bindkey -m "^[[25S" stuff \025
+
+# Scroll down more
+bindkey -d "^[[25T" eval copy "stuff \004"
+bindkey -m "^[[25T" stuff \004
+
+# Default screens
+#screen -t root      0   sudo -s
+#screen -t mc        1   mc
+#screen -t zsh       2   zsh
+
+# Others
+altscreen on
+#bindkey "^b" command -c mykey

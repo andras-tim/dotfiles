@@ -18,6 +18,7 @@
 
     # Other console apps
     ~/.tmux.conf: tmux.conf
+    ~/.screenrc: screenrc
     ~/.vimrc: vimrc
     ~/.quiltrc: quiltrc
 
