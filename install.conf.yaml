@@ -29,3 +29,8 @@
     # GUI tools
     ~/.conkyrc: conkyrc
     ~/.xbindkeysrc: xbindkeysrc
+
+    # OS GUI config
+    ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboard-layout.xml: xfce4/keyboard-layout.xml
+    ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml: xfce4/keyboards.xml
+    ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml: xfce4/xfce4-keyboard-shortcuts.xml
