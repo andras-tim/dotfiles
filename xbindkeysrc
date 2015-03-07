@@ -37,19 +37,21 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# Show config of xbindkeys:
+#Show config of xbindkeys
 "xbindkeys_show"
-  control + shift + q
+    Control + Shift+ q
 
-# History Back & Forward
+#History Back
 "xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
-  b:6
-"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
-  b:7
+    b:6
 
-# Auto Type KeePass
+#History Forward
+"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
+    b:7
+
+#Auto Type KeePass
 "mono /usr/lib/keepass2/KeePass.exe --auto-type"
-  control + alt + a
+    Control + Alt + a
 
 ## set directly keycode (here control + f with my keyboard)
 #"xterm"
