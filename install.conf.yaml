@@ -26,11 +26,12 @@
     - ["git submodule update --init --recursive", "Installing/updating submodules"]
 
 - link:
-    # GUI tools
+    # GUI
+    ~/.Xdefaults: Xdefaults
     ~/.conkyrc: conkyrc
     ~/.xbindkeysrc: xbindkeysrc
 
-    # OS GUI config
+    # Distro GUI
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboard-layout.xml: xfce4/keyboard-layout.xml
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml: xfce4/keyboards.xml
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml: xfce4/xfce4-keyboard-shortcuts.xml

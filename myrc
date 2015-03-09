@@ -55,6 +55,8 @@ alias ssh='ssh -CX'
 alias vim='vim -p'
 alias grep='grep --binary-files=without-match --color=auto'
 
+alias urxvt='urxvt -e tmux new-session'
+
 alias rdesktop='rdesktop -zN'
 alias rd='rdesktop -g 1670x980'
 
