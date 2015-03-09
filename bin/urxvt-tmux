@@ -1,0 +1,2 @@
+#!/bin/bash -e
+urxvt -e tmux new-session "$@"
