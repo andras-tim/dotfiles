@@ -56,6 +56,7 @@ alias vim='vim -p'
 alias grep='grep --binary-files=without-match --color=auto'
 
 alias urxvt='urxvt -e tmux new-session'
+alias th='wget -q http://dras.hu/wiki/tudasbazis/linux/tmux --header="X-DokuWiki-Do: export_xhtmlbody" -O - | elinks -force-html'
 
 alias rdesktop='rdesktop -zN'
 alias rd='rdesktop -g 1670x980'
