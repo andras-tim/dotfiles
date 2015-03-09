@@ -1,5 +1,7 @@
 #!/bin/bash
-tmux bind-key -n C-b send-prefix
+tmux set-option prefix C-b
+tmux unbind-key C-a
+tmux bind-key C-b send-prefix
 
 tmux set-option status-bg blue
 tmux set-option status-fg white
