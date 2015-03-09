@@ -8,3 +8,6 @@ tmux set status-fg white
 
 tmux set pane-border-fg blue
 tmux set pane-active-border-fg magenta
+
+tmux setw -g window-status-fg yellow
+tmux setw -g window-status-current-fg yellow
