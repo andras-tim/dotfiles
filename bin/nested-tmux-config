@@ -1,10 +1,10 @@
 #!/bin/bash
-tmux set-option prefix C-b
-tmux unbind-key C-a
-tmux bind-key C-b send-prefix
+tmux set prefix C-b
+tmux unbind C-a
+tmux bind C-b send-prefix
 
-tmux set-option status-bg blue
-tmux set-option status-fg white
+tmux set status-bg blue
+tmux set status-fg white
 
-tmux set-option pane-border-fg blue
-tmux set-option pane-active-border-fg magenta
+tmux set pane-border-fg blue
+tmux set pane-active-border-fg magenta
