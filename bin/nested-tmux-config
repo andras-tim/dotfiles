@@ -1,0 +1,8 @@
+#!/bin/bash
+tmux bind-key -n C-b send-prefix
+
+tmux set-option status-bg blue
+tmux set-option status-fg white
+
+tmux set-option pane-border-fg blue
+tmux set-option pane-active-border-fg magenta
