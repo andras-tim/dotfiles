@@ -1,5 +1,5 @@
 ! xterm ---------------------------------------------------------------------------------------------------------------
-xterm*faceName:           Monospace:style=Regular:size=10
+xterm*faceName:           Monospace:style=Regular:pixelsize=13
 xterm*dynamicColors:      true
 xterm*utf8:               2
 xterm*eightBitInput:      true
@@ -61,18 +61,19 @@ URxvt*color14: #34e2e2 // cyan
 URxvt*color15: #eeeeec // white
 
 ! Fonts
-URxvt.font: xft:Monospace:size=10
-URxvt.boldfont:xft:Monospace-Bold:size=10
-URxvt.letterSpace: -2
+URxvt.font: xft:Monospace:pixelsize=13
+URxvt.boldfont:xft:Monospace-Bold:pixelsize=13
 
 ! Unbind Ctrl+Shift
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! Changing font size on the fly
-URxvt.keysym.C-KP_0: command:\033]710;xft:Monospace:size=10\007
-URxvt.keysym.C-KP_Subtract: command:\033]710;xft:Monospace:size=8\007
-URxvt.keysym.C-KP_Add: command:\033]710;xft:Monospace:size=16\007
+URxvt.keysym.C-KP_Divide: command:\033]710;xft:Monospace:pixelsize=8\007
+URxvt.keysym.C-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=10\007
+URxvt.keysym.C-KP_0: command:\033]710;xft:Monospace:pixelsize=13\007
+URxvt.keysym.C-KP_Add: command:\033]710;xft:Monospace:pixelsize=16\007
+URxvt.keysym.C-KP_Multiply: command:\033]710;xft:Monospace:pixelsize=18\007
 
 ! Scrollbar
 URxvt.scrollstyle: plain
