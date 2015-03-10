@@ -42,8 +42,6 @@ export MAKEFLAGS="-j5 -O2"
 export WAFFLAGS="-j5 -O2"
 #export FEATURES="distcc"
 
-export TERM="xterm-color"
-
 export EDITOR='vim'
 export VISUAL='vim'
 
