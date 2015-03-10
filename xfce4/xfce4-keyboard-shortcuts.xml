@@ -65,6 +65,8 @@
       <property name="&lt;Super&gt;4" type="string" value="gnumeric"/>
       <property name="&lt;Super&gt;m" type="string" value="exo-open --launch MailReader"/>
       <property name="override" type="bool" value="true"/>
+      <property name="&lt;Super&gt;space" type="string" value="xfce4-popup-whiskermenu"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
