@@ -63,6 +63,7 @@ URxvt*color15: #eeeeec // white
 ! Fonts
 URxvt.font: xft:Monospace:pixelsize=13
 URxvt.boldfont:xft:Monospace-Bold:pixelsize=13
+URxvt.letterSpace: -1
 
 ! Unbind Ctrl+Shift
 URxvt.iso14755: false
@@ -76,6 +77,7 @@ URxvt.keysym.C-KP_Add: command:\033]710;xft:Monospace:pixelsize=16\007
 URxvt.keysym.C-KP_Multiply: command:\033]710;xft:Monospace:pixelsize=18\007
 
 ! Scrollbar
+URxvt*scrollBar: false
 URxvt.scrollstyle: plain
 URxvt*scrollBar_right: true
 URxvt*scrollBar_floating:false
