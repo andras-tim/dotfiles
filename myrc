@@ -45,7 +45,7 @@ export WAFFLAGS="-j5 -O2"
 export EDITOR='vim'
 export VISUAL='vim'
 
-export PATH="${PATH}:${HOME}/bin"
+export PATH="${PATH}:${HOME}/bin:${HOME}/bin/my"
 
 
 ######
