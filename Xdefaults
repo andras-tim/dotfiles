@@ -61,8 +61,8 @@ URxvt*color14: #34e2e2 // cyan
 URxvt*color15: #eeeeec // white
 
 ! Fonts
-URxvt.font: xft:Monospace:pixelsize=13
-URxvt.boldfont:xft:Monospace-Bold:pixelsize=13
+URxvt.font:     xft:Monospace:pixelsize=13
+URxvt.boldfont: xft:Monospace-Bold:pixelsize=13
 URxvt.letterSpace: -1
 
 ! Unbind Ctrl+Shift
@@ -70,23 +70,23 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! Changing font size on the fly
-URxvt.keysym.C-KP_Divide: command:\033]710;xft:Monospace:pixelsize=8\007
+URxvt.keysym.C-KP_Divide:   command:\033]710;xft:Monospace:pixelsize=8\007
 URxvt.keysym.C-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=10\007
-URxvt.keysym.C-KP_0: command:\033]710;xft:Monospace:pixelsize=13\007
-URxvt.keysym.C-KP_Add: command:\033]710;xft:Monospace:pixelsize=16\007
+URxvt.keysym.C-KP_0:        command:\033]710;xft:Monospace:pixelsize=13\007
+URxvt.keysym.C-KP_Add:      command:\033]710;xft:Monospace:pixelsize=16\007
 URxvt.keysym.C-KP_Multiply: command:\033]710;xft:Monospace:pixelsize=18\007
 
 ! Scrollbar
-URxvt*scrollBar: false
-URxvt.scrollstyle: plain
-URxvt*scrollBar_right: true
-URxvt*scrollBar_floating:false
-URxvt*secondaryScroll:true
+URxvt*scrollBar:            false
+URxvt.scrollstyle:          plain
+URxvt*scrollBar_right:      true
+URxvt*scrollBar_floating:   false
+URxvt*secondaryScroll:      true
 
 ! Scrollback buffer in secondary screen
-URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
-URxvt.secondaryWheel: 1
+URxvt.secondaryScreen:  1
+URxvt.secondaryScroll:  0
+URxvt.secondaryWheel:   1
 
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
@@ -96,9 +96,9 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 ! Clickable URLs
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: xdg-open
-URxvt.matcher.button: 1
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:     xdg-open
+URxvt.matcher.button:   1
 
 
 ! xscreensaver --------------------------------------------------------------------------------------------------------
@@ -120,11 +120,11 @@ xscreensaver.Dialog.Button.foreground:  #EDEDFF
 xscreensaver.Dialog.Button.background:  #444
 
 ! username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #EDEDFF
-xscreensaver.Dialog.text.background:    #444
-xscreensaver.Dialog.internalBorderWidth:24
-xscreensaver.Dialog.borderWidth:        20
-xscreensaver.Dialog.shadowThickness:    2
+xscreensaver.Dialog.text.foreground:      #EDEDFF
+xscreensaver.Dialog.text.background:      #444
+xscreensaver.Dialog.internalBorderWidth:  24
+xscreensaver.Dialog.borderWidth:          20
+xscreensaver.Dialog.shadowThickness:      2
 
 ! timeout bar (background is actually determined by Dialog.text.background)
 xscreensaver.passwd.thermometer.foreground:  #A9B7C4
