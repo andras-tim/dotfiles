@@ -1,7 +1,7 @@
 - clean: ["~"]
 
 - shell:
-    - ["mkdir -p ~/bin", "Creating scripts directories"]
+    - ["mkdir -p ~/bin ~/.urxvt/ext", "Creating directories"]
 
 - link:
     # Shell
@@ -28,6 +28,7 @@
 - link:
     # GUI
     ~/.Xdefaults: Xdefaults
+    ~/.urxvt/ext/clipboard: urxvt-perls/clipboard
     ~/.conkyrc: conkyrc
     ~/.xbindkeysrc: xbindkeysrc
 

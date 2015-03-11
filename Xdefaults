@@ -26,6 +26,10 @@ Xft.hintstyle:  hintslight
 ! https://wiki.archlinux.org/index.php/rxvt-unicode
 ! urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp'
 !
+! Plugin path
+URxvt.perl-lib: ~/.urxvt/ext/
+URxvt.perl-ext-common:  default,matcher,clipboard
+
 ! Window
 URxvt*geometry: 120x30
 URxvt.iconFile: /usr/share/app-install/icons/utilities-terminal.svg
@@ -91,11 +95,13 @@ URxvt*scrollWithBuffer: true
 ! scroll back to the bottom on keypress
 URxvt*scrollTtyKeypress: true
 
-! Clickable URLs
-URxvt.perl-ext-common:  default,matcher
+! Plugin: Clickable URLs
 URxvt.url-launcher:     xdg-open
 URxvt.matcher.button:   C1
 
+! Plugin: Clipboard with Ctrl+Shift+C, Ctrl+Shift+V
+URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
 ! xscreensaver --------------------------------------------------------------------------------------------------------
 ! font settings
