@@ -34,8 +34,6 @@ bindkey '3D' backward-word
 bindkey '5C' forward-word
 bindkey '5D' backward-word
 
-export TERM="xterm-color"
-
 # Config of plugins
 unsetopt auto_menu
 unsetopt correct_all
