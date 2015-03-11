@@ -23,7 +23,10 @@
     ~/.quiltrc: quiltrc
 
 - shell:
-    - ["git submodule update --init --recursive", "Installing/updating submodules"]
+    -
+        command: ["git submodule update --init --recursive", "Installing/updating submodules"]
+        stdout: true
+        stderr: true
 
 - link:
     # GUI
