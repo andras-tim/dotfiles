@@ -30,16 +30,12 @@ Xft.hintstyle:  hintslight
 URxvt*geometry: 120x30
 URxvt.iconFile: /usr/share/app-install/icons/utilities-terminal.svg
 URxvt.urgentOnBell: true
+URxvt*background: black
+URxvt*foreground: gray
 
 ! True transparency
 URxvt.depth: 32
 URxvt.background: rgba:1111/1111/1111/dddd
-
-! Background color
-URxvt*background: black
-
-! Font color
-URxvt*foreground: gray
 
 ! Custom colors - Ambience from Terminator
 ! tester: https://gist.github.com/benizi/4173926
@@ -81,12 +77,11 @@ URxvt*scrollBar:            false
 URxvt.scrollstyle:          plain
 URxvt*scrollBar_right:      true
 URxvt*scrollBar_floating:   false
-URxvt*secondaryScroll:      true
 
 ! Scrollback buffer in secondary screen
-URxvt.secondaryScreen:  1
-URxvt.secondaryScroll:  0
-URxvt.secondaryWheel:   1
+URxvt.secondaryScreen:  true
+URxvt.secondaryScroll:  false
+URxvt.secondaryWheel:   true
 
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
