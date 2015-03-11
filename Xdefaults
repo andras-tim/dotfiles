@@ -94,7 +94,7 @@ URxvt*scrollTtyKeypress: true
 ! Clickable URLs
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:     xdg-open
-URxvt.matcher.button:   1
+URxvt.matcher.button:   C1
 
 
 ! xscreensaver --------------------------------------------------------------------------------------------------------
