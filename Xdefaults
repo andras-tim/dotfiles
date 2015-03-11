@@ -66,11 +66,11 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! Changing font size on the fly
-URxvt.keysym.C-KP_Divide:   command:\033]710;xft:Monospace:pixelsize=8\007
-URxvt.keysym.C-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=10\007
-URxvt.keysym.C-KP_0:        command:\033]710;xft:Monospace:pixelsize=13\007
-URxvt.keysym.C-KP_Add:      command:\033]710;xft:Monospace:pixelsize=16\007
-URxvt.keysym.C-KP_Multiply: command:\033]710;xft:Monospace:pixelsize=18\007
+URxvt.keysym.Control-KP_Divide:   command:\033]710;xft:Monospace:pixelsize=8\007
+URxvt.keysym.Control-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=10\007
+URxvt.keysym.Control-KP_0:        command:\033]710;xft:Monospace:pixelsize=13\007
+URxvt.keysym.Control-KP_Add:      command:\033]710;xft:Monospace:pixelsize=16\007
+URxvt.keysym.Control-KP_Multiply: command:\033]710;xft:Monospace:pixelsize=18\007
 
 ! Scrollbar
 URxvt*scrollBar:            false
