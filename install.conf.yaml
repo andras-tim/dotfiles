@@ -2,6 +2,7 @@
 
 - shell:
     - ["mkdir -p ~/bin ~/.urxvt/ext", "Creating directories"]
+    - ["bin/fix-shift-f6-in-mc.sh", "Fixing Shift+F6 Midnight Commander shortcut"]
 
 - link:
     # Shell
