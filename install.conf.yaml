@@ -1,8 +1,13 @@
 - clean: ["~"]
 
 - shell:
-    - ["mkdir -p ~/bin ~/.urxvt/ext", "Creating directories"]
-    - ["bin/fix-shift-f6-in-mc.sh", "Fixing Shift+F6 Midnight Commander shortcut"]
+    -
+        command: ["git submodule update --init --recursive", "Installing/updating submodules"]
+        stdout: true
+        stderr: true
+    -
+        command: ["mkdir -p ~/bin ~/.urxvt/ext", "Creating directories"]
+        stderr: true
 
 - link:
     # Shell
@@ -23,12 +28,6 @@
     ~/.vimrc: vimrc
     ~/.quiltrc: quiltrc
 
-- shell:
-    -
-        command: ["git submodule update --init --recursive", "Installing/updating submodules"]
-        stdout: true
-        stderr: true
-
 - link:
     # GUI
     ~/.Xdefaults: Xdefaults
@@ -45,3 +44,9 @@
     # Scripts
     ~/bin/urxvt-tmux: bin/urxvt-tmux
     ~/bin/nested-tmux-config: bin/nested-tmux-config
+
+- shell:
+    -
+        command: ["bin/fix-shift-f6-in-mc.sh", "Fixing Shift+F6 Midnight Commander shortcut"]
+        stdout: true
+        stderr: true
