@@ -50,3 +50,7 @@
         command: ["bin/fix-shift-f6-in-mc.sh", "Fixing Shift+F6 Midnight Commander shortcut"]
         stdout: true
         stderr: true
+    -
+        command: ["xrdb ~/.Xdefaults", "Applying GUI config"]
+        stdout: true
+        stderr: true
