@@ -47,6 +47,9 @@
 
 - shell:
     -
+        command: ["bin/check-requirements.sh", "Checking requirements"]
+        stderr: true
+    -
         command: ["bin/fix-shift-f6-in-mc.sh", "Fixing Shift+F6 Midnight Commander shortcut"]
         stdout: true
         stderr: true
