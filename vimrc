@@ -24,6 +24,9 @@ set numberwidth=3
 set ruler
 
 
+"""Tmux fixes/workarounds"""
+set term=xterm-256color
+
 
 """Highlight"""
 colo default
