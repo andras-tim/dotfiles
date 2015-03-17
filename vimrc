@@ -18,7 +18,6 @@ set showmatch
 set expandtab
 
 
-
 """Show Position"""
 set numberwidth=3
 "set number
@@ -37,17 +36,14 @@ match WhitespaceEOL /\s\+$/
 set colorcolumn=120
 
 
-
 """File types"""
 syntax on
 filetype plugin on
 
 
-
-""""Shortcuts"""
+"""Shortcuts"""
 nnoremap <F5> :! clear; PROMPT_EXTRA='[VIM]' /bin/bash<CR><CR>
 nnoremap <f12> :set filetype=python<cr>
-
 
 
 """Trailing whitespaces"""
