@@ -69,6 +69,7 @@ alias rdesktop='rdesktop -zN'
 alias rd='rdesktop -g 1670x980'
 
 alias gl='git log --graph --decorate --color --oneline'
+alias gf='git fetch --all --prune'
 
 alias sl=ls
 alias dc=cd
