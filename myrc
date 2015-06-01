@@ -38,8 +38,8 @@ fi
 ######
 # Config
 #
-export MAKEFLAGS="-j5 -O2"
-export WAFFLAGS="-j5 -O2"
+#export MAKEFLAGS="-j5 -O2"
+#export WAFFLAGS="-j5 -O2"
 #export FEATURES="distcc"
 
 export EDITOR='vim'
