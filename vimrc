@@ -36,7 +36,7 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE gui
 highlight WhitespaceEOL term=reverse ctermbg=Red guibg=Red
 match WhitespaceEOL /\s\+$/
 
-highlight SpecialKey ctermfg=Black ctermbg=Yellow guibg=Yellow
+highlight SpecialKey ctermfg=DarkGray
 set list
 set listchars=tab:>-
 
