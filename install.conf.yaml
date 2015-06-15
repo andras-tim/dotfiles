@@ -44,6 +44,7 @@
     # Scripts
     ~/bin/urxvt-tmux: bin/urxvt-tmux
     ~/bin/nested-tmux-config: bin/nested-tmux-config
+    ~/bin/monitor-config: bin/monitor-config
 
 - shell:
     -

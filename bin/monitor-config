@@ -1,0 +1,98 @@
+#!/bin/bash
+CONFIG_ORDER='multi_monitor notebook_monitor'
+
+
+######
+# Configurations
+#
+function config_notebook_monitor()
+{
+    strict_xrandr \
+        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --primary \
+        || return $?
+    echo 'eDP1'
+}
+
+function config_multi_monitor()
+{
+    strict_xrandr \
+        --output eDP1 --off \
+        --output DP2  --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output DP3  --crtc 2 --mode 1920x1080 --rotate normal --right-of DP2 \
+        || return $?
+    echo 'DP2'
+}
+
+function config_multi_monitor_3()
+{
+    strict_xrandr \
+        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --left-of DP2 \
+        --output DP2  --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output DP3  --crtc 2 --mode 1920x1080 --rotate normal --right-of DP2 \
+        || return $?
+    echo 'DP2'
+}
+
+
+######
+# Functions
+#
+function strict_xrandr()
+{
+    out="$(xrandr --dryrun "$@" 2>&1)" || return $?
+    if echo "${out}" | grep -q '^warning:' >/dev/null
+    then
+        return 1
+    fi
+
+    xrandr "$@"
+}
+
+function panel_output()
+{
+    local panel_id="$1"; shift
+
+    xfconf-query -c xfce4-panel -p "/panels/panel-${panel_id}/output-name" "$@"
+}
+
+function reload_conky()
+{
+    killall -SIGUSR1 conky
+}
+
+function set_output_of_onscreen_elements()
+{
+    local output="$1"
+
+    current_output="$(panel_output 0)"
+    [ "${current_output}" == "${output}" ] && return
+
+    # Waiting for display ready
+    sleep 1
+
+    panel_output 0 -s "${output}"
+    panel_output 1 -s "${output}"
+    xfce4-panel --restart
+
+    # Waiting for desktop ready
+    sleep 2
+    reload_conky
+}
+
+
+######
+# Main
+#
+for name in ${CONFIG_ORDER}
+do
+    primary="$(config_${name})"
+    if [ $? -eq 0 ]
+    then
+        set_output_of_onscreen_elements "${primary}"
+        echo 'Done'
+        exit 0
+    fi
+done
+
+echo 'Error: Can not meet configs with current available monitors'
+exit 1

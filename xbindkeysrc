@@ -53,6 +53,11 @@
     m:0x1c + c:38
     Control+Alt+Mod2 + a
 
+#Auto Config Monitors
+"${HOME}/bin/monitor-config"
+    m:0x50 + c:74
+    Mod2+Mod4 + F8
+
 #Launch Spotify
 "/usr/bin/spotify"
     m:0x54 + c:111
