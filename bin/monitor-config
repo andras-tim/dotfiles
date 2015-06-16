@@ -5,6 +5,16 @@ CONFIG_ORDER='multi_monitor notebook_monitor'
 ######
 # Configurations
 #
+function config_no_monitor()
+{
+    strict_xrandr \
+        --output eDP1 --off \
+        --output DP2  --off \
+        --output DP3  --off \
+        || return $?
+    echo 'eDP1'
+}
+
 function config_notebook_monitor()
 {
     strict_xrandr \
@@ -83,6 +93,7 @@ function set_output_of_onscreen_elements()
 ######
 # Main
 #
+config_no_monitor
 for name in ${CONFIG_ORDER}
 do
     primary="$(config_${name})"
