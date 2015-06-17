@@ -1,2 +1,16 @@
 #!/bin/bash -e
-urxvt -e tmux new-session "$@"
+
+function has_session() {
+    set +e
+    tmux list-sessions &>/dev/null; rc=$?
+    set -e
+    return $rc
+}
+
+
+if has_session
+then
+    urxvt -e tmux a "$@"
+else
+    urxvt -e tmux new-session "$@"
+fi
