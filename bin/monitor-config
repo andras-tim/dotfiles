@@ -93,7 +93,11 @@ function set_output_of_onscreen_elements()
 ######
 # Main
 #
-config_no_monitor
+if [ "$1" != '--without-reset' ]
+then
+    config_no_monitor
+fi
+
 for name in ${CONFIG_ORDER}
 do
     primary="$(config_${name})"
