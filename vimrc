@@ -52,6 +52,9 @@ filetype plugin on
 nnoremap <F5> :! clear; PROMPT_EXTRA='[VIM]' /bin/bash<CR><CR>
 nnoremap <f12> :set filetype=python<cr>
 
+vnoremap < <gv
+vnoremap > >gv
+
 
 """Trailing whitespaces"""
 autocmd bufwritepre * let save_cursor = getpos( '.' ) |
