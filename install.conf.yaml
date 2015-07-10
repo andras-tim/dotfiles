@@ -27,6 +27,7 @@
     ~/.screenrc: screenrc
     ~/.vimrc: vimrc
     ~/.quiltrc: quiltrc
+    ~/.gdbinit: gdbinit
 
 - link:
     # GUI
