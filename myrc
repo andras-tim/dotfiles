@@ -58,7 +58,7 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 ######
 # Aliases
 #
-alias ssh='ssh -CX'
+alias ssh='ssh -C'
 alias vim='vim -p'
 alias grep='grep --binary-files=without-match --color=auto'
 
