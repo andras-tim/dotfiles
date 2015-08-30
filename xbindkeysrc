@@ -93,5 +93,10 @@
     m:0x54 + c:63
     Control+Mod2+Mod4 + KP_Multiply
 
+#Use Bluetooth audio for output
+"${HOME}/bin/set-bluetooth-audio"
+    m:0x50 + c:95
+    Mod2+Mod4 + F11
+
 #
 # End of xbindkeys configuration

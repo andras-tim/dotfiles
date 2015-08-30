@@ -1,0 +1,30 @@
+#!/bin/bash
+SOUND_CARD='SBH20'
+PROFILE='a2dp'
+
+set -eo pipefail
+
+
+function get_index_by_name()
+{
+    local command="$1"
+    local name="$2"
+
+    pacmd "${command}" | grep -B100 "${name}" | grep index: | tail -n 1 | sed 's>[^0-9]*>>'
+}
+
+
+######
+# MAIN
+#
+card_index="$(get_index_by_name list-cards "${SOUND_CARD}")"
+sink_index="$(get_index_by_name list-sinks "${SOUND_CARD}")"
+
+pacmd set-card-profile "${card_index}" "${PROFILE}" >/dev/null
+pacmd set-default-sink "${sink_index}" >/dev/null
+
+sleep 1
+amixer -D pulse sset Master 10%- toggle >/dev/null
+amixer -D pulse sset Master 10%+ toggle >/dev/null
+
+exit 0
