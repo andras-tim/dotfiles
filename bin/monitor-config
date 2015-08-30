@@ -1,5 +1,6 @@
 #!/bin/bash
 CONFIG_ORDER='multi_monitor notebook_monitor'
+DISPLAY=':0.0'
 
 
 ######
