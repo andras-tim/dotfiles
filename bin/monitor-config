@@ -1,5 +1,5 @@
 #!/bin/bash
-CONFIG_ORDER='multi_monitor notebook_monitor'
+CONFIG_ORDER='multi_monitor only_dsub notebook_monitor'
 DISPLAY=':0.0'
 
 
@@ -22,6 +22,14 @@ function config_notebook_monitor()
         --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --primary \
         || return $?
     echo 'eDP1'
+}
+
+function config_only_dsub()
+{
+    strict_xrandr \
+        --output DP4 --crtc 0 --mode 1920x1080  --rotate normal --primary \
+        || return $?
+    echo 'DP4'
 }
 
 function config_multi_monitor()
