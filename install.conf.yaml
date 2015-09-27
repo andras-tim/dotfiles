@@ -19,7 +19,7 @@
 
     # VCS
     ~/.gitconfig: gitconfig
-    ~/.gitk: gitk
+    ~/.config/git/gitk: gitk
     ~/.hgrc: hgrc
 
     # Other console apps
