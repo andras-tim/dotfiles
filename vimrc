@@ -26,6 +26,7 @@ set ruler
 
 """Tmux fixes/workarounds"""
 set term=xterm-256color
+set encoding=utf-8
 
 
 """Highlight"""
