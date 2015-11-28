@@ -1,5 +1,5 @@
 #!/bin/bash
-REQUIREMENTS='urxvt xsel tmux'
+REQUIREMENTS='urxvt zsh xsel tmux'
 
 function check()
 {
