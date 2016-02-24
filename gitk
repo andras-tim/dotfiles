@@ -1,6 +1,6 @@
-set mainfont {{Nimbus Sans L} 11}
-set textfont {{Nimbus Mono L} 11}
-set uifont {{Nimbus Sans L} 10 bold}
+set mainfont {sans 9}
+set textfont {monospace 9}
+set uifont {sans 9 bold}
 set tabstop 4
 set findmergefiles 0
 set maxgraphpct 50
