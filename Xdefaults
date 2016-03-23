@@ -40,7 +40,7 @@ URxvt.perl-lib: ~/.urxvt/ext/
 URxvt.perl-ext-common:  default,matcher,clipboard
 
 ! Window
-URxvt*geometry: 120x30
+URxvt*geometry: 160x40
 URxvt.iconFile: /usr/share/app-install/icons/utilities-terminal.svg
 URxvt.urgentOnBell: true
 URxvt*background: black

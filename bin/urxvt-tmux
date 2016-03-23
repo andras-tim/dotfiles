@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
 function has_session() {
     set +e
@@ -8,9 +9,16 @@ function has_session() {
 }
 
 
+if [ $# -gt 0 ]
+then
+    urxvt -e "$@"
+    exit 0
+fi
+
 if has_session
 then
-    urxvt -e tmux a "$@"
+    urxvt -e tmux a
 else
-    urxvt -e tmux new-session "$@"
+    urxvt -e tmux new-session
 fi
+exit 0
