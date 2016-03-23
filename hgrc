@@ -1,2 +1,6 @@
 [ui]
 username = Andras Tim <andras.tim@gmail.com>
+
+[extensions]
+hgext.bookmarks =
+hggit =
