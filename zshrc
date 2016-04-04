@@ -33,12 +33,13 @@ bindkey '3D' backward-word
 bindkey '5C' forward-word
 bindkey '5D' backward-word
 
-# Config of plugins
+# Config
 unsetopt auto_menu
 unsetopt correct_all
-
-# Config
-setopt interactivecomments
+unsetopt bang_hist
+setopt check_jobs
+setopt interactive_comments
+setopt notify
 
 # Import myrc
 source ${HOME}/.myrc
