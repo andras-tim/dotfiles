@@ -43,7 +43,6 @@ URxvt.perl-ext-common:  default,matcher,clipboard
 URxvt*geometry: 160x40
 URxvt.iconFile: /usr/share/app-install/icons/utilities-terminal.svg
 URxvt.urgentOnBell: true
-URxvt*background: black
 URxvt*foreground: gray
 
 ! True transparency
