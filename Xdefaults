@@ -72,7 +72,6 @@ URxvt*color15: #eeeeec // white
 ! Fonts
 URxvt.font:     xft:Monospace:pixelsize=13
 URxvt.boldfont: xft:Monospace-Bold:pixelsize=13
-URxvt.letterSpace: -1
 
 ! Unbind Ctrl+Shift
 URxvt.iso14755: false
