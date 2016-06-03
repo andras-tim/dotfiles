@@ -48,6 +48,7 @@
     ~/bin/nested-tmux-config: bin/nested-tmux-config
     ~/bin/monitor-config: bin/monitor-config
     ~/bin/set-bluetooth-audio: bin/set-bluetooth-audio
+    ~/bin/set-pulse-volume: bin/set-pulse-volume
     ~/bin/tssh: bin/tssh
 
 - shell:

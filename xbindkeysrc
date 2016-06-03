@@ -79,12 +79,12 @@
     Control+Mod2+Mod4 + Right
 
 #Volume+
-"amixer -D pulse sset Master 10%+ unmute"
+"${HOME}/bin/set-pulse-volume 10%+"
     m:0x54 + c:86
     Control+Mod2+Mod4 + KP_Add
 
 #Volume-
-"amixer -D pulse sset Master 10%- unmute"
+"${HOME}/bin/set-pulse-volume 10%-"
     m:0x54 + c:82
     Control+Mod2+Mod4 + KP_Subtract
 

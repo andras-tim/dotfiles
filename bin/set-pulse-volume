@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+amixer -D pulse sset Master "$@" unmute
+
+# unmute pci sinks
+pactl list short sinks | grep '\.pci-' \
+    | awk '{print $1}' \
+    | while read sink_id
+    do
+        pactl set-sink-mute "${sink_id}" 0
+    done
