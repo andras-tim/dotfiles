@@ -91,6 +91,7 @@ function set_output_of_onscreen_elements()
 
     panel_output 0 -s "${output}"
     panel_output 1 -s "${output}"
+    sleep 1
     xfce4-panel --restart
 
     # Waiting for desktop ready
