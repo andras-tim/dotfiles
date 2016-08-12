@@ -10,8 +10,8 @@ function config_no_monitor()
 {
     strict_xrandr \
         --output eDP1 --off \
-        --output DP2  --off \
-        --output DP3  --off \
+        --output DP1-1 --off \
+        --output DP1-2 --off \
         || return $?
     echo 'eDP1'
 }
@@ -36,20 +36,20 @@ function config_multi_monitor()
 {
     strict_xrandr \
         --output eDP1 --off \
-        --output DP2  --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output DP3  --crtc 2 --mode 1920x1080 --rotate normal --right-of DP2 \
+        --output DP1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output DP1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP1-1 \
         || return $?
-    echo 'DP2'
+    echo 'DP1-1'
 }
 
 function config_multi_monitor_3()
 {
     strict_xrandr \
-        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --left-of DP2 \
-        --output DP2  --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output DP3  --crtc 2 --mode 1920x1080 --rotate normal --right-of DP2 \
+        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --left-of DP1-1 \
+        --output DP1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output DP1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP1-1 \
         || return $?
-    echo 'DP2'
+    echo 'DP1-1'
 }
 
 
