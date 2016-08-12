@@ -29,6 +29,7 @@
     ~/.vimrc: vimrc
     ~/.quiltrc: quiltrc
     ~/.gdbinit: gdbinit
+    ~/.aria2/aria2.conf: aria2.conf
 
 - link:
     # GUI
