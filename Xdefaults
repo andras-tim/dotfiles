@@ -111,6 +111,8 @@ URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
 ! xscreensaver --------------------------------------------------------------------------------------------------------
+xscreensaver.splash: false
+
 ! font settings
 xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
 xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
@@ -132,7 +134,7 @@ xscreensaver.Dialog.Button.background:  #444
 xscreensaver.Dialog.text.foreground:      #EDEDFF
 xscreensaver.Dialog.text.background:      #444
 xscreensaver.Dialog.internalBorderWidth:  24
-xscreensaver.Dialog.borderWidth:          20
+xscreensaver.Dialog.borderWidth:          0
 xscreensaver.Dialog.shadowThickness:      2
 
 ! timeout bar (background is actually determined by Dialog.text.background)
@@ -142,3 +144,6 @@ xscreensaver.passwd.thermometer.width:       8
 
 ! datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:    %Y-%m-%d %H:%M:%S
+
+! switching mode of LightDM
+xscreensaver.newLoginCommand: dm-tool switch-to-greeter

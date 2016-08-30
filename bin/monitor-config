@@ -8,12 +8,11 @@ DISPLAY=':0.0'
 #
 function config_no_monitor()
 {
-    strict_xrandr \
-        --output eDP1 --off \
-        --output DP1-1 --off \
-        --output DP1-2 --off \
-        || return $?
-    echo 'eDP1'
+    for output in eDP1 DP1-1 DP1-2; do
+        xrandr --output "${output}" --auto \
+            && xrandr --output "${output}" --off \
+            || true
+    done
 }
 
 function config_notebook_monitor()
@@ -90,7 +89,7 @@ function set_output_of_onscreen_elements()
     sleep 1
 
     panel_output 0 -s "${output}"
-    panel_output 1 -s "${output}"
+    #panel_output 1 -s "${output}"
     sleep 1
     xfce4-panel --restart
 

@@ -139,9 +139,9 @@ ${color #42AE4A}Hard Disk Temperatures:
 ${color #42AE4A} sda: ${color lightgrey}${execi 8 sudo hddtemp /dev/sda | sed 's/.*: \(.*\)°.*/\1/g'}°C
 ${color lightgrey}${hr}
 
-${color #42AE4A}[eth0] ${alignr}[wlan0]
-${color lightgrey}${addr eth0} ${alignr}${addr wlan0}
-${color #42AE4A}${downspeedgraph eth0 15,100 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlan0 15,100 42AE4A eeeeee 160}
-${color #42AE4A}D:${color lightgrey} ${downspeed eth0} k/s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlan0} k/s
-${color #42AE4A}${upspeedgraph eth0 15,100 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlan0 15,100 42AE4A eeeeee 25}
-${color #42AE4A}U:${color lightgrey} ${upspeed eth0} k/s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlan0} k/s
+${color #42AE4A}[eno1] ${alignr}[wlp2s0]
+${color lightgrey}${addr eno1} ${alignr}${addr wlp2s0}
+${color #42AE4A}${downspeedgraph eno1 15,100 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlp2s0 15,100 42AE4A eeeeee 160}
+${color #42AE4A}D:${color lightgrey} ${downspeed eno1} k/s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlp2s0} k/s
+${color #42AE4A}${upspeedgraph eno1 15,100 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlp2s0 15,100 42AE4A eeeeee 25}
+${color #42AE4A}U:${color lightgrey} ${upspeed eno1} k/s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlp2s0} k/s
