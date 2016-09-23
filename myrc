@@ -70,6 +70,7 @@ alias tn='nested-tmux-config'
 alias rdesktop='rdesktop -zN'
 alias rd='rdesktop -g 1670x980'
 
+alias gitk='gitk --max-count=2000'
 alias gl='git log --graph --decorate --color --oneline'
 alias gf='git fetch --all --prune --tags'
 alias gR='git reset --hard && git clean -fxd; echo; git status'
