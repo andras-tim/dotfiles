@@ -88,13 +88,14 @@ function set_output_of_onscreen_elements()
     # Waiting for display ready
     sleep 1
 
-    panel_output 0 -s "${output}"
-    #panel_output 1 -s "${output}"
+    #panel_output 0 -n -t string -s "${output}"
+    panel_output 0 -n -t string -s 'monitor-0'
     sleep 1
     xfce4-panel --restart
 
     # Waiting for desktop ready
     sleep 2
+
     reload_conky
 }
 
