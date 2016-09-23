@@ -6,8 +6,11 @@
         stdout: true
         stderr: true
     -
-        command: ["mkdir -p ~/bin ~/.config/git ~/.urxvt/ext", "Creating directories"]
+        command: ["mkdir -p ~/bin ~/.urxvt/ext", "Creating directories"]
         stderr: true
+
+    -
+        command: ["rmdir ~/.config/git 2>/dev/null || true", "Removing empty directories"]
 
 - link:
     # Shell
@@ -18,9 +21,7 @@
     ~/.myrc: myrc
 
     # VCS
-    ~/.gitconfig: gitconfig
-    ~/.config/git/gitk: gitk
-    ~/.config/git/ignore: gitignore
+    ~/.config/git: git
     ~/.hgrc: hgrc
 
     # Other console apps
