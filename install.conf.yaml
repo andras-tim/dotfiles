@@ -6,7 +6,7 @@
         stdout: true
         stderr: true
     -
-        command: ["mkdir -p ~/bin ~/.urxvt/ext", "Creating directories"]
+        command: ["mkdir -p ~/bin ~/.urxvt/ext ~/.aria2", "Creating directories"]
         stderr: true
 
     -
