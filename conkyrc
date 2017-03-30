@@ -143,9 +143,6 @@ conky.text = [[
     ${color #42AE4A} Root ${color lightgrey}${fs_size /} ${color #42AE4A}/ ${color lightgrey}${fs_free /}${alignr}${fs_used_perc /}% ${color #42AE4A}${fs_bar /}
     ${color #42AE4A} Boot ${color lightgrey}${fs_size /boot} ${color #42AE4A}/ ${color lightgrey}${fs_free /boot}${alignr}${fs_used_perc /boot}% ${color #42AE4A}${fs_bar /boot}
     ${color #42AE4A} Datastore ${color lightgrey}${fs_size /var/datastore} ${color #42AE4A}/ ${color lightgrey}${fs_free /var/datastore}${alignr}${fs_used_perc /var/datastore}% ${color #42AE4A}${fs_bar /var/datastore}
-
-    ${color #42AE4A}Hard Disk Temperatures:
-    ${color #42AE4A} sda: ${color lightgrey}${execi 8 sudo hddtemp /dev/sda | sed 's/.*: \(.*\)°.*/\1/g'}°C
     ${color lightgrey}${hr}
 
     ${color #42AE4A}[eno1] ${alignr}[wlp2s0]
