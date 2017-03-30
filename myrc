@@ -73,7 +73,8 @@ alias rd='rdesktop -g 1670x980'
 alias gitk='gitk --max-count=2000'
 alias gl='git log --graph --decorate --color --oneline'
 alias gf='git fetch --all --prune --tags'
-alias gR='git reset --hard && git clean -fxd; echo; git status'
+alias gR='git reset --hard && git clean -fd; echo; git status'
+alias gRRR='git reset --hard && git clean -fxd; echo; git status'
 alias gC='git reflog expire --expire=now --all; git gc --aggressive --prune=now'
 
 alias sl=ls
