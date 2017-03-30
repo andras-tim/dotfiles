@@ -1,2 +1,5 @@
 # JetBrains
 .idea
+
+.virtenv
+.virtenv3
