@@ -1,0 +1,51 @@
+#!/bin/bash
+set -eufo pipefail
+
+MAX_LEVEL="${MAX_LEVEL:-2}"
+MAX_COUNT_PER_LEVEL="${MAX_COUNT_PER_LEVEL:-10}"
+
+DU_ARGS='-hsx'
+
+
+function get_filterd_sizes()
+{
+    local path="$1"
+
+    find "${path}" -mindepth 1 -maxdepth 1 -exec du "${DU_ARGS}" {} + \
+        | sort -rh \
+            | head -n "${MAX_COUNT_PER_LEVEL}" \
+                | grep -vE '^[0-9.,]+(|K)\s' \
+                    || true
+}
+
+function print_size()
+{
+    local path="$1"
+    local level="${2:-0}"
+
+    if [[ "${level}" -eq 0 ]]; then
+        du "${DU_ARGS}" "${path}"
+    fi
+    if [[ "${level}" -eq "${MAX_LEVEL}" ]]; then
+        return
+    fi
+
+    local indent="$(printf "%$[${level}+1]s" | tr ' ' '\t')"
+
+    get_filterd_sizes "${path}" \
+        | while read -r size_path; do
+            if [[ "${level}" -lt "${MAX_LEVEL}" ]]; then
+                echo "${indent}${size_path}"
+            fi
+
+            print_size \
+                "$(echo "${size_path}" | cut -f 2-)" \
+                "$[${level} + 1]"
+        done
+}
+
+
+for path in "${@:-.}"; do
+    print_size "${path}"
+    echo
+done
