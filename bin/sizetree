@@ -7,15 +7,25 @@ MAX_COUNT_PER_LEVEL="${MAX_COUNT_PER_LEVEL:-10}"
 DU_ARGS='-hsx'
 
 
-function get_filterd_sizes()
+function get_filtered_sizes()
 {
     local path="$1"
 
-    find "${path}" -mindepth 1 -maxdepth 1 -exec du "${DU_ARGS}" {} + \
-        | sort -rh \
-            | head -n "${MAX_COUNT_PER_LEVEL}" \
-                | grep -vE '^[0-9.,]+(|K)\s' \
-                    || true
+    find "${path}" -mindepth 1 -maxdepth 1 \
+        | filter_out_mount_points \
+            | xargs -L1 du "${DU_ARGS}" \
+                | sort -rh \
+                    | head -n "${MAX_COUNT_PER_LEVEL}" \
+                        | grep -vE '^[0-9.,]+(|K)\s' \
+                            || true
+}
+
+function filter_out_mount_points()
+{
+    while read -r path; do
+        mountpoint -q "${path}" \
+            || echo "${path}"
+    done
 }
 
 function print_size()
@@ -32,7 +42,7 @@ function print_size()
 
     local indent="$(printf "%$[${level}+1]s" | tr ' ' '\t')"
 
-    get_filterd_sizes "${path}" \
+    get_filtered_sizes "${path}" \
         | while read -r size_path; do
             if [[ "${level}" -lt "${MAX_LEVEL}" ]]; then
                 echo "${indent}${size_path}"
