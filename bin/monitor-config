@@ -78,6 +78,11 @@ function reload_conky()
     killall -SIGUSR1 conky
 }
 
+function reset_bightness()
+{
+    xbacklight -set 40
+}
+
 function set_output_of_onscreen_elements()
 {
     local output="$1"
@@ -91,6 +96,7 @@ function set_output_of_onscreen_elements()
     #panel_output 0 -n -t string -s "${output}"
     panel_output 0 -n -t string -s 'monitor-0'
     sleep 1
+    reset_bightness
     xfce4-panel --restart
 
     # Waiting for desktop ready
