@@ -8,7 +8,7 @@ DISPLAY=':0.0'
 #
 function config_no_monitor()
 {
-    for output in eDP1 DP1-1 DP1-2; do
+    for output in eDP-1 DP-1-1 DP-1-2; do
         xrandr --output "${output}" --auto \
             && xrandr --output "${output}" --off \
             || true
@@ -18,37 +18,37 @@ function config_no_monitor()
 function config_notebook_monitor()
 {
     strict_xrandr \
-        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --primary \
+        --output eDP-1 --crtc 0 --mode 1600x900  --rotate normal --primary \
         || return $?
-    echo 'eDP1'
+    echo 'eDP-1'
 }
 
 function config_only_dsub()
 {
     strict_xrandr \
-        --output DP4 --crtc 0 --mode 1920x1080  --rotate normal --primary \
+        --output DP-4 --crtc 0 --mode 1920x1080  --rotate normal --primary \
         || return $?
-    echo 'DP4'
+    echo 'DP-4'
 }
 
 function config_multi_monitor()
 {
     strict_xrandr \
-        --output eDP1 --off \
-        --output DP1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output DP1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP1-1 \
+        --output eDP-1 --off \
+        --output DP-1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output DP-1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP-1-1 \
         || return $?
-    echo 'DP1-1'
+    echo 'DP-1-1'
 }
 
 function config_multi_monitor_3()
 {
     strict_xrandr \
-        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --left-of DP1-1 \
-        --output DP1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output DP1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP1-1 \
+        --output eDP-1 --crtc 0 --mode 1600x900  --rotate normal --left-of DP-1-1 \
+        --output DP-1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output DP-1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP-1-1 \
         || return $?
-    echo 'DP1-1'
+    echo 'DP-1-1'
 }
 
 
@@ -91,12 +91,13 @@ function set_output_of_onscreen_elements()
     [ "${current_output}" == "${output}" ] && return
 
     # Waiting for display ready
-    sleep 1
+    sleep 2
+
+    reset_bightness
 
     #panel_output 0 -n -t string -s "${output}"
     panel_output 0 -n -t string -s 'monitor-0'
     sleep 1
-    reset_bightness
     xfce4-panel --restart
 
     # Waiting for desktop ready
