@@ -19,6 +19,6 @@ if has_session
 then
     urxvt -e tmux a
 else
-    urxvt -e tmux new-session
+    urxvt -e tmux new-session -s main
 fi
 exit 0
