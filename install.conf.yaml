@@ -18,7 +18,7 @@
     # Shell
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
-    ~/.oh-my-zsh: oh-my-zsh
+    ~/.oh-my-zsh: vendor/oh-my-zsh
     ~/.zshrc: zshrc
     ~/.myrc: myrc
 
@@ -37,7 +37,7 @@
 - link:
     # GUI
     ~/.Xdefaults: Xdefaults
-    ~/.urxvt/ext/clipboard: urxvt-perls/clipboard
+    ~/.urxvt/ext/clipboard: vendor/urxvt-perls/clipboard
     ~/.conkyrc: conkyrc
     ~/.xbindkeysrc: xbindkeysrc
 

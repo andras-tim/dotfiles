@@ -1,9 +1,9 @@
 [submodule "oh-my-zsh"]
-	path = oh-my-zsh
+	path = vendor/oh-my-zsh
 	url = https://github.com/andras-tim/oh-my-zsh.git
 [submodule "dotbot"]
-	path = dotbot
+	path = vendor/dotbot
 	url = https://github.com/anishathalye/dotbot
 [submodule "urxvt-perls"]
-	path = urxvt-perls
+	path = vendor/urxvt-perls
 	url = https://github.com/muennich/urxvt-perls.git
