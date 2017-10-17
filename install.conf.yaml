@@ -62,7 +62,7 @@
         command: ["bin/check-requirements.sh", "Checking requirements"]
         stderr: true
     -
-        command: ["bin/fix-shift-f6-in-mc.sh", "Fixing Shift+F6 Midnight Commander shortcut"]
+        command: ["bin/check-term-overrides.sh", "Checking configuration of terminal emulators"]
         stdout: true
         stderr: true
     -
