@@ -50,8 +50,8 @@
 
 #Auto Type KeePass
 "mono /usr/lib/keepass2/KeePass.exe --auto-type"
-    m:0x1c + c:38
-    Control+Alt+Mod2 + a
+    Release + m:0x1c + c:38
+    Release + Control+Alt+Mod2 + a
 
 #Auto Config Monitors
 "${HOME}/bin/monitor-config"
