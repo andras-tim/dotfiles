@@ -67,6 +67,9 @@
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;space" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
+      <property name="XF86AudioNext" type="string" value="control-spotify Next"/>
+      <property name="XF86AudioPlay" type="string" value="control-spotify PlayPause"/>
+      <property name="XF86AudioPrev" type="string" value="control-spotify Previous"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
