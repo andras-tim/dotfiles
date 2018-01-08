@@ -69,17 +69,17 @@
     Control+Mod2+Mod4 + Up
 
 #Play/Pause Spotify
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+"${HOME}/bin/control-spotify PlayPause"
     m:0x54 + c:116
     Control+Mod2+Mod4 + Down
 
 #Previous Spotify
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+"${HOME}/bin/control-spotify Previous"
     m:0x54 + c:113
     Control+Mod2+Mod4 + Left
 
 #Next Spotify
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+"${HOME}/bin/control-spotify Next"
     m:0x54 + c:114
     Control+Mod2+Mod4 + Right
 

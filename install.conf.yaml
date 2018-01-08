@@ -56,6 +56,7 @@
     ~/bin/set-pulse-volume: bin/set-pulse-volume
     ~/bin/sizetree: bin/sizetree
     ~/bin/tssh: bin/tssh
+    ~/bin/control-spotify: bin/control-spotify
 
 - shell:
     -
