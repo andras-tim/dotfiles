@@ -40,6 +40,11 @@
     m:0x15 + c:24
     Control+Shift+Mod2 + q
 
+#Fn+Insert workaround
+"xte 'key Insert'"
+    Release + m:0x10 + c:225
+    Release + Mod2 + XF86Search
+
 #History Back
 "xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
     b:6
