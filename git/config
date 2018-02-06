@@ -9,6 +9,8 @@
     noconsole = yes
 [guitool "[Git] Reset & Clean"]
     cmd = git reset --hard; git clean -df
+[guitool "[Git] Commit - Fixup!"]
+    cmd = ~/bin/gitgui-fixup.sh
 [guitool "[Git] Rebase - to origin-master"]
     cmd = VISUAL=/bin/false git rebase --autosquash origin/master
 [guitool "[Git] Rebase - Continue"]

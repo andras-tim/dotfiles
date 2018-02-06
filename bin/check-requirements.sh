@@ -1,5 +1,5 @@
 #!/bin/bash
-REQUIREMENTS='urxvt zsh xsel tmux'
+REQUIREMENTS='urxvt zsh xsel tmux zenity'
 
 function check()
 {
