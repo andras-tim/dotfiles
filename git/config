@@ -10,7 +10,7 @@
 [guitool "[Git] Reset & Clean"]
     cmd = git reset --hard; git clean -df
 [guitool "[Git] Rebase - to origin-master"]
-    cmd = VISUAL=/bin/false git rebase origin/master
+    cmd = VISUAL=/bin/false git rebase --autosquash origin/master
 [guitool "[Git] Rebase - Continue"]
     cmd = VISUAL=/bin/false git rebase --continue
 [guitool "[Git] Rebase - Abort"]
