@@ -45,11 +45,11 @@
     Release + m:0x10 + c:225
     Release + Mod2 + XF86Search
 
-#History Back
+#History Back (Mouse: scroll-left)
 "xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
     b:6
 
-#History Forward
+#History Forward (Mouse: scroll-right)
 "xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
     b:7
 
@@ -73,6 +73,11 @@
     m:0x54 + c:116
     Control+Mod2+Mod4 + Down
 
+#Play/Pause Spotify (Mouse: bottom)
+"${HOME}/bin/control-spotify PlayPause"
+    m:0x1c + c:23
+    Control+Alt+Mod2 + Tab
+
 #Previous Spotify
 "${HOME}/bin/control-spotify Previous"
     m:0x54 + c:113
@@ -88,10 +93,18 @@
     m:0x54 + c:86
     Control+Mod2+Mod4 + KP_Add
 
+#Volume+ (Mouse: middle-front)
+"${HOME}/bin/set-pulse-volume 10%+"
+    b:8
+
 #Volume-
 "${HOME}/bin/set-pulse-volume 10%-"
     m:0x54 + c:82
     Control+Mod2+Mod4 + KP_Subtract
+
+#Volume- (Mouse: moddle-back)
+"${HOME}/bin/set-pulse-volume 10%-"
+    b:9
 
 #Mute
 "amixer -D pulse sset Master toggle"
