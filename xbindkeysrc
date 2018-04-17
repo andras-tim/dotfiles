@@ -49,9 +49,17 @@
 "xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
     b:6
 
+#History Forward (Mouse: middle-back)
+"xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
+    b:8
+
 #History Forward (Mouse: scroll-right)
 "xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
     b:7
+
+#History Back (Mouse: middle-front)
+"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
+    b:9
 
 #Auto Type KeePass
 "mono /usr/lib/keepass2/KeePass.exe --auto-type"
@@ -93,18 +101,10 @@
     m:0x54 + c:86
     Control+Mod2+Mod4 + KP_Add
 
-#Volume+ (Mouse: middle-front)
-"${HOME}/bin/set-pulse-volume 10%+"
-    b:8
-
 #Volume-
 "${HOME}/bin/set-pulse-volume 10%-"
     m:0x54 + c:82
     Control+Mod2+Mod4 + KP_Subtract
-
-#Volume- (Mouse: moddle-back)
-"${HOME}/bin/set-pulse-volume 10%-"
-    b:9
 
 #Mute
 "amixer -D pulse sset Master toggle"
