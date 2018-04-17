@@ -2,13 +2,19 @@
 CONFIG_ORDER='multi_monitor only_dsub notebook_monitor'
 DISPLAY=':0.0'
 
+MONITOR_NOTEBOOK=
+MONITOR_DSUB=
+MONITOR_HDMI=
+MONITOR_DP1=
+MONITOR_DP2=
+
 
 ######
 # Configurations
 #
 function config_no_monitor()
 {
-    for output in eDP1 DP1-1 DP1-2; do
+    for output in "${MONITOR_NOTEBOOK}" "${MONITOR_DP1}" "${MONITOR_DP2}"; do
         xrandr --output "${output}" --auto \
             && xrandr --output "${output}" --off \
             || true
@@ -18,15 +24,15 @@ function config_no_monitor()
 function config_notebook_monitor()
 {
     strict_xrandr \
-        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --primary \
+        --output "${MONITOR_NOTEBOOK}" --crtc 0 --mode 1600x900  --rotate normal --primary \
         || return $?
-    echo 'eDP1'
+    echo '"${MONITOR_NOTEBOOK}"'
 }
 
 function config_only_dsub()
 {
     strict_xrandr \
-        --output DP1-4 --crtc 0 --mode 1920x1080  --rotate normal --primary \
+        --output "${MONITOR_DSUB}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
         || return $?
     echo 'DP1-4'
 }
@@ -34,27 +40,28 @@ function config_only_dsub()
 function config_multi_monitor()
 {
     strict_xrandr \
-        --output eDP1 --off \
-        --output DP1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output DP1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP1-1 \
+        --output "${MONITOR_NOTEBOOK}" --off \
+        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1080 --rotate normal --right-of "${MONITOR_DP1}" \
         || return $?
-    echo 'DP1-1'
+    echo '"${MONITOR_DP1}"'
 }
 
 function config_multi_monitor_3()
 {
     strict_xrandr \
-        --output eDP1 --crtc 0 --mode 1600x900  --rotate normal --left-of DP1-1 \
-        --output DP1-1 --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output DP1-2 --crtc 2 --mode 1920x1080 --rotate normal --right-of DP1-1 \
+        --output "${MONITOR_NOTEBOOK}" --crtc 0 --mode 1600x900  --rotate normal --left-of "${MONITOR_DP1}" \
+        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1080 --rotate normal --right-of "${MONITOR_DP1}" \
         || return $?
-    echo 'DP1-1'
+    echo '"${MONITOR_DP1}"'
 }
 
 
 ######
 # Functions
 #
+
 function strict_xrandr()
 {
     out="$(xrandr --dryrun "$@" 2>&1)" || return $?
@@ -64,6 +71,25 @@ function strict_xrandr()
     fi
 
     xrandr "$@"
+}
+
+function get_outputs()
+{
+    strict_xrandr | grep -E '^[^ ]* (|dis)connected' | cut -d' ' -f1
+}
+
+function identify_outputs()
+{
+    local outputs
+    local output
+
+    outputs="$(get_outputs)"
+    while (( $# > 0 ))
+    do
+        output="$(echo "${outputs}" | grep -Ex "$2" | head -n1)"
+        export $1="${output}"
+        shift 2
+    done
 }
 
 function panel_output()
@@ -78,7 +104,7 @@ function reload_conky()
     killall -SIGUSR1 conky
 }
 
-function reset_bightness()
+function reset_brightness()
 {
     xbacklight -set 40
 }
@@ -93,7 +119,7 @@ function set_output_of_onscreen_elements()
     # Waiting for display ready
     sleep 2
 
-    reset_bightness
+    reset_brightness
 
     #panel_output 0 -n -t string -s "${output}"
     panel_output 0 -n -t string -s 'monitor-0'
@@ -110,6 +136,13 @@ function set_output_of_onscreen_elements()
 ######
 # Main
 #
+identify_outputs \
+    MONITOR_NOTEBOOK 'eDP.*' \
+    MONITOR_DP1 'DP(|-|-1-)1-1' \
+    MONITOR_DP2 'DP(|-|-1-)1-2' \
+    #MONITOR_HDMI 'xxx'
+    #MONITOR_DSUB 'DP(|-|-1-)1-4' \
+
 if [ "$1" != '--without-reset' ]
 then
     config_no_monitor
