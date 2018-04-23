@@ -1,4 +1,6 @@
 #!/bin/bash
+set -eufo pipefail
+
 CONFIG_ORDER='multi_monitor only_dsub notebook_monitor'
 DISPLAY=':0.0'
 
@@ -61,6 +63,35 @@ function config_multi_monitor_3()
 ######
 # Functions
 #
+function main()
+{
+    identify_outputs \
+        MONITOR_NOTEBOOK 'eDP.*' \
+        MONITOR_DP1 'DP(|-|-1-)1-1' \
+        MONITOR_DP2 'DP(|-|-1-)1-2' \
+        #MONITOR_HDMI 'xxx'
+        #MONITOR_DSUB 'DP(|-|-1-)1-4' \
+
+    if [ "$1" != '--without-reset' ]
+    then
+        config_no_monitor
+    fi
+
+    set +e
+    for name in ${CONFIG_ORDER}
+    do
+        primary="$(config_${name})"
+        if [ $? -eq 0 ]
+        then
+            set_output_of_onscreen_elements "${primary}"
+            echo 'Done'
+            exit 0
+        fi
+    done
+
+    echo 'Error: Can not meet configs with current available monitors'
+    exit 1
+}
 
 function strict_xrandr()
 {
@@ -86,7 +117,7 @@ function identify_outputs()
     outputs="$(get_outputs)"
     while (( $# > 0 ))
     do
-        output="$(echo "${outputs}" | grep -Ex "$2" | head -n1)"
+        output="$(echo "${outputs}" | grep -Ex "$2" | head -n1 || true)"
         export $1="${output}"
         shift 2
     done
@@ -133,31 +164,4 @@ function set_output_of_onscreen_elements()
 }
 
 
-######
-# Main
-#
-identify_outputs \
-    MONITOR_NOTEBOOK 'eDP.*' \
-    MONITOR_DP1 'DP(|-|-1-)1-1' \
-    MONITOR_DP2 'DP(|-|-1-)1-2' \
-    #MONITOR_HDMI 'xxx'
-    #MONITOR_DSUB 'DP(|-|-1-)1-4' \
-
-if [ "$1" != '--without-reset' ]
-then
-    config_no_monitor
-fi
-
-for name in ${CONFIG_ORDER}
-do
-    primary="$(config_${name})"
-    if [ $? -eq 0 ]
-    then
-        set_output_of_onscreen_elements "${primary}"
-        echo 'Done'
-        exit 0
-    fi
-done
-
-echo 'Error: Can not meet configs with current available monitors'
-exit 1
+main "$@"
