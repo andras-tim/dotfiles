@@ -100,7 +100,8 @@ conky.text = [[
 
     ${color #42AE4A}${cpugraph cpu1 15,100 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu2 15,100 42AE4A eeeeee}
     ${color #42AE4A}${cpugraph cpu3 15,100 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu4 15,100 42AE4A eeeeee}
-    ${color #42AE4A}[1]${color lightgrey}${freq_g cpu1} ${freq_g cpu3}${color #42AE4A}: ${color lightgrey}${execi 8 sensors | grep 'Core 0' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C ${alignr}${color #42AE4A}[2]${color lightgrey}${freq_g cpu2} ${freq_g cpu4}${color #42AE4A}: ${color lightgrey}${execi 8 sensors | grep 'Core 1' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C
+    ${color #42AE4A}[1]${color lightgrey} ${freq_g cpu1}GHz${color #42AE4A}: ${color lightgrey}${execi 8 sensors | grep 'Core 0' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C ${alignr}${color #42AE4A}[2]${color lightgrey} ${freq_g cpu2}GHz${color #42AE4A} (${color lightgrey}${execi 8 sensors | grep 'Core 1' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C)
+    ${color #42AE4A}[3]${color lightgrey} ${freq_g cpu3}GHz${color #42AE4A}: ${color lightgrey}${execi 8 sensors | grep 'Core 2' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C ${alignr}${color #42AE4A}[4]${color lightgrey} ${freq_g cpu4}GHz${color #42AE4A} (${color lightgrey}${execi 8 sensors | grep 'Core 3' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C)
     ${color #42AE4A}Average: ${color lightgrey}${freq_g}GHz${color #42AE4A}
     ${cpugraph cpu0 15,225 42AE4A eeeeee}
     ${color #42AE4A}Processes:${color lightgrey} $processes ${color #42AE4A}Run:${color lightgrey} $running_processes
@@ -130,25 +131,26 @@ conky.text = [[
     ${top_io name 5} ${top_io pid 5} ${top_io io_perc 5} ${top_io cpu 5}
     ${top_io name 6} ${top_io pid 6} ${top_io io_perc 6} ${top_io cpu 6}
 
-    ${color #42AE4A}RAM:     ${color lightgrey}$mem${color #42AE4A}/${color lightgrey}$memmax${alignr}$memperc% ${color #42AE4A}${membar}
-    ${color #42AE4A}SWAP-HDD:${color lightgrey}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap used}${color #42AE4A}/${color lightgrey}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap size}${alignr}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap percent}% ${color #42AE4A}${execbar ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap percent}
+    ${color #42AE4A}RAM      ${color lightgrey}$mem${color #42AE4A} / ${color lightgrey}$memmax${alignr}$memperc% ${color #42AE4A}${membar}
+    ${color #42AE4A}SWAP-HDD ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap used}${color #42AE4A} / ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap size}${alignr}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap percent}% ${color #42AE4A}${execbar ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap percent}
     ${color lightgrey}${hr}
 
-    ${color #42AE4A}IOstat   tps rMB/s wMB/s    rMB    wMB
-    ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/io-stat}
-    ${color #42AE4A}${diskiograph 15,225 sda 42AE4A eeeeee}
-    ${color #42AE4A}HD IO: ${color lightgrey}${diskio sda}/s
+    ${color #42AE4A}IOstat     tps rMB/s wMB/s    rMB    wMB
+    ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/io-stat nvme0n1}
+    ${color #42AE4A}${diskiograph 15,225 nvme0n1 42AE4A eeeeee}
+    ${color #42AE4A}HD IO: ${color lightgrey}${diskio nvme0n1}/s
 
     ${color #42AE4A}Hard Disk Space:
-    ${color #42AE4A} Root ${color lightgrey}${fs_size /} ${color #42AE4A}/ ${color lightgrey}${fs_free /}${alignr}${fs_used_perc /}% ${color #42AE4A}${fs_bar /}
-    ${color #42AE4A} Boot ${color lightgrey}${fs_size /boot} ${color #42AE4A}/ ${color lightgrey}${fs_free /boot}${alignr}${fs_used_perc /boot}% ${color #42AE4A}${fs_bar /boot}
+    ${color #42AE4A} Root      ${color lightgrey}${fs_size /} ${color #42AE4A}/ ${color lightgrey}${fs_free /}${alignr}${fs_used_perc /}% ${color #42AE4A}${fs_bar /}
+    ${color #42AE4A} Boot      ${color lightgrey}${fs_size /boot} ${color #42AE4A}/ ${color lightgrey}${fs_free /boot}${alignr}${fs_used_perc /boot}% ${color #42AE4A}${fs_bar /boot}
+    ${color #42AE4A} EFI       ${color lightgrey}${fs_size /boot/efi} ${color #42AE4A}/ ${color lightgrey}${fs_free /boot/efi}${alignr}${fs_used_perc /boot/efi}% ${color #42AE4A}${fs_bar /boot/efi}
     ${color #42AE4A} Datastore ${color lightgrey}${fs_size /var/datastore} ${color #42AE4A}/ ${color lightgrey}${fs_free /var/datastore}${alignr}${fs_used_perc /var/datastore}% ${color #42AE4A}${fs_bar /var/datastore}
     ${color lightgrey}${hr}
 
-    ${color #42AE4A}[eno1] ${alignr}[wlp2s0]
-    ${color lightgrey}${addr eno1} ${alignr}${addr wlp2s0}
-    ${color #42AE4A}${downspeedgraph eno1 15,100 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlp2s0 15,100 42AE4A eeeeee 160}
-    ${color #42AE4A}D:${color lightgrey} ${downspeed eno1} k/s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlp2s0} k/s
-    ${color #42AE4A}${upspeedgraph eno1 15,100 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlp2s0 15,100 42AE4A eeeeee 25}
-    ${color #42AE4A}U:${color lightgrey} ${upspeed eno1} k/s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlp2s0} k/s
+    ${color #42AE4A}[enp0s31f6] ${alignr}[wlp3s0]
+    ${color lightgrey}${addr enp0s31f6} ${alignr}${addr wlp3s0}
+    ${color #42AE4A}${downspeedgraph enp0s31f6 15,100 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlp3s0 15,100 42AE4A eeeeee 160}
+    ${color #42AE4A}D:${color lightgrey} ${downspeed enp0s31f6} k/s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlp3s0} k/s
+    ${color #42AE4A}${upspeedgraph enp0s31f6 15,100 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlp3s0 15,100 42AE4A eeeeee 25}
+    ${color #42AE4A}U:${color lightgrey} ${upspeed enp0s31f6} k/s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlp3s0} k/s
 ]]

@@ -26,7 +26,7 @@ function config_no_monitor()
 function config_notebook_monitor()
 {
     strict_xrandr \
-        --output "${MONITOR_NOTEBOOK}" --crtc 0 --mode 1600x900  --rotate normal --primary \
+        --output "${MONITOR_NOTEBOOK}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
         || return $?
     echo '"${MONITOR_NOTEBOOK}"'
 }
@@ -77,8 +77,8 @@ function main()
 {
     identify_outputs \
         MONITOR_NOTEBOOK 'eDP.*' \
-        MONITOR_DP1 'DP(|-|-1-)1-1' \
-        MONITOR_DP2 'DP(|-|-1-)1-2' \
+        MONITOR_DP1 'DP(|-|-1-)3-1' \
+        MONITOR_DP2 'DP(|-|-1-)3-2' \
         #MONITOR_HDMI 'xxx'
         #MONITOR_DSUB 'DP(|-|-1-)1-4' \
 
