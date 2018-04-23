@@ -39,6 +39,16 @@ function config_only_dsub()
     echo 'DP1-4'
 }
 
+function config_first_external_monitor()
+{
+    strict_xrandr \
+        --output "${MONITOR_NOTEBOOK}" --off \
+        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
+        --output "${MONITOR_DP2}" --off \
+        || return $?
+    echo '"${MONITOR_DP1}"'
+}
+
 function config_multi_monitor()
 {
     strict_xrandr \
@@ -72,13 +82,28 @@ function main()
         #MONITOR_HDMI 'xxx'
         #MONITOR_DSUB 'DP(|-|-1-)1-4' \
 
-    if [ "$1" != '--without-reset' ]
-    then
+    local without_reset=0
+    local config_list="${CONFIG_ORDER}"
+
+    while (( $# > 0 ))
+    do
+        case "$1" in
+            --without-reset)
+                without_reset=1
+                ;;
+            --config)
+                shift
+                config="$1"
+        esac
+        shift
+    done
+
+    if (( without_reset == 0 )); then
         config_no_monitor
     fi
 
     set +e
-    for name in ${CONFIG_ORDER}
+    for name in ${config_list}
     do
         primary="$(config_${name})"
         if [ $? -eq 0 ]
