@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eufo pipefail
 
-CONFIG_ORDER='multi_monitor only_dsub notebook_monitor'
+CONFIG_ORDER='multi_monitor only_hdmi only_dsub notebook_monitor'
 DISPLAY=':0.0'
 
 MONITOR_NOTEBOOK=
@@ -28,7 +28,7 @@ function config_notebook_monitor()
     strict_xrandr \
         --output "${MONITOR_NOTEBOOK}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
         || return $?
-    echo '"${MONITOR_NOTEBOOK}"'
+    echo "${MONITOR_NOTEBOOK}"
 }
 
 function config_only_dsub()
@@ -36,7 +36,15 @@ function config_only_dsub()
     strict_xrandr \
         --output "${MONITOR_DSUB}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
         || return $?
-    echo 'DP1-4'
+    echo "${MONITOR_DSUB}"
+}
+
+function config_only_hdmi()
+{
+    strict_xrandr \
+        --output "${MONITOR_HDMI}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
+        || return $?
+    echo "${MONITOR_HDMI}"
 }
 
 function config_first_external_monitor()
@@ -46,7 +54,7 @@ function config_first_external_monitor()
         --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
         --output "${MONITOR_DP2}" --off \
         || return $?
-    echo '"${MONITOR_DP1}"'
+    echo "${MONITOR_DP1}"
 }
 
 function config_multi_monitor()
@@ -56,7 +64,7 @@ function config_multi_monitor()
         --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
         --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1080 --rotate normal --right-of "${MONITOR_DP1}" \
         || return $?
-    echo '"${MONITOR_DP1}"'
+    echo "${MONITOR_DP1}"
 }
 
 function config_multi_monitor_3()
@@ -66,7 +74,7 @@ function config_multi_monitor_3()
         --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
         --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1080 --rotate normal --right-of "${MONITOR_DP1}" \
         || return $?
-    echo '"${MONITOR_DP1}"'
+    echo "${MONITOR_DP1}"
 }
 
 
@@ -79,7 +87,7 @@ function main()
         MONITOR_NOTEBOOK 'eDP.*' \
         MONITOR_DP1 'DP(|-|-1-)3-1' \
         MONITOR_DP2 'DP(|-|-1-)3-2' \
-        #MONITOR_HDMI 'xxx'
+        MONITOR_HDMI 'HDMI1'
         #MONITOR_DSUB 'DP(|-|-1-)1-4' \
 
     local without_reset=0
