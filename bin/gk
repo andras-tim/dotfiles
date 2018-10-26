@@ -1,0 +1,45 @@
+#!/bin/bash
+set -eufo pipefail
+
+
+function main()
+{
+    get_useful_ref_specs \
+        | sort -u \
+        | open_gitk "$@"
+}
+
+function get_useful_ref_specs()
+{
+    local current_branch
+
+    current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+    echo 'HEAD'
+    get_branch_with_possible_remotes 'master'
+    get_branch_with_possible_remotes "${current_branch}"
+}
+
+function get_branch_with_possible_remotes()
+{
+    local local_branch_name="$1"
+
+    echo "${local_branch_name}"
+
+    git branch -a \
+        | grep -E "^[* ] remotes/[^/]+/${local_branch_name}$" \
+        | sed -E 's>^[* ] remotes/>>'
+}
+
+function open_gitk()
+{
+    local ref_specs
+
+    mapfile -t ref_specs
+
+    set -x
+    gitk --max-count=4000 "${ref_specs[@]:-}" "$@"
+}
+
+
+main "$@"

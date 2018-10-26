@@ -58,6 +58,7 @@
     ~/bin/tssh: bin/tssh
     ~/bin/control-spotify: bin/control-spotify
     ~/bin/gitgui-fixup.sh: bin/gitgui-fixup.sh
+    ~/bin/gk: bin/gk
 
 - shell:
     -
