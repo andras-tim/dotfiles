@@ -1,23 +1,30 @@
 #!/bin/bash
 set -eufo pipefail
 
+branch=${b:-}  # override current branch with this
+
 
 function main()
 {
-    get_useful_ref_specs \
+    get_ref_specs \
         | sort -u \
         | open_gitk "$@"
 }
 
-function get_useful_ref_specs()
+function get_ref_specs()
 {
-    local current_branch
-
-    current_branch="$(git rev-parse --abbrev-ref HEAD)"
+    if [[ -z ${branch} ]]; then
+        branch="$(get_current_branch)"
+    fi
 
     echo 'HEAD'
     get_branch_with_possible_remotes 'master'
-    get_branch_with_possible_remotes "${current_branch}"
+    get_branch_with_possible_remotes "${branch}"
+}
+
+function get_current_branch()
+{
+    git rev-parse --abbrev-ref HEAD
 }
 
 function get_branch_with_possible_remotes()
