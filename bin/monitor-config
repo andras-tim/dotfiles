@@ -101,7 +101,7 @@ function main()
                 ;;
             --config)
                 shift
-                config="$1"
+                config_list="$1"
         esac
         shift
     done
