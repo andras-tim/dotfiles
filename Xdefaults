@@ -77,11 +77,11 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! Changing font size on the fly
-URxvt.keysym.Mod4-KP_Divide:   command:\033]710;xft:Monospace:pixelsize=8\007
-URxvt.keysym.Mod4-Home:        command:\033]710;xft:Monospace:pixelsize=8\007
+URxvt.keysym.Mod4-KP_Divide:   command:\033]710;xft:Monospace:pixelsize=10\007
+URxvt.keysym.Mod4-Home:        command:\033]710;xft:Monospace:pixelsize=10\007
 
-URxvt.keysym.Mod4-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=10\007
-URxvt.keysym.Mod4-Page_Up:     command:\033]710;xft:Monospace:pixelsize=10\007
+URxvt.keysym.Mod4-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=12\007
+URxvt.keysym.Mod4-Page_Up:     command:\033]710;xft:Monospace:pixelsize=12\007
 
 URxvt.keysym.Mod4-KP_0:        command:\033]710;xft:Monospace:pixelsize=13\007
 URxvt.keysym.Mod4-Delete:      command:\033]710;xft:Monospace:pixelsize=13\007
