@@ -1,7 +1,8 @@
 #!/bin/bash
 set -eufo pipefail
 
-branch=${b:-}  # override current branch with this
+    MY_PREFIX='wip-tia-'
+desired_branch=${b:-}  # you can override the current branch with the `branch` environment variable
 
 
 function main()
@@ -13,13 +14,17 @@ function main()
 
 function get_ref_specs()
 {
-    if [[ -z ${branch} ]]; then
-        branch="$(get_current_branch)"
+    if [[ -z "${desired_branch}" ]]; then
+        desired_branch="$(get_current_branch)"
+    fi
+    if [[ "${desired_branch}" == "${MY_PREFIX}"* ]]; then
+        desired_branch="${desired_branch#"${MY_PREFIX}"}"
     fi
 
     echo 'HEAD'
-    get_branch_with_possible_remotes 'master'
-    get_branch_with_possible_remotes "${branch}"
+    for branch in 'master' "${desired_branch}" "${MY_PREFIX}${desired_branch}"; do
+        get_existing_local_and_remote_branches "${branch}"
+    done
 }
 
 function get_current_branch()
@@ -27,11 +32,13 @@ function get_current_branch()
     git rev-parse --abbrev-ref HEAD
 }
 
-function get_branch_with_possible_remotes()
+function get_existing_local_and_remote_branches()
 {
     local local_branch_name="$1"
 
-    echo "${local_branch_name}"
+    git branch \
+        | grep -E "^[* ] ${local_branch_name}$" \
+        | sed -E 's>^[* ] >>'
 
     git branch -a \
         | grep -E "^[* ] remotes/[^/]+/${local_branch_name}$" \
