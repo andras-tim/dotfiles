@@ -1,7 +1,8 @@
 #!/bin/bash
 set -eufo pipefail
 
-CONFIG_ORDER='multi_monitor only_hdmi only_dsub notebook_monitor'
+CONFIG_ORDER='multi_monitor only_hdmi notebook_monitor'
+#CONFIG_ORDER='multi_monitor notebook_monitor'
 DISPLAY=':0.0'
 
 MONITOR_NOTEBOOK=

@@ -52,7 +52,7 @@ function open_gitk()
     mapfile -t ref_specs
 
     set -x
-    gitk --max-count=4000 "${ref_specs[@]:-}" "$@"
+    gitk --max-count=4000 "${ref_specs[@]:-}" "$@" &
 }
 
 

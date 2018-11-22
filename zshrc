@@ -21,7 +21,7 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ${HOME}/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git-flow compleat command-not-found zsh-syntax-highlighting)
+plugins=(git-flow compleat command-not-found zsh-syntax-highlighting kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
