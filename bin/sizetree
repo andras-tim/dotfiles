@@ -13,7 +13,7 @@ function get_filtered_sizes()
 
     find "${path}" -mindepth 1 -maxdepth 1 \
         | filter_out_mount_points \
-            | xargs -L1 du "${DU_ARGS}" \
+            | xargs -0 -L1 du "${DU_ARGS}" \
                 | sort -rh \
                     | head -n "${MAX_COUNT_PER_LEVEL}" \
                         | grep -vE '^[0-9.,]+(|K)\s' \
@@ -24,7 +24,7 @@ function filter_out_mount_points()
 {
     while read -r path; do
         mountpoint -q "${path}" \
-            || echo "${path}"
+            || echo -ne "${path}\0"
     done
 }
 
