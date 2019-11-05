@@ -138,7 +138,7 @@ conky.text = [[
     ${color #42AE4A}IOstat     tps rMB/s wMB/s    rMB    wMB
     ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/io-stat nvme0n1}
     ${color #42AE4A}${diskiograph 15,225 nvme0n1 42AE4A eeeeee}
-    ${color #42AE4A}HD IO: ${color lightgrey}${diskio nvme0n1}/s
+    ${color #42AE4A}HD IO (r,w): ${alignr 40}${color lightgrey}${diskio_read nvme0n1}${color #42AE4A}, ${alignr 20}${color lightgrey}${diskio_write nvme0n1}
 
     ${color #42AE4A}Hard Disk Space:
     ${color #42AE4A} Root      ${color lightgrey}${fs_size /} ${color #42AE4A}/ ${color lightgrey}${fs_free /}${alignr}${fs_used_perc /}% ${color #42AE4A}${fs_bar /}

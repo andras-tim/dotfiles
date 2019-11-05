@@ -54,11 +54,11 @@
     b:7
 
 #History Back (Mouse: middle-front)
-"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
+"${HOME}/bin/control-spotify Next"
     b:9
 
 #History Forward (Mouse: middle-back)
-"xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
+"${HOME}/bin/control-spotify Previous"
     b:8
 
 #Auto Type KeePass

@@ -23,10 +23,10 @@ export DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git-flow compleat command-not-found zsh-syntax-highlighting kubectl)
 
-source $ZSH/oh-my-zsh.sh
+source "${ZSH}/oh-my-zsh.sh"
 
 # Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:${HOME}/bin
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:${HOME}/bin"
 
 bindkey '3C' forward-word
 bindkey '3D' backward-word
@@ -42,13 +42,13 @@ setopt interactive_comments
 setopt notify
 
 # Import myrc
-source ${HOME}/.myrc
+source "${HOME}/.myrc"
 
 export HISTSIZE=100000
 export SAVEHIST=100000
 
-export PERL_LOCAL_LIB_ROOT="${HOME}/perl5";
-export PERL_MB_OPT="--install_base ${HOME}/perl5";
-export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5";
-export PERL5LIB="${HOME}/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:${HOME}/perl5/lib/perl5";
-export PATH="${HOME}/perl5/bin:$PATH";
+export PERL_LOCAL_LIB_ROOT="${HOME}/perl5"
+export PERL_MB_OPT="--install_base ${HOME}/perl5"
+export PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"
+export PERL5LIB="${HOME}/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:${HOME}/perl5/lib/perl5"
+export PATH="${HOME}/perl5/bin:$PATH"
