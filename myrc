@@ -72,7 +72,7 @@ alias rd='rdesktop -g 1670x980'
 
 alias gka='gk --all'
 alias gl='git log --graph --decorate --color --oneline'
-alias gf='git fetch --all --prune --tags'
+alias gf='git fetch --all --prune --tags; git submodule foreach git fetch --all --prune --tags'
 alias gr='git rebase -i'
 alias gra='git rebase -i --autosquash'
 alias gp='git push origin'
