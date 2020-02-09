@@ -9,7 +9,9 @@ MONITOR_NOTEBOOK=
 #MONITOR_DSUB=
 MONITOR_HDMI=
 MONITOR_DP1=
+#MONITOR_DP1_V2=
 MONITOR_DP2=
+#MONITOR_DP2_V2=
 
 
 ######
@@ -68,6 +70,16 @@ function config_multi_monitor()
     echo "${MONITOR_DP1}"
 }
 
+#function config_multi_monitor_v2()
+#{
+#    strict_xrandr \
+#        --output "${MONITOR_NOTEBOOK}" --off \
+#        --output "${MONITOR_DP1_V2}" --crtc 1 --mode 1920x1200 --rotate normal --primary \
+#        --output "${MONITOR_DP2_V2}" --crtc 2 --mode 1920x1200 --rotate normal --right-of "${MONITOR_DP1_V2}" \
+#        || return $?
+#    echo "${MONITOR_DP1_V2}"
+#}
+
 function config_multi_monitor_3()
 {
     strict_xrandr \
@@ -89,7 +101,19 @@ function main()
         MONITOR_DP1 'DP(|-|-1-)3-1' \
         MONITOR_DP2 'DP(|-|-1-)3-2' \
         MONITOR_HDMI 'HDMI1'
+        #MONITOR_DP1_V2 'DP(|-|-1-)3-1-8' \
+        #MONITOR_DP2_V2 'DP(|-|-1-)3-2-8' \
         #MONITOR_DSUB 'DP(|-|-1-)1-4' \
+
+#    cat - <<EOF >&2
+#NOTEBOOK: ${MONITOR_NOTEBOOK:-?}
+#DSUB:     ${MONITOR_DSUB:-?}
+#HDMI:     ${MONITOR_HDMI:-?}
+#DP1:      ${MONITOR_DP1:-?}
+#DP1 V1.2: ${MONITOR_DP1_V2:-?}
+#DP2:      ${MONITOR_DP2:-?}
+#DP2 V1.2: ${MONITOR_DP2_V2:-?}
+#EOF
 
     local without_reset=0
     local config_list="${CONFIG_ORDER}"
