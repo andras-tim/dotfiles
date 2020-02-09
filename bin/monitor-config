@@ -64,8 +64,8 @@ function config_multi_monitor()
 {
     strict_xrandr \
         --output "${MONITOR_NOTEBOOK}" --off \
-        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1080 --rotate normal --right-of "${MONITOR_DP1}" \
+        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1200 --rotate normal --primary \
+        --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1200 --rotate normal --right-of "${MONITOR_DP1}" \
         || return $?
     echo "${MONITOR_DP1}"
 }
@@ -84,8 +84,8 @@ function config_multi_monitor_3()
 {
     strict_xrandr \
         --output "${MONITOR_NOTEBOOK}" --crtc 0 --mode 1920x1080  --rotate normal --left-of "${MONITOR_DP1}" \
-        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1080 --rotate normal --primary \
-        --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1080 --rotate normal --right-of "${MONITOR_DP1}" \
+        --output "${MONITOR_DP1}" --crtc 1 --mode 1920x1200 --rotate normal --primary \
+        --output "${MONITOR_DP2}" --crtc 2 --mode 1920x1200 --rotate normal --right-of "${MONITOR_DP1}" \
         || return $?
     echo "${MONITOR_DP1}"
 }
