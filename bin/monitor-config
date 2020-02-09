@@ -6,7 +6,7 @@ CONFIG_ORDER='multi_monitor only_hdmi notebook_monitor'
 DISPLAY=':0.0'
 
 MONITOR_NOTEBOOK=
-MONITOR_DSUB=
+#MONITOR_DSUB=
 MONITOR_HDMI=
 MONITOR_DP1=
 MONITOR_DP2=
@@ -32,13 +32,13 @@ function config_notebook_monitor()
     echo "${MONITOR_NOTEBOOK}"
 }
 
-function config_only_dsub()
-{
-    strict_xrandr \
-        --output "${MONITOR_DSUB}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
-        || return $?
-    echo "${MONITOR_DSUB}"
-}
+#function config_only_dsub()
+#{
+#    strict_xrandr \
+#        --output "${MONITOR_DSUB}" --crtc 0 --mode 1920x1080  --rotate normal --primary \
+#        || return $?
+#    echo "${MONITOR_DSUB}"
+#}
 
 function config_only_hdmi()
 {
