@@ -135,7 +135,7 @@ conky.text = [[
     ${color #42AE4A}SWAP-HDD ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap used}${color #42AE4A} / ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap size}${alignr}${execi 8 ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap percent}% ${color #42AE4A}${execbar ${HOME}/bin/my/conky/fs-stat swap /dev/tia_balabit/swap percent}
     ${color lightgrey}${hr}
 
-    ${color #42AE4A}IOstat     tps rMB/s wMB/s    rMB    wMB
+    ${color #42AE4A}IOstat       tps   rMB/s   wMB/s
     ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/io-stat nvme0n1}
     ${color #42AE4A}${diskiograph 15,225 nvme0n1 42AE4A eeeeee}
     ${color #42AE4A}HD IO (r,w): ${alignr 40}${color lightgrey}${diskio_read nvme0n1}${color #42AE4A}, ${alignr 20}${color lightgrey}${diskio_write nvme0n1}

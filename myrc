@@ -45,7 +45,7 @@ fi
 export EDITOR='vim'
 export VISUAL='vim'
 
-export PATH="${PATH}:${HOME}/bin:${HOME}/bin/my"
+export PATH="${PATH}:${HOME}/bin:${HOME}/bin/my:${HOME}/.local/bin"
 
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
