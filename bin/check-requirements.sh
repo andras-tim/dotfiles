@@ -1,5 +1,19 @@
 #!/bin/bash
-REQUIREMENTS='urxvt zsh xsel tmux zenity'
+
+function main()
+{
+    missing_requirements="$(get_missing_requirements "$@")"
+    if [ "${missing_requirements}" != '' ]
+    then
+        err "Missing requirements:"
+        echo "${missing_requirements}" | while read -r command
+        do
+            err " ${command}"
+        done
+        err "\n"
+        exit 1
+    fi
+}
 
 function check()
 {
@@ -14,7 +28,7 @@ function check()
 
 function get_missing_requirements()
 {
-    for command in $REQUIREMENTS
+    for command in "$@"
     do
         check "${command}"
     done
@@ -26,16 +40,4 @@ function err()
 }
 
 
-# Main
-missing_requirements="$(get_missing_requirements)"
-if [ "${missing_requirements}" != '' ]
-then
-    err "Missing requirements:"
-    echo "${missing_requirements}" | while read command
-    do
-        err " ${command}"
-    done
-    err "\n"
-    exit 1
-fi
-exit 0
+main "$@"
