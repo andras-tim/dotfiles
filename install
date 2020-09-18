@@ -7,15 +7,30 @@ from pathlib import Path
 DEFAULT_CONFIG = 'default'
 CONFIG_SUFFIX = '.conf.yaml'
 
-BASE_DIR = Path(__file__).parent
+BASE_DIR = Path(__file__).parent.absolute()
 DOTBOT_DIR = BASE_DIR.joinpath('vendor', 'dotbot')
 DOTBOT_BIN = DOTBOT_DIR.joinpath('bin', 'dotbot')
 
 
 def main():
+    parameters, configs = get_arguments()
+
     run('git', 'submodule', 'update', '--init', '--recursive')
-    for config in [DEFAULT_CONFIG] + sys.argv[1:]:
-        run(str(DOTBOT_BIN), '-d', str(BASE_DIR), '-c', '{}{}'.format(config, CONFIG_SUFFIX))
+    for config in [DEFAULT_CONFIG] + configs:
+        run(str(DOTBOT_BIN), *parameters, '-d', str(BASE_DIR), '-c', '{}{}'.format(config, CONFIG_SUFFIX))
+
+
+def get_arguments() -> tuple:
+    parameters = []
+    configs = []
+
+    for arg in sys.argv[1:]:
+        if arg.startswith('-'):
+            parameters.append(arg)
+        else:
+            configs.append(arg)
+
+    return parameters, configs
 
 
 def run(*command: str):
