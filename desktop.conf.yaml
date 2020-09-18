@@ -6,7 +6,7 @@
 - link:
     # GUI
     ~/.Xdefaults: Xdefaults
-    ~/.urxvt/ext/clipboard: vendor/urxvt-perls/clipboard
+    ~/.urxvt/ext/clipboard: vendor/urxvt-perls/deprecated/clipboard
     ~/.conkyrc: conkyrc
     ~/.xbindkeysrc: xbindkeysrc
 
