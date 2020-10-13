@@ -8,7 +8,7 @@
 
 
 ! xterm ---------------------------------------------------------------------------------------------------------------
-xterm*faceName:           Monospace:style=Regular:pixelsize=14
+xterm*faceName:           Monospace:style=Regular:pixelsize=13
 xterm*dynamicColors:      true
 xterm*utf8:               2
 xterm*eightBitInput:      true
@@ -69,10 +69,12 @@ URxvt*color14: #34e2e2 // cyan
 URxvt*color15: #eeeeec // white
 
 ! Fonts
-URxvt.font:     xft:Monospace:pixelsize=14
-URxvt.boldfont: xft:Monospace-Bold:pixelsize=14
+URxvt.font:     xft:Monospace:pixelsize=13
+URxvt.boldfont: xft:Monospace-Bold:pixelsize=13
 
 ! Unbind Ctrl+Shift
+URxvt.iso135: false
+URxvt.iso135_52: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
@@ -83,8 +85,8 @@ URxvt.keysym.Mod4-Home:        command:\033]710;xft:Monospace:pixelsize=10\007
 URxvt.keysym.Mod4-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=12\007
 URxvt.keysym.Mod4-Page_Up:     command:\033]710;xft:Monospace:pixelsize=12\007
 
-URxvt.keysym.Mod4-KP_0:        command:\033]710;xft:Monospace:pixelsize=14\007
-URxvt.keysym.Mod4-Delete:      command:\033]710;xft:Monospace:pixelsize=14\007
+URxvt.keysym.Mod4-KP_0:        command:\033]710;xft:Monospace:pixelsize=13\007
+URxvt.keysym.Mod4-Delete:      command:\033]710;xft:Monospace:pixelsize=13\007
 
 URxvt.keysym.Mod4-KP_Add:      command:\033]710;xft:Monospace:pixelsize=16\007
 URxvt.keysym.Mod4-Page_Down:   command:\033]710;xft:Monospace:pixelsize=16\007
