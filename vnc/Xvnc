@@ -1,0 +1,7 @@
+# https://help.realvnc.com/hc/en-us/articles/360002251297
+
+AllowChangeDefaultPrinter=0
+EnableAnalytics=0
+EnableAutoUpdateChecks=0
+Encryption=AlwaysOn
+RandR=1920x1200,1920x1080,1600x900

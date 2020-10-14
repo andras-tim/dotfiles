@@ -9,6 +9,7 @@
     ~/.urxvt/ext/clipboard: vendor/urxvt-perls/deprecated/clipboard
     ~/.conkyrc: conkyrc
     ~/.xbindkeysrc: xbindkeysrc
+    ~/.vnc/config.d/Xvnc: vnc/Xvnc
 
     # Distro GUI
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboard-layout.xml: xfce4/keyboard-layout.xml
