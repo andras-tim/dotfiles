@@ -124,5 +124,15 @@
     m:0x50 + c:95
     Mod2+Mod4 + F11
 
+#Logitech Craft Backlight: Off
+"solaar config 1 backlight off"
+    m:0x50 + c:72
+    Mod2+Mod4 + F6
+
+#Logitech Craft Backlight: On
+"solaar config 1 backlight on"
+    m:0x50 + c:73
+    Mod2+Mod4 + F7
+
 #
 # End of xbindkeys configuration
