@@ -2,6 +2,10 @@
     link:
         relink: true
 
+- shell:
+    -
+        command: ["mkdir -p ~/.vnc/config.d ~/.config/xfce4/xfconf/xfce-perchannel-xml", "Creating directories"]
+        stderr: true
 
 - link:
     # GUI
