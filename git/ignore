@@ -1,5 +1,6 @@
-# JetBrains
-.idea
+.idea/
 
-.virtenv
-.virtenv3
+.virtenv/
+.virtenv3/
+.venv/
+.venv3/
