@@ -134,5 +134,10 @@
     m:0x50 + c:73
     Mod2+Mod4 + F7
 
+#Mic mute/unmute
+"amixer -D pulse sset Capture,0 toggle"
+    m:0x10 + c:198
+    Mod2 + XF86AudioMicMute
+
 #
 # End of xbindkeys configuration
