@@ -28,6 +28,7 @@ own_window_type = "override",
 double_buffer = true,
 
 -- Minimum size of text area
+maximum_width = 200,
 minimum_width = 200,
 minimum_height = 5,
 
@@ -66,7 +67,6 @@ default_bar_height = 5,
 default_gauge_width = 35,
 default_gauge_height = 35,
 
-default_graph_width = 100,
 default_graph_height = 20,
 
 -- Gap between borders of screen and text
@@ -97,12 +97,12 @@ ${color #42AE4A}User       From              Login time
 ${color red}${execi 4 ${HOME}/bin/my/conky/remote-logins}
 ${color lightgrey}${hr}
 
-${color #42AE4A}${cpugraph cpu1 15,100 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu2 15,100 42AE4A eeeeee}
-${color #42AE4A}${cpugraph cpu3 15,100 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu4 15,100 42AE4A eeeeee}
+${color #42AE4A}${cpugraph cpu1 15,95 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu2 15,95 42AE4A eeeeee}
+${color #42AE4A}${cpugraph cpu3 15,95 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu4 15,95 42AE4A eeeeee}
 ${color #42AE4A}[1]${color lightgrey} ${freq_g cpu1}GHz${color #42AE4A}: (${color lightgrey}${execi 8 sensors | grep 'Core 0' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C${color #42AE4A}) ${alignr}${color #42AE4A}[2]${color lightgrey} ${freq_g cpu2}GHz${color #42AE4A} (${color lightgrey}${execi 8 sensors | grep 'Core 1' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C${color #42AE4A})
 ${color #42AE4A}[3]${color lightgrey} ${freq_g cpu3}GHz${color #42AE4A}: (${color lightgrey}${execi 8 sensors | grep 'Core 2' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C${color #42AE4A}) ${alignr}${color #42AE4A}[4]${color lightgrey} ${freq_g cpu4}GHz${color #42AE4A} (${color lightgrey}${execi 8 sensors | grep 'Core 3' | sed 's>.*: *+\(.*\)\..*(.*>\1>g'}°C${color #42AE4A})
 ${color #42AE4A}Average: ${color lightgrey}${freq_g}GHz${color #42AE4A}
-${cpugraph cpu0 15,225 42AE4A eeeeee}
+${cpugraph cpu0 15,200 42AE4A eeeeee}
 ${color #42AE4A}Processes:${color lightgrey} $processes ${color #42AE4A}Run:${color lightgrey} $running_processes
 ${color lightgrey}${hr}
 
@@ -136,7 +136,7 @@ ${color lightgrey}${hr}
 
 ${color #42AE4A}IOstat       tps   rMB/s   wMB/s
 ${color lightgrey}${execi 8 ${HOME}/bin/my/conky/io-stat nvme0n1}
-${color #42AE4A}${diskiograph 15,225 nvme0n1 42AE4A eeeeee}
+${color #42AE4A}${diskiograph 15,200 nvme0n1 42AE4A eeeeee}
 ${color #42AE4A}HD IO (r,w): ${alignr 40}${color lightgrey}${diskio_read nvme0n1}${color #42AE4A}, ${alignr 20}${color lightgrey}${diskio_write nvme0n1}
 
 ${color #42AE4A}Hard Disk Space:
@@ -148,8 +148,8 @@ ${color lightgrey}${hr}
 
 ${color #42AE4A}[enp0s31f6] ${alignr}[wlp3s0]
 ${color lightgrey}${addr enp0s31f6} ${alignr}${addr wlp3s0}
-${color #42AE4A}${downspeedgraph enp0s31f6 15,100 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlp3s0 15,100 42AE4A eeeeee 160}
+${color #42AE4A}${downspeedgraph enp0s31f6 15,95 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlp3s0 15,95 42AE4A eeeeee 160}
 ${color #42AE4A}D:${color lightgrey} ${downspeed enp0s31f6} k/s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlp3s0} k/s
-${color #42AE4A}${upspeedgraph enp0s31f6 15,100 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlp3s0 15,100 42AE4A eeeeee 25}
+${color #42AE4A}${upspeedgraph enp0s31f6 15,95 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlp3s0 15,95 42AE4A eeeeee 25}
 ${color #42AE4A}U:${color lightgrey} ${upspeed enp0s31f6} k/s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlp3s0} k/s
 ]]
