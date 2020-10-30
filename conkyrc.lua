@@ -93,8 +93,8 @@ ${color #42AE4A}$sysname $kernel $machine ${color lightgrey}@${color #42AE4A} $n
 ${color #42AE4A}Uptime:${color lightgrey}$uptime ${color #42AE4A}Load:${color lightgrey}$loadavg
 ${battery_time}
 
-${color #42AE4A}User    From            Login time
-${color red}${execi 4 ${HOME}/bin/my/conky/remote-logins ' '}
+${color #42AE4A}User       From              Login time
+${color red}${execi 4 ${HOME}/bin/my/conky/remote-logins}
 ${color lightgrey}${hr}
 
 ${color #42AE4A}${cpugraph cpu1 15,100 42AE4A eeeeee} ${color #42AE4A} ${alignr}${color #42AE4A}${cpugraph cpu2 15,100 42AE4A eeeeee}
