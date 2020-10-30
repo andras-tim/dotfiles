@@ -11,7 +11,7 @@
     # GUI
     ~/.Xdefaults: Xdefaults
     ~/.urxvt/ext/clipboard: vendor/urxvt-perls/deprecated/clipboard
-    ~/.conkyrc: conkyrc
+    ~/.conkyrc: conkyrc.lua
     ~/.xbindkeysrc: xbindkeysrc
     ~/.vnc/config.d/Xvnc: vnc/Xvnc
 
