@@ -4,7 +4,7 @@
 
 - shell:
     -
-        command: ["mkdir -p ~/bin ~/.urxvt/ext ~/.aria2 ~/.config", "Creating directories"]
+        command: ["mkdir -p ~/bin ~/.urxvt/ext ~/.aria2 ~/.config/htop", "Creating directories"]
         stderr: true
 
     -
@@ -29,6 +29,7 @@
     ~/.quiltrc: quiltrc
     ~/.gdbinit: gdbinit
     ~/.aria2/aria2.conf: aria2.conf
+    ~/.config/htop/htoprc: htoprc
 
 - link:
     # Scripts
