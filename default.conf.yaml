@@ -1,9 +1,10 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - shell:
-    - command: [ "mkdir -p ~/bin ~/.urxvt/ext ~/.aria2 ~/.config/htop", "Creating directories" ]
+    - command: [ "mkdir -p ~/.urxvt/ext", "Creating directories" ]
       stderr: true
 
     - command: [ "rmdir ~/.config/git 2>/dev/null || true", "Removing empty directories" ]
