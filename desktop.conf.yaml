@@ -1,11 +1,10 @@
 - defaults:
     link:
-        relink: true
+      relink: true
 
 - shell:
-    -
-        command: ["mkdir -p ~/.vnc/config.d ~/.config/xfce4/xfconf/xfce-perchannel-xml", "Creating directories"]
-        stderr: true
+    - command: [ "mkdir -p ~/.vnc/config.d ~/.config/xfce4/xfconf/xfce-perchannel-xml", "Creating directories" ]
+      stderr: true
 
 - link:
     # GUI
@@ -32,14 +31,11 @@
     ~/bin/gk: bin/gk
 
 - shell:
-    -
-        command: ["bin/check-requirements.sh urxvt xsel zenity", "Checking requirements"]
-        stderr: true
-    -
-        command: [ "bin/check-term-overrides.sh", "Checking configuration of terminal emulators" ]
-        stdout: true
-        stderr: true
-    -
-        command: [ "xrdb ~/.Xdefaults", "Applying GUI config" ]
-        stdout: true
-        stderr: true
+    - command: [ "bin/check-requirements.sh urxvt xsel zenity", "Checking requirements" ]
+      stderr: true
+    - command: [ "bin/check-term-overrides.sh", "Checking configuration of terminal emulators" ]
+      stdout: true
+      stderr: true
+    - command: [ "xrdb ~/.Xdefaults", "Applying GUI config" ]
+      stdout: true
+      stderr: true
