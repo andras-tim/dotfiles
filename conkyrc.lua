@@ -149,7 +149,7 @@ ${color lightgrey}${hr}
 ${color #42AE4A}[enp0s31f6] ${alignr}[wlp3s0]
 ${color lightgrey}${addr enp0s31f6} ${alignr}${addr wlp3s0}
 ${color #42AE4A}${downspeedgraph enp0s31f6 15,95 42AE4A eeeeee 160} ${alignr}${downspeedgraph wlp3s0 15,95 42AE4A eeeeee 160}
-${color #42AE4A}D:${color lightgrey} ${downspeed enp0s31f6} k/s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlp3s0} k/s
+${color #42AE4A}D:${color lightgrey} ${downspeed enp0s31f6} /s ${alignr}${color #42AE4A}D:${color lightgrey} ${downspeed wlp3s0} /s
 ${color #42AE4A}${upspeedgraph enp0s31f6 15,95 42AE4A eeeeee 25} ${alignr}${upspeedgraph wlp3s0 15,95 42AE4A eeeeee 25}
-${color #42AE4A}U:${color lightgrey} ${upspeed enp0s31f6} k/s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlp3s0} k/s
+${color #42AE4A}U:${color lightgrey} ${upspeed enp0s31f6} /s ${alignr}${color #42AE4A}U:${color lightgrey} ${upspeed wlp3s0} /s
 ]]
