@@ -121,8 +121,8 @@
 
 #Use Bluetooth audio for output
 "${HOME}/bin/set-bluetooth-audio"
-    m:0x50 + c:95
-    Mod2+Mod4 + F11
+    m:0x50 + c:96
+    Mod2+Mod4 + F12
 
 #Logitech Craft Backlight: Off
 "solaar config 1 backlight off"
