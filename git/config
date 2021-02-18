@@ -4,13 +4,11 @@
 [gui]
     fontui = -family \"DejaVu Sans\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
     fontdiff = -family \"DejaVu Sans Mono\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
-[guitool "[Edit] Current file"]
-    cmd = komodo \"$FILENAME\"
-    noconsole = yes
+    spellingdictionary = en_US
 [guitool "[Git] Reset & Clean"]
     cmd = git reset --hard; git clean -df
 [guitool "[Git] Commit - Fixup!"]
-    cmd = ~/bin/gitgui-fixup.sh
+    cmd = gitgui-fixup.sh
 [guitool "[Git] Rebase - to origin-master"]
     cmd = VISUAL=/bin/false git rebase --autosquash origin/master
 [guitool "[Git] Rebase - Continue"]
