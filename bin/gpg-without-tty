@@ -1,0 +1,43 @@
+#!/bin/bash
+set -eufo pipefail
+
+# git config --global gpg.program '${HOME}/bin/gpg-without-tty'
+
+BIN_DIR="$(readlink -f "$(dirname "$0")")"
+
+
+function main() {
+    if is_verify "$@"; then
+        run_gpg "$@"
+    else
+        run_gpg_for_sign "$@"
+    fi
+}
+
+function is_verify() {
+    while (( $# > 0 )); do
+        if [ "$1" == '--verify' ]; then
+            return 0
+        fi
+        shift
+    done
+
+    return 1
+}
+
+function run_gpg_for_sign()
+{
+    local gpg_key="${GPGKEY:-${*: -1}}"
+
+    exec 3< <("${BIN_DIR}/tia-get-credentials" get-user-password 'https://andras-tim.pgpkey/' "${gpg_key}" 2>/dev/null)
+    run_gpg --no-tty --passphrase-fd 3 "$@"
+    exec 3<&-
+}
+
+function run_gpg()
+{
+    /usr/bin/gpg "$@"
+}
+
+
+main "$@"

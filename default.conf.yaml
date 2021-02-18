@@ -35,6 +35,8 @@
     ~/bin/nested-tmux-config: bin/nested-tmux-config
     ~/bin/sizetree: bin/sizetree
     ~/bin/tssh: bin/tssh
+    ~/bin/tia-get-credentials: bin/tia-get-credentials
+    ~/bin/gpg-without-tty: bin/gpg-without-tty
 
 - shell:
     - command: [ "bin/check-requirements.sh zsh tmux", "Checking requirements" ]
