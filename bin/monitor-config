@@ -198,6 +198,11 @@ function reset_brightness()
     xbacklight -set 40
 }
 
+function reset_dpi()
+{
+    xfconf-query -c xsettings -p /Xft/DPI -s 96
+}
+
 function set_output_of_onscreen_elements()
 {
     local output="$1"
@@ -209,6 +214,7 @@ function set_output_of_onscreen_elements()
     sleep 2
 
     reset_brightness
+    reset_dpi
 
     #panel_output 0 -n -t string -s "${output}"
     panel_output 0 -n -t string -s 'monitor-0'
