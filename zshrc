@@ -22,10 +22,14 @@ export DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ${HOME}/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
+    colorize
     command-not-found
     compleat
     docker
+    docker-compose
+    git
     kubectl
+    pip
 )
 
 source "${ZSH}/oh-my-zsh.sh"
