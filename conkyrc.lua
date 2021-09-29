@@ -28,7 +28,7 @@ own_window_type = "override",
 double_buffer = true,
 
 -- Minimum size of text area
-maximum_width = 200,
+maximum_width = 260,
 minimum_width = 200,
 minimum_height = 5,
 

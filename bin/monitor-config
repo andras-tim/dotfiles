@@ -215,6 +215,7 @@ function set_output_of_onscreen_elements()
 
     reset_brightness
     reset_dpi
+    sleep 1
 
     #panel_output 0 -n -t string -s "${output}"
     panel_output 0 -n -t string -s 'monitor-0'
