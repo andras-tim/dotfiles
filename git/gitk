@@ -1,6 +1,6 @@
-set mainfont {sans 9}
-set textfont {monospace 9}
-set uifont {sans 9 bold}
+set mainfont {{DejaVu Sans} 11}
+set textfont {{DejaVu Sans Mono} 11}
+set uifont {{DejaVu Sans} 10 bold}
 set tabstop 4
 set findmergefiles 0
 set maxgraphpct 50
@@ -51,9 +51,11 @@ set indexcirclecolor green
 set circlecolors {white blue gray blue blue}
 set linkfgcolor blue
 set circleoutlinecolor black
-set geometry(main) 1920x1027+0+0
+set diffbgcolors {"#fff3f3" "#f0fff0"}
+set web_browser xdg-open
+set geometry(main) 1918x1027+0+0
 set geometry(state) normal
-set geometry(topwidth) 1920
+set geometry(topwidth) 1918
 set geometry(topheight) 560
 set geometry(pwsash0) "1003 1"
 set geometry(pwsash1) "1390 1"
