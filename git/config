@@ -30,5 +30,3 @@
     ui = true
 [commit]
     gpgsign = false
-[gpg]
-    program = gpg-without-tty
