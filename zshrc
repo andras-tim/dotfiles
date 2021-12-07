@@ -35,8 +35,6 @@ plugins=(
 source "${ZSH}/oh-my-zsh.sh"
 
 # Customize to your needs...
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:${HOME}/bin"
-
 bindkey '3C' forward-word
 bindkey '3D' backward-word
 bindkey '5C' forward-word
