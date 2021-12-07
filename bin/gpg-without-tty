@@ -30,13 +30,25 @@ function run_gpg_for_sign()
     local gpg_key="${GPGKEY:-${*: -1}}"
 
     exec 3< <("${BIN_DIR}/tia-get-credentials" get-user-password 'https://andras-tim.pgpkey/' "${gpg_key}" 2>/dev/null)
-    run_gpg --no-tty --passphrase-fd 3 "$@"
+    run_gpg --no-tty --passphrase-fd 3 "$@" || handle_fail "$?" "${gpg_key}"
     exec 3<&-
 }
 
 function run_gpg()
 {
     /usr/bin/gpg "$@"
+}
+
+function handle_fail()
+{
+    local exit_code="$1"
+    local gpg_key="$2"
+
+    if ! gpg --keyid-format LONG --list-keys | grep -q "${gpg_key}"; then
+        notify-send -a "$(basename "$0")" -t 10000 -i error 'GPG Error' "Missing GPG key from the user's keychain: ${gpg_key}"
+    fi
+
+    exit "${exit_code}"
 }
 
 
