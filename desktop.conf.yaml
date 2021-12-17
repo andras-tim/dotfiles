@@ -35,6 +35,8 @@
     - command: [ "bin/check-term-overrides.sh", "Checking configuration of terminal emulators" ]
       stdout: true
       stderr: true
+    - command: [ "gsettings set org.gtk.Settings.FileChooser startup-mode cwd", "Change GTK's FileChooser startup mode to CWD" ]
+      stderr: true
     - command: [ "xrdb ~/.Xdefaults", "Applying GUI config" ]
       stdout: true
       stderr: true
