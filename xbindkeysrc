@@ -47,19 +47,19 @@
 
 #History Back (Mouse: scroll-left)
 "xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
-    b:6
+   b:6
 
 #History Forward (Mouse: scroll-right)
 "xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
-    b:7
+   b:7
 
 #History Back (Mouse: middle-front)
 "${HOME}/bin/control-spotify Next"
-    b:9
+   b:9
 
 #History Forward (Mouse: middle-back)
 "${HOME}/bin/control-spotify Previous"
-    b:8
+   b:8
 
 #Auto Type KeePass
 "mono /usr/lib/keepass2/KeePass.exe --auto-type"
@@ -108,11 +108,11 @@
 
 #Volume+ (Mouse: Win+ScrollUp)
 "${HOME}/bin/set-pulse-volume 10%+"
-    Mod2+Mod4 + b:4
+   Mod2+Mod4 + b:4
 
 #Volume- (Mouse: Win+ScrollDown)
 "${HOME}/bin/set-pulse-volume 10%-"
-    Mod2+Mod4 + b:5
+   Mod2+Mod4 + b:5
 
 #Mute
 "amixer -D pulse sset Master toggle"
