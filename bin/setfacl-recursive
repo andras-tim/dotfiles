@@ -1,0 +1,34 @@
+#!/bin/bash
+
+tmp="/tmp/setfacl-recursive-$USER"
+
+if [ $# -eq 0 ]; then
+    echo 'Missing parameter: path'
+    exit 1
+fi
+
+if [ ! -e "$1" ]; then
+    echo 'Path not found'
+    exit 1
+fi
+
+function quit() {
+    if [ -e "$tmp" ]; then
+        rm "$tmp"
+    fi
+}
+
+
+echo -n 'Get base-rights... '
+getfacl "$1" | grep -v '^#' > "$tmp" || quit $?
+echo 'Ok'
+
+echo -n 'Reset rights recursive... '
+setfacl -Rb "$1" || quit $?
+echo 'Ok'
+
+echo -n 'Set base right recursive... '
+setfacl -RM "$tmp" "$1" || cat "$tmp"; quit $?
+echo 'Ok'
+
+quit 0

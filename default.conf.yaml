@@ -33,6 +33,7 @@
 - link:
     # Scripts
     ~/bin/nested-tmux-config: bin/nested-tmux-config
+    ~/bin/setfacl-recursive: bin/setfacl-recursive
     ~/bin/sizetree: bin/sizetree
     ~/bin/tssh: bin/tssh
     ~/bin/tia-get-credentials: bin/tia-get-credentials
