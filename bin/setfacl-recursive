@@ -2,8 +2,6 @@
 
 set -eufo pipefail
 
-TEMP_FILE="$(mktemp -t 'setfacl-recursive.XXXXXX')"
-
 if [ $# -eq 0 ]; then
     echo 'Missing parameter: path'
     exit 1
@@ -14,21 +12,31 @@ if [ ! -e "$1" ]; then
     exit 1
 fi
 
+
+TARGET_PATH="$1"
+TEMP_FILE="$(mktemp -t 'setfacl-recursive.XXXXXX')"
+
 trap teardown EXIT
 
 function teardown() {
-    rm -f "$TEMP_FILE"
+    rm -f "${TEMP_FILE}"
 }
 
 
 echo -n 'Get base-rights... '
-getfacl "$1" | grep -v '^#' > "$TEMP_FILE"
+getfacl "${TARGET_PATH}" \
+    | grep -v '^#'
+    > "${TEMP_FILE}"
 echo 'Ok'
 
 echo -n 'Reset rights recursive... '
-setfacl -Rb "$1"
+setfacl -Rb "${TARGET_PATH}"
 echo 'Ok'
 
 echo -n 'Set base right recursive... '
-setfacl -RM "$TEMP_FILE" "$1" || { cat "$TEMP_FILE"; exit 1; }
+setfacl -RM "${TEMP_FILE}" "${TARGET_PATH}" \
+    || {
+        cat "${TEMP_FILE}"
+        exit 1
+    }
 echo 'Ok'
