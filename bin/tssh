@@ -1,2 +1,2 @@
 #!/bin/bash -e
-ssh -C "$@" -t 'tmux a || tmux'
+ssh "$@" -t 'tmux a || tmux || bash'
