@@ -25,7 +25,7 @@ function teardown() {
 
 echo -n 'Get base-rights... '
 getfacl "${TARGET_PATH}" \
-    | grep -v '^#'
+    | tr 'x' 'X' \
     > "${TEMP_FILE}"
 echo 'Ok'
 
