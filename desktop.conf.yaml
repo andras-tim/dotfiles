@@ -5,13 +5,13 @@
 
 - link:
     # GUI
-    ~/.Xdefaults: Xdefaults
-    ~/.urxvt/ext/clipboard: vendor/urxvt-perls/deprecated/clipboard
     ~/.conkyrc: conkyrc.lua
-    ~/.xbindkeysrc: xbindkeysrc
+    ~/.urxvt/ext/clipboard: vendor/urxvt-perls/deprecated/clipboard
     ~/.vnc/config.d/Xvnc:
       force: true
       path: vnc/Xvnc
+    ~/.xbindkeysrc: xbindkeysrc
+    ~/.Xdefaults: Xdefaults
 
     # Distro GUI
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/keyboard-layout.xml: xfce4/keyboard-layout.xml
@@ -21,13 +21,13 @@
 
 - link:
     # Scripts
-    ~/bin/urxvt-tmux: bin/urxvt-tmux
-    ~/bin/monitor-config: bin/monitor-config
-    ~/bin/set-bluetooth-audio: bin/set-bluetooth-audio
-    ~/bin/set-pulse-volume: bin/set-pulse-volume
     ~/bin/control-spotify: bin/control-spotify
     ~/bin/gitgui-fixup.sh: bin/gitgui-fixup.sh
     ~/bin/gk: bin/gk
+    ~/bin/monitor-config: bin/monitor-config
+    ~/bin/set-bluetooth-audio: bin/set-bluetooth-audio
+    ~/bin/set-pulse-volume: bin/set-pulse-volume
+    ~/bin/urxvt-tmux: bin/urxvt-tmux
 
 - shell:
     - command: [ "bin/check-requirements.sh urxvt xsel zenity", "Checking requirements" ]

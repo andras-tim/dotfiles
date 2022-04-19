@@ -13,31 +13,31 @@
     # Shell
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
+    ~/.myrc: myrc
     ~/.oh-my-zsh: vendor/oh-my-zsh
     ~/.zshrc: zshrc
-    ~/.myrc: myrc
 
     # VCS
     ~/.config/git: git
     ~/.hgrc: hgrc
 
     # Other console apps
-    ~/.tmux.conf: tmux.conf
-    ~/.screenrc: screenrc
-    ~/.vimrc: vimrc
-    ~/.quiltrc: quiltrc
-    ~/.gdbinit: gdbinit
     ~/.aria2/aria2.conf: aria2.conf
     ~/.config/htop/htoprc: htoprc
+    ~/.gdbinit: gdbinit
+    ~/.quiltrc: quiltrc
+    ~/.screenrc: screenrc
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
 
 - link:
     # Scripts
+    ~/bin/gpg-without-tty: bin/gpg-without-tty
     ~/bin/nested-tmux-config: bin/nested-tmux-config
     ~/bin/setfacl-recursive: bin/setfacl-recursive
     ~/bin/sizetree: bin/sizetree
-    ~/bin/tssh: bin/tssh
     ~/bin/tia-get-credentials: bin/tia-get-credentials
-    ~/bin/gpg-without-tty: bin/gpg-without-tty
+    ~/bin/tssh: bin/tssh
 
 - shell:
     - command: [ "bin/check-requirements.sh zsh tmux", "Checking requirements" ]
