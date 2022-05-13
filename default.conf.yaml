@@ -34,6 +34,7 @@
     # Scripts
     ~/bin/gpg-without-tty: bin/gpg-without-tty
     ~/bin/nested-tmux-config: bin/nested-tmux-config
+    ~/bin/setperf: bin/setperf
     ~/bin/setfacl-recursive: bin/setfacl-recursive
     ~/bin/sizetree: bin/sizetree
     ~/bin/tia-get-credentials: bin/tia-get-credentials

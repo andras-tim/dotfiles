@@ -1,0 +1,120 @@
+#!/bin/bash
+set -eufo pipefail
+
+
+function main() {
+    if (( UID != 0 )); then
+        exec sudo "$0" "$@"
+    fi
+
+    ### Intel i7-11850H (2.5 GHz, turbo: 4.8 GHz, TDP-down: 2.1 GHz) ###
+    # temp measured in 25°C room
+
+    # without turbo
+    #   0-16    800 MHz     55°C
+    #   17      900 MHz     56°C
+    #   19      1000 MHz    58°C
+    #   21      1100 MHz    59°C
+    #   23      1200 MHz    60°C
+    #   26      1300 MHz    62°C
+    #   28      1400 MHz    63°C
+    #   30      1500 MHz    64°C
+    #   32      1600 MHz    66°C
+    #   34      1700 MHz    68°C
+    #   36      1800 MHz    70°C
+    #   38      1900 MHz    72°C
+    #   40      2000 MHz    74°C
+    #   42      2100 MHz    76°C
+    #   44      2200 MHz    77°C
+    #   46      2300 MHz    80°C
+    #   48      2400 MHz    83°C
+    #   51-100  2500 MHz    85°C    (base frequency)
+
+    # with turbo
+    #   53      2600 MHz    89°C
+    #   55      2700 MHz    92°C
+    #   57      2800 MHz    98°C
+
+    # with turbo (throttled to ~2800 MHz)
+    #   59      2900 MHz
+    #   61      3000 MHz
+    #   63      3100 MHz
+    #   65      3200 MHz
+    #   67      3300 MHz
+    #   69      3400 MHz
+    #   ...
+    #   100     4800 MHz
+
+
+
+    case "${1:-}" in
+        minimal)
+            configure_intel_pstate 0 0 1        # 800 - 800 MHz (-turbo)
+            set_governor powersave
+            ;;
+        powersave)
+            configure_intel_pstate 0 40 1       # 800 - 2000 MHz (-turbo)
+            set_governor powersave
+            ;;
+        normal)
+            configure_intel_pstate 0 55 0       # 800 - 2800 MHz (+turbo)
+            set_governor powersave
+            ;;
+        performance)
+            configure_intel_pstate 0 100 0      # 800 - 4800 MHz (+turbo)
+            set_governor performance
+            ;;
+        turbo)
+            configure_intel_pstate 51 100 0     # 2500 - 4800 MHz (+turbo)
+            set_governor performance
+            ;;
+        *)
+            echo "Usage: $0 {minimal|powersave|normal|performance|turbo}"
+            exit 1
+            ;;
+    esac
+}
+
+function configure_intel_pstate() {
+    local min_perf_pct="${1:-0}"
+    local max_perf_pct="${2:-100}"
+    local no_turbo="${3:-0}"
+
+    # https://01.org/linuxgraphics/gfx-docs/drm/admin-guide/pm/intel_pstate.html
+    {
+        echo_write '/sys/devices/system/cpu/intel_pstate/status'            'active'
+        echo_write '/sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost' '1'
+        echo_write '/sys/devices/system/cpu/intel_pstate/min_perf_pct'      "${min_perf_pct}"
+        echo_write '/sys/devices/system/cpu/intel_pstate/max_perf_pct'      "${max_perf_pct}"
+        echo_write '/sys/devices/system/cpu/intel_pstate/no_turbo'          "${no_turbo}"
+        echo
+    } >&2
+}
+
+function echo_write() {
+    local file="$1"
+    local new_value="$2"
+    local read_value
+
+    echo "${new_value}" > "${file}"
+    read_value="$(cat "${file}")"
+
+    printf '%-20s : %s' "$(basename "${file}")" "${read_value}"
+    if [ "${read_value}" != "${new_value}" ]; then
+        echo -ne "\t[written: ${new_value}]"
+    fi
+    echo
+}
+
+function set_governor() {
+    local governor="$1"
+
+    (
+        set -x
+        cpufreq-set -g "${governor}"
+    )
+
+}
+
+
+main "$@"
