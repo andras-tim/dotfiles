@@ -76,3 +76,9 @@ fi
 ######
 # bash_my
 . "${HOME}/.myrc"
+
+
+# Auto completes
+if [ -x /usr/bin/terraform ]; then
+    complete -C /usr/bin/terraform terraform
+fi

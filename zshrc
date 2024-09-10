@@ -63,3 +63,7 @@ export PATH="${HOME}/perl5/bin:$PATH"
 
 # Auto-completes
 autoload -U +X bashcompinit && bashcompinit
+
+if [ -x /usr/bin/terraform ]; then
+    complete -o nospace -C /usr/bin/terraform terraform
+fi
