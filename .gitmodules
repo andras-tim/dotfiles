@@ -7,3 +7,6 @@
 [submodule "urxvt-perls"]
 	path = vendor/urxvt-perls
 	url = https://github.com/muennich/urxvt-perls.git
+[submodule "vendor/zsh-fzf-history-search"]
+	path = vendor/zsh-fzf-history-search
+	url = https://github.com/joshskidmore/zsh-fzf-history-search

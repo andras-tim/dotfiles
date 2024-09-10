@@ -23,6 +23,11 @@ export DISABLE_AUTO_UPDATE="true"
 export HISTSIZE='100000'
 export SAVEHIST='100000'
 
+# Config for zsh/fzf History Search
+export ZSH_FZF_HISTORY_SEARCH_BIND='^f'
+export ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES='1'
+export ZSH_FZF_HISTORY_SEARCH_FZF_ARGS='--multi --no-mouse --height 40%'
+
 # Which plugins would you like to load? (plugins can be found in ${HOME}/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
@@ -34,6 +39,7 @@ plugins=(
     git
     kubectl
     pip
+    zsh-fzf-history-search
 )
 
 source "${ZSH}/oh-my-zsh.sh"
