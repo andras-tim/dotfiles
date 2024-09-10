@@ -106,6 +106,11 @@
     m:0x54 + c:82
     Control+Mod2+Mod4 + KP_Subtract
 
+#Mute (Media Buttons)
+"amixer -D pulse sset Master toggle"
+    m:0x10 + c:121
+    Mod2 + XF86AudioMute
+
 #Volume+ (Media Buttons)
 "${HOME}/bin/set-pulse-volume 5%+"
     m:0x10 + c:123
@@ -135,12 +140,12 @@
     Mod2+Mod4 + F12
 
 #Logitech Craft Backlight: Off
-"solaar config 2 backlight off"
+"solaar config Craft backlight off"
     m:0x50 + c:72
     Mod2+Mod4 + F6
 
 #Logitech Craft Backlight: On
-"solaar config 2 backlight on"
+"solaar config Craft backlight on"
     m:0x50 + c:73
     Mod2+Mod4 + F7
 

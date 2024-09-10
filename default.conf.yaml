@@ -3,10 +3,10 @@
       relink: true
       create: true
 
-- shell:
-    - command: [ "mkdir -p ~/.urxvt/ext", "Creating directories" ]
-      stderr: true
+- create:
+    - ~/.urxvt/ext
 
+- shell:
     - command: [ "rmdir ~/.config/git 2>/dev/null || true", "Removing empty directories" ]
 
 - link:

@@ -3,8 +3,6 @@
     email = andras.tim@gmail.com
     signingkey = 9D72D698008FBC3D
 [gui]
-    fontui = -family \"DejaVu Sans\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
-    fontdiff = -family \"DejaVu Sans Mono\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
     spellingdictionary = en_US
 [guitool "[Git] Reset & Clean"]
     cmd = git reset --hard; git clean -df

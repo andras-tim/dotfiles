@@ -51,13 +51,14 @@ set indexcirclecolor green
 set circlecolors {white blue gray blue blue}
 set linkfgcolor blue
 set circleoutlinecolor black
+set diffbgcolors {"#fff3f3" "#f0fff0"}
 set web_browser xdg-open
-set geometry(main) 1920x1119+0+0
+set geometry(main) 1918x1119+0+0
 set geometry(state) normal
-set geometry(topwidth) 1920
-set geometry(topheight) 560
-set geometry(pwsash0) "1223 1"
-set geometry(pwsash1) "1620 1"
-set geometry(botwidth) 955
-set geometry(botheight) 554
+set geometry(topwidth) 1918
+set geometry(topheight) 301
+set geometry(pwsash0) "1214 1"
+set geometry(pwsash1) "1610 1"
+set geometry(botwidth) 949
+set geometry(botheight) 813
 set permviews {}
