@@ -25,6 +25,8 @@ export SAVEHIST='100000'
 
 # Config for zsh/fzf History Search
 export ZSH_FZF_HISTORY_SEARCH_BIND='^f'
+export ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS='0'
+export ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH='0'
 export ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES='1'
 export ZSH_FZF_HISTORY_SEARCH_FZF_ARGS='--multi --no-mouse --height 40%'
 

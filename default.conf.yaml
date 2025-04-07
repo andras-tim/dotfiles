@@ -42,5 +42,5 @@
     ~/bin/tssh: bin/tssh
 
 - shell:
-    - command: [ "bin/check-requirements.sh zsh tmux", "Checking requirements" ]
+    - command: [ "bin/check-requirements.sh zsh tmux fzf", "Checking requirements" ]
       stderr: true
