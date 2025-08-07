@@ -17,6 +17,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+if [ -e "${HOME}/.cargo/env" ]; then
+    . "${HOME}/.cargo/env"
+fi
+
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
