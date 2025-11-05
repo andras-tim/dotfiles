@@ -53,14 +53,6 @@
 "xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
    b:7
 
-#History Back (Mouse: middle-front)
-"${HOME}/bin/control-spotify Next"
-   b:9
-
-#History Forward (Mouse: middle-back)
-"${HOME}/bin/control-spotify Previous"
-   b:8
-
 #Auto Type KeePass
 "mono /usr/lib/keepass2/KeePass.exe --auto-type"
     Release + m:0x1c + c:38
