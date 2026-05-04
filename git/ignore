@@ -4,3 +4,5 @@
 .virtenv3/
 .venv/
 .venv3/
+
+**/.claude/settings.local.json
