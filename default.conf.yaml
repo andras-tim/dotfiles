@@ -39,6 +39,7 @@
     ~/bin/setfacl-recursive: bin/setfacl-recursive
     ~/bin/sizetree: bin/sizetree
     ~/bin/tia-get-credentials: bin/tia-get-credentials
+    ~/bin/tia-parallel: bin/tia_parallel/tia_parallel.py
     ~/bin/tssh: bin/tssh
 
 - shell:
