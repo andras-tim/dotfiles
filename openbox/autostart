@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Run when openbox starts.
+#
+
+xrdb "${HOME}/.Xdefaults"
+
+st-tmux &

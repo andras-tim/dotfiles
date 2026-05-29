@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- create:
+    - ~/codes
+
+- link:
+    ~/.config/termux-x11.prefs: termux-x11.prefs
+
+- link:
+    # Scripts
+    ~/bin/tm-backup: bin/tm-backup
+    ~/bin/tm-x11: bin/tm-x11

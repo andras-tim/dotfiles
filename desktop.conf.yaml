@@ -10,6 +10,9 @@
     ~/.vnc/config.d/Xvnc:
       force: true
       path: vnc/Xvnc
+    ~/.config/openbox/autostart: openbox/autostart
+    ~/.config/openbox/menu.xml: openbox/menu.xml
+    ~/.config/openbox/rc.xml: openbox/rc.xml
     ~/.xbindkeysrc: xbindkeysrc
     ~/.Xdefaults: Xdefaults
 

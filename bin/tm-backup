@@ -1,0 +1,18 @@
+#!/bin/bash
+set -eufo pipefail
+
+BACKUP_DIR="${HOME}/storage/shared/!TIA/Batyu/termux_backup"
+BACKUP_FILE="${BACKUP_DIR}/$(date +%Y%m%d-%H%M%S).tar.gz"
+
+mkdir -p "${BACKUP_DIR}"
+exec tar -cvzf "${BACKUP_FILE}" \
+    --exclude='./home/.cache' \
+    --exclude='./home/.cargo' \
+    --exclude='./home/.claude/cache' \
+    --exclude='./home/.claude/downloads' \
+    --exclude='./home/.claude/shell-snapshots' \
+    --exclude='./home/.cpan' \
+    --exclude='./home/.npm' \
+    --exclude='./home/.ssh/id_*' \
+    --exclude='./home/downloads' \
+    -C /data/data/com.termux/files ./home

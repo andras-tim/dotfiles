@@ -1,0 +1,21 @@
+#!/bin/bash
+set -eufo pipefail
+
+PREFS_FILE="${HOME}/.config/termux-x11.prefs"
+
+# Cleanup runs in reverse: stop2 (pref), stop1 (am).
+cleanup() {
+    termux-x11-preference list > "${PREFS_FILE}"
+    am broadcast -a com.termux.x11.ACTION_STOP -p com.termux.x11
+}
+trap cleanup EXIT
+
+# start1: am activity
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
+
+# start2: restore prefs
+[ -e "${PREFS_FILE}" ] && termux-x11-preference < "${PREFS_FILE}"
+
+# start3: x11 server (foreground; exits when X session ends)
+export DISPLAY=":0"
+termux-x11 "${DISPLAY}" -xstartup openbox-session "$@"
