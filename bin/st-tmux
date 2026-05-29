@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+if [ $# -gt 0 ]
+then
+    exec st -e "$@"
+else
+    exec st -e tmux new-session -A -s main
+fi

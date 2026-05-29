@@ -30,6 +30,7 @@
     ~/bin/monitor-config: bin/monitor-config
     ~/bin/set-bluetooth-audio: bin/set-bluetooth-audio
     ~/bin/set-pulse-volume: bin/set-pulse-volume
+    ~/bin/st-tmux: bin/st-tmux
     ~/bin/urxvt-tmux: bin/urxvt-tmux
 
 - shell:

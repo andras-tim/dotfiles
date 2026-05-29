@@ -157,3 +157,69 @@ xscreensaver.dateFormat:    %Y-%m-%d %H:%M:%S
 
 ! switching mode of LightDM
 xscreensaver.newLoginCommand: dm-tool switch-to-greeter
+
+! st -----------------------------------------------------------------------------------------------------------------
+! suckless terminal — supports xft, UTF-8, true Unicode
+st.font:        Monospace:pixelsize=13:antialias=true:autohint=true
+st.foreground:  gray
+st.background:  #111111
+
+! Colors - Ambience from Terminator
+st.color0:  #2e3436
+st.color1:  #cc0000
+st.color2:  #4e9a06
+st.color3:  #c4a000
+st.color4:  #3465a4
+st.color5:  #75507b
+st.color6:  #06989a
+st.color7:  #d3d7cf
+st.color8:  #555753
+st.color9:  #ef2929
+st.color10: #8ae234
+st.color11: #fce94f
+st.color12: #729fcf
+st.color13: #ad7fa8
+st.color14: #34e2e2
+st.color15: #eeeeec
+
+! Transparency (only effective if st was built with alpha patch)
+st.alpha: 0.87
+
+! aterm ---------------------------------------------------------------------------------------------------------------
+aterm*geometry:           160x40
+aterm*foreground:         gray
+
+! Colors - Ambience from Terminator
+aterm*color0:  #2e3436
+aterm*color1:  #cc0000
+aterm*color2:  #4e9a06
+aterm*color3:  #c4a000
+aterm*color4:  #3465a4
+aterm*color5:  #75507b
+aterm*color6:  #06989a
+aterm*color7:  #d3d7cf
+aterm*color8:  #555753
+aterm*color9:  #ef2929
+aterm*color10: #8ae234
+aterm*color11: #fce94f
+aterm*color12: #729fcf
+aterm*color13: #ad7fa8
+aterm*color14: #34e2e2
+aterm*color15: #eeeeec
+
+! Font - misc-fixed iso10646 (Unicode bitmap, has box-drawing chars)
+! aterm has no xft support; only X11 core (XLFD) fonts work.
+aterm.font:     -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
+aterm.boldFont: -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso10646-1
+
+! Transparency (URxvt uses rgba:1111/1111/1111/dddd — ~87% shading)
+aterm*transparent:        true
+aterm*shading:            80
+
+! Scrollbar
+aterm*scrollBar:          false
+aterm*scrollBar_right:    true
+aterm*scrollBar_floating: false
+
+! Scroll behavior
+aterm*scrollTtyOutput:    false
