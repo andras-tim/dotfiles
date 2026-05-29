@@ -1,24 +1,9 @@
 #!/bin/bash
 set -e
 
-function has_session() {
-    set +e
-    tmux list-sessions &>/dev/null; rc=$?
-    set -e
-    return $rc
-}
-
-
 if [ $# -gt 0 ]
 then
-    urxvt -e "$@"
-    exit 0
-fi
-
-if has_session
-then
-    urxvt -e tmux a
+    exec urxvt -e "$@"
 else
-    urxvt -e tmux new-session -s main
+    exec urxvt -e tmux new-session -A -s main
 fi
-exit 0
