@@ -271,19 +271,28 @@ class JobRunner:
         )
 
     @staticmethod
-    async def _terminate(proc: asyncio.subprocess.Process) -> None:
-        """SIGTERM the process group; SIGKILL whatever survives after 3 s."""
+    def _killpg(pid: int, sig: int) -> None:
         try:
-            pgid = os.getpgid(proc.pid)
-            os.killpg(pgid, signal.SIGTERM)
-            try:
-                await asyncio.wait_for(proc.wait(), timeout=3)
-                return
-            except asyncio.TimeoutError:
-                os.killpg(pgid, signal.SIGKILL)
+            os.killpg(os.getpgid(pid), sig)
         except ProcessLookupError:
             pass
-        await proc.wait()
+
+    @staticmethod
+    async def _terminate(proc: asyncio.subprocess.Process) -> None:
+        """SIGTERM the process group; SIGKILL whatever survives after 3 s.
+
+        Closes the transport explicitly instead of leaving it to __del__:
+        destructor/GC order is undefined and can run after asyncio.run() has
+        already closed the loop, which raises "Event loop is closed" from
+        the finalizer instead of shutting down cleanly.
+        """
+        JobRunner._killpg(proc.pid, signal.SIGTERM)
+        try:
+            await asyncio.wait_for(proc.wait(), timeout=3)
+        except asyncio.TimeoutError:
+            JobRunner._killpg(proc.pid, signal.SIGKILL)
+            await proc.wait()
+        proc._transport.close()  # noqa: SLF001 -- no public API for this  # ty: ignore[unresolved-attribute]
 
     def _on_line(self, raw: bytes, fd: int) -> None:
         line = LogLine(job=self.job, fd=fd, text=raw.decode(errors="replace").rstrip())
@@ -783,6 +792,46 @@ class TestExecutor:
     def test_no_timeout(self):
         (job,) = self.run([Job(cmd="true", label="ok")], timeout=None)
         assert job.state == JobState.DONE and job.rc == 0
+
+
+class _FakeTransport:
+    def __init__(self) -> None:
+        self.closed = False
+
+    def close(self) -> None:
+        self.closed = True
+
+
+class _FakeProc:
+    """Stand-in for asyncio.subprocess.Process: no real subprocess/pipes involved.
+
+    pid is nonexistent on purpose, so os.getpgid() raises ProcessLookupError
+    and _killpg() no-ops instead of signaling a real process.
+    """
+
+    def __init__(self) -> None:
+        self.pid = 999999999
+        self._transport = _FakeTransport()
+
+    async def wait(self) -> int:
+        return 0
+
+
+class TestTerminate:
+    """_terminate() must close the transport itself, not rely on __del__:
+
+    GC/destructor timing is undefined and can run after asyncio.run() has
+    closed the loop, which raises "Event loop is closed" from the finalizer.
+    A fake Process/transport keeps this deterministic — a real subprocess's
+    own EOF-driven cleanup can close its transport on its own given enough
+    loop iterations, and racing against that is exactly what makes the
+    original bug intermittent in the first place.
+    """
+
+    def test_closes_transport(self):
+        proc = _FakeProc()
+        asyncio.run(JobRunner._terminate(proc))  # ty: ignore[invalid-argument-type]
+        assert proc._transport.closed is True
 
 
 class TestAbort:
