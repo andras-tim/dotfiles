@@ -2,6 +2,68 @@
 
 Run shell commands in parallel with live status and scrollable output.
 
+## Usage
+
+Work comes from one of three places. In every mode `-j N` caps concurrency and
+`-Bb N` buffers each job's output, staggering the first flush across `N` seconds
+so parallel progress lines don't interleave (`-B` = stagger, `-b N` = buffer).
+
+- **stdin, one command per line** — each line runs as-is (no `--cmd`):
+  ```sh
+  ls *.sh | tia-parallel -j 4
+  ```
+- **`--cmd` template + items** — `{}` is replaced by each item, taken from
+  positional args or stdin:
+  ```sh
+  tia-parallel -j 5 --cmd './deploy.sh {}' prod staging dev
+  ```
+- **`-L SEP` label/item split** — split each stdin line on the first `SEP`; the
+  left part becomes the status-bar label, the right fills `{}`. Made for
+  `label<TAB>arg` feeds:
+  ```sh
+  printf 'web\thost1\napi\thost2\n' | tia-parallel -L $'\t' --cmd 'ssh {} uptime'
+  ```
+
+### Example: parallel yt-dlp downloads
+
+Each item is one video/URL; `-j 5 -Bb 5` runs five downloads at once with tidy,
+staggered progress. `--newline` makes yt-dlp print progress on its own line so
+the status bar can render it (no need for `-r`/`--normalize-cr`).
+
+A whole playlist into one fixed folder — enumerate URLs, pipe them in:
+
+```sh
+yt-dlp --flat-playlist --print "%(url)s" "https://www.youtube.com/playlist?list=PLUD5ui3fFY-PabZDn2NPhQkF6H22Iays7" \
+  | tia-parallel -j 5 -Bb 5 \
+    --cmd 'yt-dlp -f "bestvideo[height<=1280][width<=1280]+bestaudio/best[height<=1280][width<=1280]" -S "res:720,+tbr" --cookies-from-browser chrome --merge-output-format mkv --remux-video mkv --js-runtimes node --newline --progress-delta 2 --windows-filenames --concurrent-fragments 2 -o "/mnt/server-tia/download/media/FUN/IceBlueBird/SteamPunk Gameplay/%(upload_date>%Y-%m-%d)s %(title)s [%(id)s].%(ext)s" {}'
+```
+
+A handful of specific videos as positional items (label is auto-derived):
+
+```sh
+tia-parallel -j 5 -Bb 5 \
+  --cmd 'yt-dlp -f "bestvideo[height<=1280][width<=1280]+bestaudio/best[height<=1280][width<=1280]" -S "res:720,+tbr" --cookies-from-browser chrome --merge-output-format mkv --remux-video mkv --js-runtimes node --newline --progress-delta 2 --windows-filenames --concurrent-fragments 2 -o "/mnt/server-tia/download/media/FUN/IceBlueBird/Subnautica 2/%(upload_date>%Y-%m-%d)s %(title)s [%(id)s].%(ext)s" {}' \
+  "https://www.youtube.com/watch?v=dKJkVkkQYb0" \
+  "https://www.youtube.com/watch?v=H55p3e4HDzU" \
+  "https://www.youtube.com/watch?v=WuJd0o674sQ"
+```
+
+Feed `title<TAB>url` pairs so each playlist's title becomes the job label, and
+let yt-dlp bucket files into per-playlist folders. The four backslashes in the
+`--replace-in-metadata` regex are required: the `--cmd` body is re-parsed by one
+shell (`sh -c`), which collapses `\\\\` → `\\` (a literal backslash in the
+character class) and `\"` → `"`, yielding `[|/\\:*?"<>#]`:
+
+```sh
+yt-dlp --flat-playlist --print "%(title)s"$'\t'"%(url)s" "https://www.youtube.com/@PerkyParrot/playlists" \
+  | tia-parallel -L $'\t' -j 5 -Bb 5 \
+    --cmd 'yt-dlp -f "bestvideo[height<=1280][width<=1280]+bestaudio/best[height<=1280][width<=1280]" -S "res:720,+tbr" --cookies-from-browser chrome --merge-output-format mkv --remux-video mkv --js-runtimes node --newline --progress-delta 2 --windows-filenames --replace-in-metadata "playlist_title" "[|/\\\\:*?\"<>#]" "_" --concurrent-fragments 2 -o "/mnt/server-tia/download/media/FUN/PerkyParrot/%(playlist_title)s/%(upload_date>%Y-%m-%d)s %(title)s [%(id)s].%(ext)s" {}'
+```
+
+When the destination folder is a literal (first two examples) you don't need
+`%(playlist_title)s` or `--replace-in-metadata`; when bucketing by playlist
+title (third) you do.
+
 ## Architecture
 
 - Log output scrolls naturally in the terminal (printed above the live status bar).
