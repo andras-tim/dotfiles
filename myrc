@@ -61,7 +61,7 @@ fi
 
 # ssh-agent with pinned socket — `ssh-load-key` starts the agent on demand and adds the key for 1h
 export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-alias ssh-load-key='[ -S "$SSH_AUTH_SOCK" ] || ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null; ssh-add -l >/dev/null 2>&1 || ssh-add -t 3600 ~/.ssh/id_ed25519'
+alias ssh-load-key='ssh-add -l >/dev/null 2>&1 || { rm -f "$SSH_AUTH_SOCK"; ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null; ssh-add -t 3600 ~/.ssh/id_ed25519; }'
 
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
