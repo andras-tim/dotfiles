@@ -66,9 +66,12 @@ function install_tools() {
         wget \
         zsh
 
-    # Pinned: newer releases dropped linux-arm64-android support entirely
+    # Pinned at 2.1.112 — newer versions ship a native claude binary that is non-PIE (ET_EXEC),
+    # which Android rejects. The @anthropic-ai/claude-code-linux-arm64-android npm package was
+    # never published, and the linux-arm64 binary also fails. Bump only when Anthropic publishes
+    # a proper PIE/android build. Side-effect: `claude rc` (Remote Control) requires a newer version.
     npm install -g @anthropic-ai/claude-code@2.1.112 --ignore-scripts
-    # 2.1.112 ships no arm64-android ripgrep binary; symlink Termux's PIE build
+    # 2.1.112 bundles ripgrep per-platform but omits arm64-android; symlink Termux's PIE build
     local rg_dir
     rg_dir="$(npm root -g)/@anthropic-ai/claude-code/vendor/ripgrep/arm64-android"
     mkdir -p "$rg_dir"
