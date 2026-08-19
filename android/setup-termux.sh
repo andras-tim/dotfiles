@@ -58,6 +58,7 @@ function install_tools() {
         htop \
         mc \
         openssh \
+        ripgrep \
         rsync \
         tig \
         tmux \
@@ -65,7 +66,13 @@ function install_tools() {
         wget \
         zsh
 
+    # Pinned: newer releases dropped linux-arm64-android support entirely
     npm install -g @anthropic-ai/claude-code@2.1.112 --ignore-scripts
+    # 2.1.112 ships no arm64-android ripgrep binary; symlink Termux's PIE build
+    local rg_dir
+    rg_dir="$(npm root -g)/@anthropic-ai/claude-code/vendor/ripgrep/arm64-android"
+    mkdir -p "$rg_dir"
+    ln -sf "$(command -v rg)" "$rg_dir/rg"
 
     cargo install --locked git-igitt
 }
