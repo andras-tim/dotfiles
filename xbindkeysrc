@@ -151,6 +151,16 @@
     m:0x50 + c:95
     Mod2+Mod4 + F11
 
+#Screenshot
+"xfce4-screenshooter"
+    m:0x10 + c:73
+    Mod2 + F7
+
+#Screenshot region
+"xfce4-screenshooter -r"
+    m:0x11 + c:73
+    Shift+Mod2 + F7
+
 #Screenshot region
 "xfce4-screenshooter -r"
     m:0x1 + c:107
