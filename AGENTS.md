@@ -38,9 +38,11 @@ The prefs file is tracked in dotfiles. UI changes during a session are captured 
 
 ## Terminal+tmux wrapper pattern
 
-For X11 terminals, prefer a `bin/<term>-tmux` wrapper that hands `tmux new-session -A -s main` to `-e`. Examples: `bin/st-tmux`, `bin/urxvt-tmux`. The `-A` flag makes tmux attach if `main` exists, else create. Use `exec` since the shell is just a launcher.
+For X11 terminals with no native "default command" option, prefer a `bin/<term>-tmux` wrapper that hands `tmux new-session -A -s main` to `-e`. Example: `bin/st-tmux`. The `-A` flag makes tmux attach if `main` exists, else create. Use `exec` since the shell is just a launcher.
 
 Openbox keybindings (`openbox/rc.xml`) and menu (`openbox/menu.xml`) reference these wrappers, not the bare terminal binary.
+
+Alacritty does not use this pattern: its `[terminal] shell` config option sets the default command directly (`alacritty/alacritty.toml`), and `-e <cmd>` on the CLI still overrides it for one-off commands. No `bin/alacritty-tmux` needed or wanted.
 
 ## Code style preferences
 

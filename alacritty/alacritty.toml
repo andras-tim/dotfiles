@@ -1,0 +1,47 @@
+# Values migrated from the URxvt section of ~/.Xdefaults (geometry, colors,
+# background/opacity, font size). draw_bold_text_with_bright_colors replicates
+# urxvt's legacy "bold = bright color" rendering, which several prompts/themes
+# (e.g. oh-my-zsh's bash theme) rely on without declaring it explicitly.
+
+[window]
+dimensions = { columns = 160, lines = 40 }
+opacity = 0.87
+
+[font]
+size = 10.5
+
+[font.normal]
+family = "monospace"
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#111111"
+foreground = "#bebebe"
+
+[colors.normal]
+black   = "#2e3436"
+red     = "#cc0000"
+green   = "#4e9a06"
+yellow  = "#c4a000"
+blue    = "#3465a4"
+magenta = "#75507b"
+cyan    = "#06989a"
+white   = "#d3d7cf"
+
+[colors.bright]
+black   = "#555753"
+red     = "#ef2929"
+green   = "#8ae234"
+yellow  = "#fce94f"
+blue    = "#729fcf"
+magenta = "#ad7fa8"
+cyan    = "#34e2e2"
+white   = "#eeeeec"
+
+[scrolling]
+history = 100000
+
+[terminal]
+shell = { program = "tmux", args = ["new-session", "-A", "-s", "main"] }

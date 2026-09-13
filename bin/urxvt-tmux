@@ -1,9 +1,0 @@
-#!/bin/bash
-set -e
-
-if [ $# -gt 0 ]
-then
-    exec urxvt -e "$@"
-else
-    exec urxvt -e tmux new-session -A -s main
-fi
