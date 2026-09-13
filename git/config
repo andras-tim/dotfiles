@@ -2,6 +2,8 @@
     name = Andras Tim
     email = andras.tim@gmail.com
     signingkey = 9D72D698008FBC3D
+[gpg]
+    program = ~/bin/gpg-without-tty
 [gui]
     spellingdictionary = en_US
 [guitool "[Git] Reset & Clean"]
