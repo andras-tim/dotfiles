@@ -30,7 +30,7 @@ function run_gpg_for_sign()
     local gpg_key="${GPGKEY:-${*: -1}}"
 
     exec 3< <("${BIN_DIR}/tia-get-credentials" get-user-password 'https://andras-tim.pgpkey/' "${gpg_key}" 2>/dev/null)
-    run_gpg --no-tty --passphrase-fd 3 "$@" || handle_fail "$?" "${gpg_key}"
+    run_gpg --no-tty --pinentry-mode loopback --passphrase-fd 3 "$@" || handle_fail "$?" "${gpg_key}"
     exec 3<&-
 }
 
