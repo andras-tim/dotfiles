@@ -1,0 +1,24 @@
+[ContentDisplay]
+DirectorySizeMode=ContentSize
+UsePermissionsFormat=CombinedFormat
+
+[General]
+DynamicView=true
+RememberOpenedTabs=false
+ShowFullPathInTitlebar=true
+SortingChoice=CaseInsensitiveSorting
+Version=202
+ViewPropsTimestamp=2026,9,13,3,46,34.344
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,glycin-heif,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,glycin-image-rs,jpegthumbnail,glycin-jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,librsvg,glycin-svg,svgthumbnail,ffmpegthumbs,webp-pixbuf
+
+[VersionControl]
+enabledPlugins=Dropbox,Git
