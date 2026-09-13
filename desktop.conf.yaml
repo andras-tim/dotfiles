@@ -6,7 +6,7 @@
 - link:
     # GUI
     ~/.conkyrc: conkyrc.lua
-    ~/.urxvt/ext/clipboard: vendor/urxvt-perls/deprecated/clipboard
+    ~/.config/alacritty/alacritty.toml: alacritty/alacritty.toml
     ~/.vnc/config.d/Xvnc:
       force: true
       path: vnc/Xvnc
@@ -35,10 +35,9 @@
     ~/bin/set-bluetooth-audio: bin/set-bluetooth-audio
     ~/bin/set-pulse-volume: bin/set-pulse-volume
     ~/bin/st-tmux: bin/st-tmux
-    ~/bin/urxvt-tmux: bin/urxvt-tmux
 
 - shell:
-    - command: [ "bin/check-requirements.sh urxvt xsel zenity", "Checking requirements" ]
+    - command: [ "bin/check-requirements.sh alacritty xsel zenity", "Checking requirements" ]
       stderr: true
     - command: [ "bin/check-term-overrides.sh", "Checking configuration of terminal emulators" ]
       stdout: true

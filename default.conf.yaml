@@ -5,7 +5,6 @@
 
 - create:
     - ~/.ssh/sockets
-    - ~/.urxvt/ext
 
 - shell:
     - command: [ "rmdir ~/.config/git 2>/dev/null || true", "Removing empty directories" ]

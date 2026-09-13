@@ -3,7 +3,6 @@
 !   xrdb ~/.Xdefaults
 !
 ! System requirements:
-!   rxvt-unicode
 !   xsel
 
 
@@ -30,95 +29,6 @@ Xft.antialias:  true
 Xft.hinting:    full
 Xft.hintstyle:  hintslight
 
-
-! urxvt ---------------------------------------------------------------------------------------------------------------
-! https://wiki.archlinux.org/index.php/rxvt-unicode
-! urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp'
-!
-! Plugin path
-URxvt.perl-lib: ~/.urxvt/ext/
-URxvt.perl-ext-common:  default,matcher,clipboard
-
-! Window
-URxvt*geometry: 160x40
-URxvt.iconFile: /usr/share/app-install/icons/utilities-terminal.svg
-URxvt.urgentOnBell: true
-URxvt*foreground: gray
-
-! True transparency
-URxvt.depth: 32
-URxvt.background: rgba:1111/1111/1111/dddd
-
-! Custom colors - Ambience from Terminator
-! tester: https://gist.github.com/benizi/4173926
-URxvt*color0:  #2e3436 // black
-URxvt*color1:  #cc0000 // red
-URxvt*color2:  #4e9a06 // green
-URxvt*color3:  #c4a000 // yellow
-URxvt*color4:  #3465a4 // blue
-URxvt*color5:  #75507b // magenta
-URxvt*color6:  #06989a // cyan
-URxvt*color7:  #d3d7cf // white
-URxvt*color8:  #555753 // black
-URxvt*color9:  #ef2929 // red
-URxvt*color10: #8ae234 // green
-URxvt*color11: #fce94f // yellow
-URxvt*color12: #729fcf // blue
-URxvt*color13: #ad7fa8 // magenta
-URxvt*color14: #34e2e2 // cyan
-URxvt*color15: #eeeeec // white
-
-! Fonts
-URxvt.font:     xft:Monospace:pixelsize=13
-URxvt.boldfont: xft:Monospace-Bold:pixelsize=13
-
-! Unbind Ctrl+Shift
-URxvt.iso135: false
-URxvt.iso135_52: false
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-
-! Changing font size on the fly
-URxvt.keysym.Mod4-KP_Divide:   command:\033]710;xft:Monospace:pixelsize=10\007
-URxvt.keysym.Mod4-Home:        command:\033]710;xft:Monospace:pixelsize=10\007
-
-URxvt.keysym.Mod4-KP_Subtract: command:\033]710;xft:Monospace:pixelsize=12\007
-URxvt.keysym.Mod4-Page_Up:     command:\033]710;xft:Monospace:pixelsize=12\007
-
-URxvt.keysym.Mod4-KP_0:        command:\033]710;xft:Monospace:pixelsize=13\007
-URxvt.keysym.Mod4-Delete:      command:\033]710;xft:Monospace:pixelsize=13\007
-
-URxvt.keysym.Mod4-KP_Add:      command:\033]710;xft:Monospace:pixelsize=16\007
-URxvt.keysym.Mod4-Page_Down:   command:\033]710;xft:Monospace:pixelsize=16\007
-
-URxvt.keysym.Mod4-KP_Multiply: command:\033]710;xft:Monospace:pixelsize=18\007
-URxvt.keysym.Mod4-End:         command:\033]710;xft:Monospace:pixelsize=18\007
-
-! Scrollbar
-URxvt*scrollBar:            false
-URxvt.scrollstyle:          plain
-URxvt*scrollBar_right:      true
-URxvt*scrollBar_floating:   false
-
-! Scrollback buffer in secondary screen
-URxvt.secondaryScreen:  true
-URxvt.secondaryScroll:  false
-URxvt.secondaryWheel:   true
-
-! do not scroll with output
-URxvt*scrollTtyOutput: false
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-URxvt*scrollWithBuffer: true
-! scroll back to the bottom on keypress
-URxvt*scrollTtyKeypress: true
-
-! Plugin: Clickable URLs
-URxvt.url-launcher:     xdg-open
-URxvt.matcher.button:   C1
-
-! Plugin: Clipboard with Ctrl+Shift+C, Ctrl+Shift+V
-URxvt.keysym.Control-Shift-C: perl:clipboard:copy
-URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
 ! xscreensaver --------------------------------------------------------------------------------------------------------
 xscreensaver.splash: false
