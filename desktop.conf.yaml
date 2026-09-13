@@ -24,6 +24,7 @@
 
     # Distro GUI - KDE
     ~/.config/ktrashrc: kde/ktrashrc
+    ~/.config/dolphinrc: kde/dolphinrc
 
 - link:
     # Scripts
