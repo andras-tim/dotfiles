@@ -44,6 +44,10 @@ Openbox keybindings (`openbox/rc.xml`) and menu (`openbox/menu.xml`) reference t
 
 Alacritty does not use this pattern: its `[terminal] shell` config option sets the default command directly (`alacritty/alacritty.toml`), and `-e <cmd>` on the CLI still overrides it for one-off commands. No `bin/alacritty-tmux` needed or wanted.
 
+## Xdefaults is for st
+
+`Xdefaults` configures `st` (the `! st` section); its `xterm`/`aterm` sections are historical, kept for reference only. `st` is the terminal on Android/Termux:X11 and on server/headless X11 hosts (infra repo's `lightweight-x11` role). Alacritty (owl.tia desktop) has its own config, `alacritty/alacritty.toml`, and does not read `Xdefaults`.
+
 ## Code style preferences
 
 - **Look for native config first.** Before proposing a wrapper script, check whether the tool has a CLI flag, X resource, env var, or config file that does the job. The user pushes back on wrappers when a native option exists (e.g., `tmux new-session -A` replaced a hand-rolled `has_session` helper; `-xstartup` on `termux-x11` replaced an env var hack).
