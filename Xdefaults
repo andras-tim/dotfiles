@@ -3,7 +3,10 @@
 !   xrdb ~/.Xdefaults
 !
 ! System requirements:
+!   st
 !   xsel
+!
+! Active terminal: st. xterm/aterm sections below are historical, kept for reference only.
 
 
 ! xterm ---------------------------------------------------------------------------------------------------------------
