@@ -15,6 +15,8 @@
     ~/.bashrc: bashrc
     ~/.myrc: myrc
     ~/.oh-my-zsh: vendor/oh-my-zsh
+    ~/.oh-my-zsh/custom/plugins/zsh-autocomplete: vendor/zsh-autocomplete
+    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions: vendor/zsh-autosuggestions
     ~/.oh-my-zsh/custom/plugins/zsh-fzf-history-search: vendor/zsh-fzf-history-search
     ~/.zshrc: zshrc
 

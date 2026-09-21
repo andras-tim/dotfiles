@@ -33,7 +33,7 @@ export ZSH_FZF_HISTORY_SEARCH_FZF_ARGS='--multi --no-mouse --height 40%'
 # Which plugins would you like to load? (plugins can be found in ${HOME}/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-#    colorize
+    #colorize
     command-not-found
     compleat
     docker
@@ -41,6 +41,8 @@ plugins=(
     git
     kubectl
     pip
+    #zsh-autocomplete
+    zsh-autosuggestions
     zsh-fzf-history-search
 )
 
