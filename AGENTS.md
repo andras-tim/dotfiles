@@ -14,6 +14,16 @@ Personal dotfiles managed by [dotbot](https://github.com/anishathalye/dotbot).
 
 Each profile reads its own yaml. Some configs are platform-conditional — e.g., openbox lives under `desktop` (used both on Linux and on Android via Termux:X11).
 
+`./install` clones the `vendor/` submodules shallow (`--depth 1`); `./install --dev [profiles]` clones them fully, for working on the vendors. Both apply to a fresh checkout only, and the remotes are never touched. To switch an existing checkout between shallow and full, drop the submodule clones first (`deinit` alone keeps them in `.git/modules`, and they would be reused as they are):
+
+```bash
+git submodule deinit --all
+rm -rf .git/modules
+./install [--dev]
+```
+
+Vendor update policy: latest release tag, or the default branch when the project has no releases. For a fork (`vendor/oh-my-zsh`), merge `upstream` into the fork and push the fork.
+
 Dotbot creates symlinks and runs any shell hooks listed in the yaml.
 
 ## Platforms
