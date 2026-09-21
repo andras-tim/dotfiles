@@ -1,6 +1,8 @@
 [submodule "vendor/oh-my-zsh"]
 	path = vendor/oh-my-zsh
 	url = https://github.com/andras-tim/oh-my-zsh.git
+	pushurl = git@github.com:andras-tim/oh-my-zsh.git
+	upstream = https://github.com/ohmyzsh/ohmyzsh.git
 [submodule "vendor/dotbot"]
 	path = vendor/dotbot
 	url = https://github.com/anishathalye/dotbot
