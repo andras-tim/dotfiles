@@ -7,3 +7,9 @@
 [submodule "vendor/zsh-fzf-history-search"]
 	path = vendor/zsh-fzf-history-search
 	url = https://github.com/joshskidmore/zsh-fzf-history-search
+[submodule "vendor/zsh-autosuggestions"]
+	path = vendor/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "vendor/zsh-autocomplete"]
+	path = vendor/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
