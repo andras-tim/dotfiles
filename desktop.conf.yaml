@@ -25,6 +25,8 @@
     # Distro GUI - KDE
     ~/.config/ktrashrc: kde/ktrashrc
     ~/.config/dolphinrc: kde/dolphinrc
+    ~/.config/discoverrc: kde/discoverrc
+    ~/.config/plasma-org.kde.plasma.desktop-appletsrc: kde/plasma-org.kde.plasma.desktop-appletsrc
 
 - link:
     # Scripts
