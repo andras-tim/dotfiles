@@ -67,8 +67,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
-popupHeight=521
-popupWidth=659
+popupHeight=537
+popupWidth=675
 
 [Containments][2][Applets][3][Configuration][ConfigDialog]
 DialogHeight=630
@@ -100,7 +100,7 @@ DialogWidth=810
 [Containments][2][Applets][31][Configuration][General]
 groupingStrategy=0
 hideLauncherOnStart=false
-launchers=applications:org.kde.dolphin.desktop,preferred://browser,applications:Alacritty.desktop
+launchers=
 middleClickAction=Close
 taskMaxWidth=Narrow
 
@@ -462,8 +462,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=861
-popupWidth=432
+popupHeight=873
+popupWidth=444
 wallpaperplugin=org.kde.image
 
 [Containments][2][Applets][7][Applets][10]
@@ -552,6 +552,10 @@ showNumberOfConnectedDevices=true
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
+[Containments][2][Applets][7][Applets][47]
+immutability=1
+plugin=org.kde.plasma.battery
+
 [Containments][2][Applets][7][Applets][8]
 immutability=1
 plugin=org.kde.plasma.vault
@@ -565,10 +569,10 @@ DialogHeight=838
 DialogWidth=810
 
 [Containments][2][Applets][7][General]
-disabledStatusNotifiers=indicator-solaar
-extraItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.keyboardlayout,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod
+extraItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement
+hiddenItems=indicator-solaar,ibus-ui-gtk3
 knownItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.keyboardlayout,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod
-shownItems=ViberPC,dropbox-client-PID
+shownItems=ViberPC,dropbox-client-PID,org.kde.plasma.battery,indicator-cpufreq,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement
 
 [Containments][2][General]
 AppletOrder=3;23;4;32;31;6;36;33;34;35;46;41;39;37;7;22;43
@@ -608,4 +612,4 @@ wallpaperplugin=org.kde.image
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/MINICUBE.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-gtc2025,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/solar_rain_and_light_sensor.ddb,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_11-42-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Elszámolás_A_B_2023_2024.xls,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/VISSZA.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-01-09_12-43-40.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/QUBINO_SmartPlugS2_500_EU_20211012_1210_ZMNHYD1 H1S4P4_%5B41.11%5D.otz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/tarsashaz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Indigo,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Old Firefox Data,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server - Screenshots,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/server_csere.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-12-19_01-30-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/my.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/PAINT UNIFI,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/esp32-s3-box-3-059c2c.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-english,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/infra,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/2026-06-28 Tim András (osztálytalálkozó).pdf,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-taxi,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Mobil - Drón,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-02-03_00-31-53.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/ente-recovery-key.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_12-02-22.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq,0,8c1d3254-b817-40e9-a23e-4d41081d9c82
+screenMapping=desktop:/wq-taxi,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/infra,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/2026-06-28 Tim András (osztálytalálkozó).pdf,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/QUBINO_SmartPlugS2_500_EU_20211012_1210_ZMNHYD1 H1S4P4_%5B41.11%5D.otz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/my.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/PAINT UNIFI,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server - Screenshots,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Indigo,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/server_csere.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/tarsashaz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-01-09_12-43-40.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Old Firefox Data,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/VISSZA.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-english,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-12-19_01-30-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_11-42-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/esp32-s3-box-3-059c2c.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Elszámolás_A_B_2023_2024.xls,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/MINICUBE.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-gtc2025,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/solar_rain_and_light_sensor.ddb,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Mobil - Drón,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-02-03_00-31-53.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/ente-recovery-key.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_12-02-22.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82
