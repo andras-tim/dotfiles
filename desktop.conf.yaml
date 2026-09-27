@@ -46,6 +46,7 @@
       stderr: true
     - command: [ "gsettings set org.gtk.Settings.FileChooser startup-mode cwd", "Change GTK's FileChooser startup mode to CWD" ]
       stderr: true
-    - command: [ "xrdb ~/.Xdefaults", "Applying GUI config" ]
+    # Skipped when no graphical session is running; openbox/autostart applies it at session start.
+    - command: [ '[ -z "${DISPLAY}" ] || xrdb ~/.Xdefaults', "Applying GUI config" ]
       stdout: true
       stderr: true
