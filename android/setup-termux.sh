@@ -97,6 +97,16 @@ function install_opentofu() {
     tofu version
 }
 
+function cleanup_opentofu() {
+    # TODO: temporary, until a working setup (e.g. proot-distro) replaces install_opentofu.
+    # The linux_arm64 build is static non-PIE (ELF e_type 2) and Android's linker refuses it ("unexpected e_type: 2");
+    # remove the unusable binary an earlier install_opentofu left behind. A tofu that runs is kept.
+    if [ -e "${PREFIX}/bin/tofu" ] && ! "${PREFIX}/bin/tofu" version >/dev/null 2>&1; then
+        echo "Removing unusable ${PREFIX}/bin/tofu" >&2
+        rm -f "${PREFIX}/bin/tofu"
+    fi
+}
+
 function _inject_myrc_line() {
     local header="$1"
     local cmd="$2"
@@ -133,7 +143,8 @@ function main() {
     install_runtimes
     install_build_toolchain
     install_tools
-    install_opentofu
+    # install_opentofu  # TODO: disabled, the binary does not run on Android (see cleanup_opentofu)
+    cleanup_opentofu
 
     setup_user_env
 }
