@@ -80,6 +80,23 @@ function install_tools() {
     cargo install --locked git-igitt
 }
 
+function install_opentofu() {
+    # No Termux package exists; the official linux_arm64 build is a static Go binary.
+    # Same version as the infra repo's app.install `opentofu` profile. Providers are not mirrored here:
+    # tofu fetches them from the registry at the versions pinned in each root's .terraform.lock.hcl.
+    local version='1.12.6'
+    local sha256='e573979ba68a17fe7b881752051a694a7efcd970e39521f6a25775197861ed4d'
+    local zip="${TMPDIR}/tofu_${version}_linux_arm64.zip"
+
+    pkg install -y curl unzip
+    curl -fL -o "${zip}" "https://github.com/opentofu/opentofu/releases/download/v${version}/tofu_${version}_linux_arm64.zip"
+    echo "${sha256}  ${zip}" | sha256sum -c -
+    unzip -o -d "${TMPDIR}" "${zip}" tofu
+    install -m 755 "${TMPDIR}/tofu" "${PREFIX}/bin/tofu"
+    rm -f "${zip}" "${TMPDIR}/tofu"
+    tofu version
+}
+
 function _inject_myrc_line() {
     local header="$1"
     local cmd="$2"
@@ -116,6 +133,7 @@ function main() {
     install_runtimes
     install_build_toolchain
     install_tools
+    install_opentofu
 
     setup_user_env
 }
