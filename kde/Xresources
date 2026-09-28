@@ -1,0 +1,4 @@
+! Cursor for X clients without KDE integration (bundled-Qt apps, flatpaks), same as kcminputrc.
+! SDDM merges ~/.Xresources at login.
+Xcursor.theme: breeze_cursors
+Xcursor.size: 24

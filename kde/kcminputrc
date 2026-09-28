@@ -1,0 +1,6 @@
+[Keyboard]
+NumLock=0
+
+[Mouse]
+X11LibInputXAccelProfileFlat=true
+cursorSize=24
