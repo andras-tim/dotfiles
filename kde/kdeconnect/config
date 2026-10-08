@@ -1,0 +1,4 @@
+[General]
+disabled_providers=BluetoothLinkProvider, LanLinkProvider
+keyAlgorithm=EC
+name=owl
