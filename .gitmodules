@@ -3,15 +3,20 @@
 	url = https://github.com/andras-tim/oh-my-zsh.git
 	pushurl = git@github.com:andras-tim/oh-my-zsh.git
 	upstream = https://github.com/ohmyzsh/ohmyzsh.git
+	shallow = true
 [submodule "vendor/dotbot"]
 	path = vendor/dotbot
 	url = https://github.com/anishathalye/dotbot
+	shallow = true
 [submodule "vendor/zsh-fzf-history-search"]
 	path = vendor/zsh-fzf-history-search
 	url = https://github.com/joshskidmore/zsh-fzf-history-search
+	shallow = true
 [submodule "vendor/zsh-autosuggestions"]
 	path = vendor/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+	shallow = true
 [submodule "vendor/zsh-autocomplete"]
 	path = vendor/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
+	shallow = true
