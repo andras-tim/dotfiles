@@ -24,7 +24,8 @@ rm -rf .git/modules
 
 Vendor update policy: latest release tag, or the default branch when the project has no releases. For a fork (`vendor/oh-my-zsh`), merge `upstream` into the fork and push the fork.
 
-Dotbot creates symlinks and runs any shell hooks listed in the yaml.
+Dotbot creates symlinks and runs any shell hooks listed in the yaml. `default.conf.yaml` starts with a `clean` of `~`
+and `~/bin`: dead links that point into the dotfiles (left by a renamed or removed file) are dropped on every install.
 
 ## Platforms
 
