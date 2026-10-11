@@ -43,12 +43,17 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][22][Configuration]
-popupHeight=451
-popupWidth=810
+popupHeight=455
+popupWidth=814
 
 [Containments][2][Applets][22][Configuration][Appearance]
-dateFormat=isoDate
+customDateFormat=ddd, MMM d
+dateFormat=custom
+enabledCalendarPlugins=holidaysevents
+firstDayOfWeek=1
+fontFamily=Noto Sans
 fontWeight=400
+selectedTimeZones=America/New_York,Local,Europe/Budapest,Asia/Ho_Chi_Minh
 showDate=true
 showSeconds=false
 showWeekNumbers=true
@@ -67,8 +72,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
-popupHeight=537
-popupWidth=675
+popupHeight=541
+popupWidth=679
 
 [Containments][2][Applets][3][Configuration][ConfigDialog]
 DialogHeight=630
@@ -100,9 +105,8 @@ DialogWidth=810
 [Containments][2][Applets][31][Configuration][General]
 groupingStrategy=0
 hideLauncherOnStart=false
-launchers=
+launchers=applications:google-chrome.desktop,applications:org.kde.dolphin.desktop,applications:Alacritty.desktop,file:///var/lib/flatpak/exports/share/applications/com.spotify.Client.desktop
 middleClickAction=Close
-taskMaxWidth=Narrow
 
 [Containments][2][Applets][32]
 immutability=1
@@ -145,8 +149,8 @@ plugin=org.kde.plasma.systemmonitor.cpu
 
 [Containments][2][Applets][34][Configuration]
 CurrentPreset=org.kde.plasma.systemmonitor
-popupHeight=217
-popupWidth=171
+popupHeight=221
+popupWidth=175
 
 [Containments][2][Applets][34][Configuration][Appearance]
 chartFace=org.kde.ksysguard.linechart
@@ -188,8 +192,8 @@ plugin=org.kde.plasma.systemmonitor.memory
 
 [Containments][2][Applets][35][Configuration]
 CurrentPreset=org.kde.plasma.systemmonitor
-popupHeight=248
-popupWidth=234
+popupHeight=270
+popupWidth=238
 
 [Containments][2][Applets][35][Configuration][Appearance]
 chartFace=org.kde.ksysguard.linechart
@@ -212,11 +216,13 @@ memory/physical/used=61,174,233
 highPrioritySensorIds=["memory/physical/used"]
 
 [Containments][2][Applets][35][Configuration][SensorColors]
-memory/physical/used=255,0,0
-memory/swap/used=255,0,255
+memory/physical/application=64,61,233
+memory/physical/cache=255,170,0
+memory/physical/used=255,96,96
+memory/swap/used=255,85,255
 
 [Containments][2][Applets][35][Configuration][Sensors]
-highPrioritySensorIds=["memory/physical/used","memory/swap/used"]
+highPrioritySensorIds=["memory/physical/cache","memory/physical/used","memory/swap/used"]
 lowPrioritySensorIds=["memory/physical/free","memory/swap/free","memory/physical/cache","memory/physical/buffer"]
 totalSensors=["memory/physical/usedPercent"]
 
@@ -462,8 +468,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=873
-popupWidth=444
+popupHeight=432
+popupWidth=448
 wallpaperplugin=org.kde.image
 
 [Containments][2][Applets][7][Applets][10]
@@ -612,4 +618,4 @@ wallpaperplugin=org.kde.image
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/wq-taxi,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/infra,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/2026-06-28 Tim András (osztálytalálkozó).pdf,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/QUBINO_SmartPlugS2_500_EU_20211012_1210_ZMNHYD1 H1S4P4_%5B41.11%5D.otz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/my.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/PAINT UNIFI,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server - Screenshots,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Indigo,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/server_csere.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/tarsashaz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-01-09_12-43-40.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Old Firefox Data,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/VISSZA.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-english,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-12-19_01-30-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_11-42-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/esp32-s3-box-3-059c2c.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Elszámolás_A_B_2023_2024.xls,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/MINICUBE.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-gtc2025,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/solar_rain_and_light_sensor.ddb,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Mobil - Drón,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-02-03_00-31-53.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/ente-recovery-key.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_12-02-22.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82
+screenMapping=desktop:/esp32-s3-box-3-059c2c.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/PAINT UNIFI,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-english,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_11-42-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/QUBINO_SmartPlugS2_500_EU_20211012_1210_ZMNHYD1 H1S4P4_%5B41.11%5D.otz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/MINICUBE.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/my.yaml,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/VISSZA.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Elszámolás_A_B_2023_2024.xls,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-02-03_00-31-53.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/ente-recovery-key.txt,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Old Firefox Data,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/server_csere.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_20261008_164528-1.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-12-19_01-30-11.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/solar_rain_and_light_sensor.ddb,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Mobil - Drón,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server - Screenshots,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Server,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/tarsashaz,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2026-05-27_12-02-22.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/infra,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Indigo,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/Screenshot_2025-01-09_12-43-40.png,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/2026-06-28 Tim András (osztálytalálkozó).pdf,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-taxi,0,8c1d3254-b817-40e9-a23e-4d41081d9c82,desktop:/wq-gtc2025,0,8c1d3254-b817-40e9-a23e-4d41081d9c82
