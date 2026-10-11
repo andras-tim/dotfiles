@@ -13,9 +13,9 @@ DOTBOT_BIN = DOTBOT_DIR.joinpath('bin', 'dotbot')
 
 
 def main():
-    dev, parameters, configs = get_arguments()
+    parameters, configs = get_arguments()
 
-    setup_submodules(dev)
+    setup_submodules()
     for config in [DEFAULT_CONFIG] + configs:
         run(str(DOTBOT_BIN), *parameters, '-d', str(BASE_DIR), '-c', '{}{}'.format(config, CONFIG_SUFFIX))
 
@@ -23,17 +23,17 @@ def main():
 def get_arguments() -> tuple:
     parser = argparse.ArgumentParser(description='Install the dotfiles with dotbot. Unknown options are passed to dotbot.',
                                      allow_abbrev=False)
-    parser.add_argument('--dev', action='store_true', help='full clones of the submodules, instead of shallow ones (fresh checkout only)')
     parser.add_argument('configs', nargs='*', help='profiles to install after the default one, e.g. desktop, termux')
     args, parameters = parser.parse_known_intermixed_args()
 
-    return args.dev, parameters, args.configs
+    return parameters, args.configs
 
 
-def setup_submodules(dev: bool):
-    # A depth-limited fetch would turn an existing full clone into a shallow one
-    fresh = all(line.startswith('-') for line in get_output('git', 'submodule', 'status'))
-    run('git', 'submodule', 'update', '--init', '--recursive', *([] if dev or not fresh else ['--depth', '1']))
+def setup_submodules():
+    # The submodules follow the dotfiles clone: shallow or full. --depth 1, because "shallow = true" alone fetches
+    # the full history of a submodule pinned below its branch tip (e.g. dotbot on a release tag).
+    shallow = get_output('git', 'rev-parse', '--is-shallow-repository') == ['true']
+    run('git', 'submodule', 'update', '--init', '--recursive', *(['--depth', '1'] if shallow else ['--no-recommend-shallow']))
 
 
 def get_output(*command: str) -> list:
