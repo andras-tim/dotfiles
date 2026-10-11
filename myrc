@@ -43,6 +43,20 @@ fi
 ######
 # Config
 #
+# Old hosts lack newer terminfo entries (Ubuntu 12.04: no tmux-256color), and the line editor then cannot redraw:
+# fall back to the first known entry
+if [ -n "${TERM}" ] && command -v infocmp >/dev/null && ! infocmp "${TERM}" >/dev/null 2>&1; then
+    for term in screen-256color xterm-256color screen xterm; do
+        if infocmp "${term}" >/dev/null 2>&1; then
+            export TERM="${term}"
+            # oh-my-zsh bound the keys from the missing terminfo entry before this file was sourced
+            [ -n "${ZSH_VERSION}" ] && [ -n "${ZSH}" ] && source "${ZSH}/lib/key-bindings.zsh"
+            break
+        fi
+    done
+    unset term
+fi
+
 #export MAKEFLAGS="-j5 -O2"
 #export WAFFLAGS="-j5 -O2"
 #export FEATURES="distcc"
