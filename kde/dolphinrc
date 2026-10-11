@@ -10,6 +10,9 @@ SortingChoice=CaseInsensitiveSorting
 Version=202
 ViewPropsTimestamp=2026,9,13,3,46,34.344
 
+[IconsMode]
+PreviewSize=96
+
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
