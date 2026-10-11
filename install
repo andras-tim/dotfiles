@@ -1,23 +1,33 @@
 #!/usr/bin/env python3
 
+# Keep this script runnable on old hosts (Python 3.2, git 1.7.9): they get the submodules and a clear error
+# instead of a SyntaxError, because dotbot itself needs a newer Python.
+
 import argparse
+import os
+import re
 import subprocess
-from pathlib import Path
+import sys
 
 DEFAULT_CONFIG = 'default'
 CONFIG_SUFFIX = '.conf.yaml'
+DOTBOT_MIN_PYTHON = (3, 7)
 
-BASE_DIR = Path(__file__).parent.absolute()
-DOTBOT_DIR = BASE_DIR.joinpath('vendor', 'dotbot')
-DOTBOT_BIN = DOTBOT_DIR.joinpath('bin', 'dotbot')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DOTBOT_BIN = os.path.join(BASE_DIR, 'vendor', 'dotbot', 'bin', 'dotbot')
 
 
 def main():
+    if sys.version_info < DOTBOT_MIN_PYTHON:
+        setup_submodules()
+        sys.exit('dotbot needs Python {}.{}+, this is {}.{}: the submodules are set up, link the dotfiles by hand'.format(
+            *(DOTBOT_MIN_PYTHON + sys.version_info[:2])))
+
     parameters, configs = get_arguments()
 
     setup_submodules()
     for config in [DEFAULT_CONFIG] + configs:
-        run(str(DOTBOT_BIN), *parameters, '-d', str(BASE_DIR), '-c', '{}{}'.format(config, CONFIG_SUFFIX))
+        run(*([DOTBOT_BIN] + parameters + ['-d', BASE_DIR, '-c', '{}{}'.format(config, CONFIG_SUFFIX)]))
 
 
 def get_arguments() -> tuple:
@@ -32,22 +42,35 @@ def get_arguments() -> tuple:
 def setup_submodules():
     # The submodules follow the dotfiles clone: shallow or full. --depth 1, because "shallow = true" alone fetches
     # the full history of a submodule pinned below its branch tip (e.g. dotbot on a release tag).
-    shallow = get_output('git', 'rev-parse', '--is-shallow-repository') == ['true']
-    run('git', 'submodule', 'update', '--init', '--recursive', *(['--depth', '1'] if shallow else ['--no-recommend-shallow']))
+    # git < 2.10 has neither option and clones the submodules in full.
+    options = []
+    if get_git_version() >= (2, 10):
+        options = ['--depth', '1'] if is_shallow_clone() else ['--no-recommend-shallow']
+    run(*(['git', 'submodule', 'update', '--init', '--recursive'] + options))
+
+
+def get_git_version() -> tuple:
+    version = re.search(r'(\d+)\.(\d+)', get_output('git', '--version')[0])
+    return tuple(int(part) for part in version.groups())
+
+
+def is_shallow_clone() -> bool:
+    # Same check as "git rev-parse --is-shallow-repository" (git 2.15+)
+    return os.path.exists(os.path.join(BASE_DIR, get_output('git', 'rev-parse', '--git-dir')[0], 'shallow'))
 
 
 def get_output(*command: str) -> list:
     try:
-        return subprocess.check_output(command, cwd=str(BASE_DIR), universal_newlines=True).splitlines()
+        return subprocess.check_output(command, cwd=BASE_DIR, universal_newlines=True).splitlines()
     except subprocess.CalledProcessError as e:
-        exit(e.returncode)
+        sys.exit(e.returncode)
 
 
 def run(*command: str):
     try:
-        subprocess.check_call(command, cwd=str(BASE_DIR))
+        subprocess.check_call(command, cwd=BASE_DIR)
     except subprocess.CalledProcessError as e:
-        exit(e.returncode)
+        sys.exit(e.returncode)
 
 
 if __name__ == '__main__':
