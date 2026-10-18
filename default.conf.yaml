@@ -30,6 +30,9 @@
     # Other console apps
     ~/.aria2/aria2.conf: aria2.conf
     ~/.config/htop/htoprc: htoprc
+    ~/.config/mc/panels.ini:  # replaces an existing file: it holds only mc view settings, mc rewrites it on "Save setup"
+      path: mc/panels.ini
+      force: true
     ~/.gdbinit: gdbinit
     ~/.quiltrc: quiltrc
     ~/.screenrc: screenrc
@@ -47,6 +50,15 @@
     ~/bin/tia-has-credentials: bin/tia-has-credentials
     ~/bin/tia-parallel: bin/tia_parallel/tia_parallel.py
     ~/bin/tssh: bin/tssh
+
+# mc rewrites its ini on every exit, so set the key in place instead of linking the file
+- shell:
+    - command:
+        - >-
+          f=~/.config/mc/ini; mkdir -p ~/.config/mc;
+          if grep -q '^permission_mode=' "$f" 2>/dev/null; then sed -i 's/^permission_mode=.*/permission_mode=true/' "$f";
+          else printf '[Panels]\npermission_mode=true\n' >> "$f"; fi
+        - "mc: highlighting the permissions"
 
 - shell:
     - command: [ "bin/check-requirements.sh zsh tmux fzf", "Checking requirements" ]
