@@ -5,4 +5,4 @@ Sources=flathub
 currentApplicationBackend=flatpak-backend
 
 [Software]
-UseOfflineUpdates=true
+UseOfflineUpdates=false
