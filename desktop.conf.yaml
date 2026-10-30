@@ -29,6 +29,7 @@
     ~/.config/powerdevilrc: kde/powerdevilrc
     ~/.config/plasma-org.kde.plasma.desktop-appletsrc: kde/plasma-org.kde.plasma.desktop-appletsrc
     ~/.config/kcminputrc: kde/kcminputrc
+    ~/.config/plasma-workspace/env/no-ssh-askpass.sh: kde/plasma-workspace-env/no-ssh-askpass.sh
     # Only the config: the same dir holds the device key pair (privateKey.pem, certificate.pem).
     ~/.config/kdeconnect/config: kde/kdeconnect/config
     ~/.Xresources: kde/Xresources
