@@ -55,6 +55,7 @@
       stdout: true
       stderr: true
     - command: [ "gsettings set org.gtk.Settings.FileChooser startup-mode cwd", "Change GTK's FileChooser startup mode to CWD" ]
+    - command: [ "git config filter.plasma-no-file-names.clean \"sed '/^screenMapping=/d'\"", "Keeping the desktop file names of Plasma out of git" ]
       stderr: true
     # Skipped when no graphical session is running; openbox/autostart applies it at session start.
     # Plain xrdb replaces the resource database, so ~/.Xresources (loaded by SDDM) is merged back.

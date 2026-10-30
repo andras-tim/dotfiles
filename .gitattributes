@@ -1,0 +1,2 @@
+# screenMapping lists the names of the files on the desktop: the live file keeps it, the public repo does not
+kde/plasma-org.kde.plasma.desktop-appletsrc filter=plasma-no-file-names
