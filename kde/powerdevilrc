@@ -1,0 +1,25 @@
+[AC][Display]
+DimDisplayIdleTimeoutSec=900
+TurnOffDisplayIdleTimeoutSec=1800
+
+[AC][SuspendAndShutdown]
+AutoSuspendAction=0
+LidAction=0
+
+[Battery][Display]
+DimDisplayIdleTimeoutSec=300
+TurnOffDisplayIdleTimeoutSec=600
+
+[Battery][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=900
+
+[BatteryManagement]
+BatteryLowLevel=15
+
+[LowBattery][Display]
+DimDisplayIdleTimeoutSec=120
+TurnOffDisplayIdleTimeoutSec=300
+UseProfileSpecificDisplayBrightness=false
+
+[LowBattery][RunScript]
+ProfileLoadCommand=sh -c "sleep 3; d='org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/BrightnessControl'; t=$(($(qdbus6 $d brightnessMax) * 30 / 100)); [ $(qdbus6 $d brightness) -gt $t ] && qdbus6 $d setBrightnessSilent $t"

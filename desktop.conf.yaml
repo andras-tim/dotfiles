@@ -26,6 +26,7 @@
     ~/.config/ktrashrc: kde/ktrashrc
     ~/.config/dolphinrc: kde/dolphinrc
     ~/.config/discoverrc: kde/discoverrc
+    ~/.config/powerdevilrc: kde/powerdevilrc
     ~/.config/plasma-org.kde.plasma.desktop-appletsrc: kde/plasma-org.kde.plasma.desktop-appletsrc
     ~/.config/kcminputrc: kde/kcminputrc
     # Only the config: the same dir holds the device key pair (privateKey.pem, certificate.pem).
