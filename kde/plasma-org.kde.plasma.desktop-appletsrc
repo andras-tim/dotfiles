@@ -17,6 +17,10 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.potd
 
+[Containments][1][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
 [Containments][1][General]
 arrangement=1
 sortMode=6
@@ -43,8 +47,8 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][22][Configuration]
-popupHeight=455
-popupWidth=814
+popupHeight=467
+popupWidth=826
 
 [Containments][2][Applets][22][Configuration][Appearance]
 customDateFormat=ddd, MMM d
@@ -72,8 +76,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
-popupHeight=541
-popupWidth=679
+popupHeight=589
+popupWidth=727
 
 [Containments][2][Applets][3][Configuration][ConfigDialog]
 DialogHeight=630
@@ -104,8 +108,7 @@ DialogWidth=810
 
 [Containments][2][Applets][31][Configuration][General]
 groupingStrategy=0
-hideLauncherOnStart=false
-launchers=applications:google-chrome.desktop,applications:org.kde.dolphin.desktop,applications:Alacritty.desktop,file:///var/lib/flatpak/exports/share/applications/com.spotify.Client.desktop
+launchers=applications:google-chrome.desktop,applications:org.kde.dolphin.desktop,applications:Alacritty.desktop
 middleClickAction=Close
 
 [Containments][2][Applets][32]
@@ -118,8 +121,8 @@ plugin=org.kde.plasma.systemmonitor.cpucore
 
 [Containments][2][Applets][33][Configuration]
 CurrentPreset=org.kde.plasma.systemmonitor
-popupHeight=293
-popupWidth=188
+popupHeight=297
+popupWidth=192
 
 [Containments][2][Applets][33][Configuration][Appearance]
 chartFace=org.kde.ksysguard.barchart
@@ -238,8 +241,8 @@ plugin=org.kde.plasma.systemmonitor
 
 [Containments][2][Applets][36][Configuration]
 CurrentPreset=org.kde.plasma.systemmonitor
-popupHeight=389
-popupWidth=245
+popupHeight=393
+popupWidth=249
 
 [Containments][2][Applets][36][Configuration][Appearance]
 chartFace=org.kde.ksysguard.piechart
@@ -468,8 +471,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=432
-popupWidth=448
+popupHeight=480
+popupWidth=496
 wallpaperplugin=org.kde.image
 
 [Containments][2][Applets][7][Applets][10]
@@ -483,6 +486,9 @@ plugin=org.kde.plasma.cameraindicator
 [Containments][2][Applets][7][Applets][12]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
+
+[Containments][2][Applets][7][Applets][12][Configuration][General]
+currentDetailsTab=details
 
 [Containments][2][Applets][7][Applets][13]
 immutability=1
@@ -561,6 +567,9 @@ plugin=org.kde.plasma.mediacontroller
 [Containments][2][Applets][7][Applets][47]
 immutability=1
 plugin=org.kde.plasma.battery
+
+[Containments][2][Applets][7][Applets][47][Configuration][General]
+showPercentage=true
 
 [Containments][2][Applets][7][Applets][8]
 immutability=1
