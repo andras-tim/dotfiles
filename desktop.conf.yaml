@@ -7,6 +7,8 @@
     # GUI
     ~/.conkyrc: conkyrc.lua
     ~/.config/alacritty/alacritty.toml: alacritty/alacritty.toml
+    ~/.config/Code/User/keybindings.json: vscode/keybindings.json
+    ~/.config/Code/User/settings.json: vscode/settings.json
     ~/.vnc/config.d/Xvnc:
       force: true
       path: vnc/Xvnc
