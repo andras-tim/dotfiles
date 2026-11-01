@@ -1,0 +1,74 @@
+{
+    "ansible.lightspeed.enabled": false,
+    "chat.editor.fontSize": 13,
+    "debug.console.fontSize": 13,
+    "docker.extension.enableComposeLanguageServer": false,
+    "editor.fontSize": 13,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [120, 180],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 180,
+    "files.autoSave": "afterDelay",
+    "git.autofetch": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "jsonc": false,
+        "python": true
+    },
+    "markdown.preview.fontSize": 13,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.testing.pytestEnabled": true,
+    "pythonTestExplorer.testFramework": "pytest",
+    "redhat.telemetry.enabled": false,
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    "roo-cline.deniedCommands": [],
+    "terminal.integrated.fontSize": 13,
+    "window.newWindowProfile": "Default",
+    "workbench.iconTheme": "material-icon-theme",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "black-formatter.args": [
+        "--line-length",
+        "119"
+    ],
+    "claudeCode.preferredLocation": "panel",
+    "makefile.configureOnOpen": false,
+    "git.openRepositoryInParentFolders": "always",
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        }
+    },
+    "workbench.startupEditor": "none",
+    "chat.viewSessions.orientation": "stacked",
+    "claudeCode.hideOnboarding": true,
+    "chat.checkpoints.showFileChanges": true,
+    "yaml.disableSchemaDetection": [
+        "**/.github/workflows/*.yml",
+        "**/.github/workflows/*.yaml",
+        "**/.gitea/workflows/*.yml",
+        "**/.gitea/workflows/*.yaml",
+        "**/.forgejo/workflows/*.yml",
+        "**/.forgejo/workflows/*.yaml"
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "chat.disableAIFeatures": true,
+    "git.enabled": false
+}
