@@ -57,6 +57,7 @@ function install_tools() {
         gitui \
         htop \
         mc \
+        mkvtoolnix \
         openssh \
         ripgrep \
         rsync \
