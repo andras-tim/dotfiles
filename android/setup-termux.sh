@@ -66,18 +66,53 @@ function install_tools() {
         wget \
         zsh
 
-    # Pinned at 2.1.112 — newer versions ship a native claude binary that is non-PIE (ET_EXEC),
-    # which Android rejects. The @anthropic-ai/claude-code-linux-arm64-android npm package was
-    # never published, and the linux-arm64 binary also fails. Bump only when Anthropic publishes
-    # a proper PIE/android build. Side-effect: `claude rc` (Remote Control) requires a newer version.
-    npm install -g @anthropic-ai/claude-code@2.1.112 --ignore-scripts
-    # 2.1.112 bundles ripgrep per-platform but omits arm64-android; symlink Termux's PIE build
-    local rg_dir
-    rg_dir="$(npm root -g)/@anthropic-ai/claude-code/vendor/ripgrep/arm64-android"
-    mkdir -p "$rg_dir"
-    ln -sf "$(command -v rg)" "$rg_dir/rg"
-
     cargo install --locked git-igitt
+}
+
+function install_claude_code() {
+    # Newer @anthropic-ai/claude-code ships a glibc linux-arm64 native binary and no
+    # arm64-android target, so we run it from inside a proot-distro ubuntu rootfs
+    # via a thin wrapper. Termux $HOME is auto-bound at the same path inside the
+    # container — sibling to that, we scrub PATH so Termux's own node/npm/bash
+    # cannot shadow the ubuntu ones through the bind.
+    pkg install -y proot-distro
+
+    npm uninstall -g @anthropic-ai/claude-code >/dev/null 2>&1 || true
+    rm -f "${PREFIX}/bin/claude"
+
+    if [ ! -d "${PREFIX}/var/lib/proot-distro/containers/ubuntu" ]; then
+        proot-distro install ubuntu
+    fi
+
+    proot-distro login ubuntu --shared-tmp -- env -i \
+        HOME=/root \
+        PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+        TERM="${TERM:-xterm-256color}" \
+        DEBIAN_FRONTEND=noninteractive \
+        bash -eu <<'SETUP'
+apt-get update
+apt-get install -y --no-install-recommends ca-certificates curl gnupg
+if ! command -v node >/dev/null; then
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+    apt-get install -y nodejs
+fi
+npm install -g --allow-scripts=@anthropic-ai/claude-code @anthropic-ai/claude-code
+SETUP
+
+    install -m 755 /dev/stdin "${PREFIX}/bin/claude" <<'WRAP'
+#!/bin/bash
+# Scrub Termux PATH so the wrapper doesn't re-resolve `claude` to itself inside
+# the container (Termux $HOME/$PREFIX is auto-bound → /data/.../usr/bin is visible).
+exec proot-distro login ubuntu --shared-tmp -- env -i \
+    HOME=/root \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    TERM="${TERM:-xterm-256color}" \
+    LANG="${LANG:-C.UTF-8}" \
+    ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY:-}" \
+    SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-}" \
+    USER_PWD="$(pwd)" \
+    bash -lc 'cd "$USER_PWD" 2>/dev/null; exec claude "$@"' -- "$@"
+WRAP
 }
 
 function install_opentofu() {
@@ -143,6 +178,7 @@ function main() {
     install_runtimes
     install_build_toolchain
     install_tools
+    install_claude_code
     # install_opentofu  # TODO: disabled, the binary does not run on Android (see cleanup_opentofu)
     cleanup_opentofu
 
