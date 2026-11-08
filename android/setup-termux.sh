@@ -72,12 +72,18 @@ function install_tools() {
 function install_claude_code() {
     # Newer @anthropic-ai/claude-code ships a glibc linux-arm64 native binary and no
     # arm64-android target, so we run it from inside a proot-distro ubuntu rootfs
-    # via a thin wrapper. Termux $HOME is auto-bound at the same path inside the
-    # container — sibling to that, we scrub PATH so Termux's own node/npm/bash
-    # cannot shadow the ubuntu ones through the bind.
+    # via a thin wrapper. Termux $HOME and $PREFIX are auto-bound inside the
+    # container, so every entry uses `env -i` with an ubuntu-only PATH; otherwise
+    # Termux's node/npm/bash (and this wrapper itself) shadow the ubuntu ones.
+    # Background: `git log -L '/^function install_claude_code/,/^}/:android/setup-termux.sh'`.
+    # The HOME/PATH/TERM lines are repeated in the wrapper below on purpose: it is a
+    # quoted heredoc, and sharing them would need expansion tricks that read worse.
     pkg install -y proot-distro
 
+    # Migration from the old Termux-native npm install (pinned 2.1.112); no-op on fresh hosts.
     npm uninstall -g @anthropic-ai/claude-code >/dev/null 2>&1 || true
+    rmdir "$(npm root -g)/@anthropic-ai" 2>/dev/null || true
+    # The npm install left a symlink here; drop it so `install` cannot write into the npm package.
     rm -f "${PREFIX}/bin/claude"
 
     if [ ! -d "${PREFIX}/var/lib/proot-distro/containers/ubuntu" ]; then
@@ -103,6 +109,7 @@ SETUP
 #!/bin/bash
 # Scrub Termux PATH so the wrapper doesn't re-resolve `claude` to itself inside
 # the container (Termux $HOME/$PREFIX is auto-bound → /data/.../usr/bin is visible).
+# /sdcard and /storage are bound by proot-distro too; any other cwd falls back to /root.
 exec proot-distro login ubuntu --shared-tmp -- env -i \
     HOME=/root \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
@@ -111,7 +118,8 @@ exec proot-distro login ubuntu --shared-tmp -- env -i \
     ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY:-}" \
     SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-}" \
     USER_PWD="$(pwd)" \
-    bash -lc 'cd "$USER_PWD" 2>/dev/null; exec claude "$@"' -- "$@"
+    bash -lc 'cd "$USER_PWD" 2>/dev/null || echo "claude: $USER_PWD is not visible in the container, starting in $HOME" >&2
+exec claude "$@"' -- "$@"
 WRAP
 }
 
