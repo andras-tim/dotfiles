@@ -1,0 +1,2 @@
+# The files of ~/.ssh/config.d come first: for each option the first value found wins
+Include config.d/*.conf
