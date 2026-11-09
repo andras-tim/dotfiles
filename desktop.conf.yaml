@@ -25,7 +25,6 @@
     ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml: xfce4/xfwm4.xml
 
     # Distro GUI - KDE
-    ~/.config/ktrashrc: kde/ktrashrc
     ~/.config/dolphinrc: kde/dolphinrc
     ~/.config/discoverrc: kde/discoverrc
     ~/.config/powerdevilrc: kde/powerdevilrc
