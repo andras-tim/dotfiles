@@ -6,7 +6,9 @@ UsePermissionsFormat=CombinedFormat
 
 [General]
 DynamicView=true
+OpenNewTabAfterLastTab=true
 RememberOpenedTabs=false
+ShowFullPath=true
 ShowFullPathInTitlebar=true
 SortingChoice=CaseInsensitiveSorting
 Version=202
