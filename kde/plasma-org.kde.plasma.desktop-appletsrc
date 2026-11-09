@@ -47,8 +47,8 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][22][Configuration]
-popupHeight=467
-popupWidth=826
+popupHeight=475
+popupWidth=834
 
 [Containments][2][Applets][22][Configuration][Appearance]
 customDateFormat=ddd, MMM d
@@ -76,8 +76,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
-popupHeight=589
-popupWidth=727
+popupHeight=601
+popupWidth=739
 
 [Containments][2][Applets][3][Configuration][ConfigDialog]
 DialogHeight=630
@@ -108,7 +108,7 @@ DialogWidth=810
 
 [Containments][2][Applets][31][Configuration][General]
 groupingStrategy=0
-launchers=applications:google-chrome.desktop,applications:org.kde.dolphin.desktop,applications:Alacritty.desktop
+launchers=applications:google-chrome.desktop,file:///var/lib/flatpak/app/com.spotify.Client/current/active/export/share/applications/com.spotify.Client.desktop,applications:com.microsoft.VSCode.desktop,applications:Alacritty.desktop,applications:org.kde.dolphin.desktop
 middleClickAction=Close
 
 [Containments][2][Applets][32]
@@ -471,8 +471,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=480
-popupWidth=496
+popupHeight=488
+popupWidth=504
 wallpaperplugin=org.kde.image
 
 [Containments][2][Applets][7][Applets][10]
