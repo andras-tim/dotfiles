@@ -23,6 +23,10 @@
     ~/.oh-my-zsh/custom/plugins/zsh-fzf-history-search: vendor/zsh-fzf-history-search
     ~/.zshrc: zshrc
 
+    # SSH: an existing ~/.ssh/config of a host is not replaced: move its content into ~/.ssh/config.d by hand
+    ~/.ssh/config: ssh/config
+    ~/.ssh/config.d/github.conf: ssh/config.d/github.conf
+
     # VCS
     ~/.config/git: git
     ~/.hgrc: hgrc
