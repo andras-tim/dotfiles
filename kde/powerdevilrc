@@ -14,6 +14,7 @@ TurnOffDisplayIdleTimeoutSec=600
 AutoSuspendIdleTimeoutSec=900
 
 [BatteryManagement]
+BatteryCriticalAction=8
 BatteryLowLevel=15
 
 [LowBattery][Display]
