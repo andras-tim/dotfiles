@@ -179,6 +179,10 @@ function _inject_myrc_line() {
 
 function inject_myrc_lines() {
     echo -en "\nInjecting ~/.myrc_host lines... " >&2
+    # $PREFIX/tmp is on disk, nothing empties it: on a fresh Termux start (no tmux server yet) drop the week-old entries.
+    # Before auto-exec-tmux, which replaces that first shell.
+    _inject_myrc_line '### clean-old-tmp ###' \
+        '[ -n "${TMUX:-}" ] || tmux has-session 2>/dev/null || find "${PREFIX}/tmp" -mindepth 1 -maxdepth 1 -mtime +7 ! -name .X11-unix ! -name .ICE-unix -exec rm -rf {} +'
     _inject_myrc_line '### auto-exec-tmux ###' '[ -n "${TMUX:-}" ] || exec tmux'
     _inject_myrc_line '### warn-if-no-ssh-agent ###' \
         'ssh-add -l >/dev/null 2>&1 || echo "SSH agent not running — run: ssh-load-key" >&2'
