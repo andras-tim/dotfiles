@@ -102,13 +102,17 @@ function install_claude_code() {
         AID_USER="aid_$(id -un)" \
         LOGIN_USER="$(id -un)" \
         LOGIN_HOME="${HOME}" \
+        TIME_ZONE="$(getprop persist.sys.timezone)" \
         bash -eu <<'SETUP'
 # Not usermod: under proot every process runs as the Termux uid, so it refuses a user "currently used by process"
 sed -i "s/\b${AID_USER}\b/${LOGIN_USER}/g" /etc/passwd /etc/shadow /etc/group /etc/gshadow
 passwd=$(awk -F: -v OFS=: -v u="$LOGIN_USER" -v h="$LOGIN_HOME" '$1 == u { $6 = h; $7 = "/bin/bash" } 1' /etc/passwd)
 printf '%s\n' "$passwd" > /etc/passwd
 apt-get update
-apt-get install -y --no-install-recommends ca-certificates curl gnupg
+apt-get install -y --no-install-recommends ca-certificates curl gnupg tzdata
+# Termux has no TZ, its libc reads the Android time zone property; glibc in the container needs its own setting
+ln -sf "/usr/share/zoneinfo/$TIME_ZONE" /etc/localtime
+echo "$TIME_ZONE" > /etc/timezone
 if ! command -v node >/dev/null; then
     curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
     apt-get install -y nodejs
