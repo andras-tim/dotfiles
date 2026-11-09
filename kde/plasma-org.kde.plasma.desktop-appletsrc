@@ -566,9 +566,20 @@ plugin=org.kde.plasma.mediacontroller
 
 [Containments][2][Applets][7][Applets][47]
 immutability=1
-plugin=org.kde.plasma.battery
+plugin=io.github.dscafati.lightdarktoggle
+
+[Containments][2][Applets][7][Applets][47][Configuration][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
 
 [Containments][2][Applets][7][Applets][47][Configuration][General]
+showPercentage=true
+
+[Containments][2][Applets][7][Applets][48]
+immutability=1
+plugin=org.kde.plasma.battery
+
+[Containments][2][Applets][7][Applets][48][Configuration][General]
 showPercentage=true
 
 [Containments][2][Applets][7][Applets][8]
@@ -584,9 +595,9 @@ DialogHeight=838
 DialogWidth=810
 
 [Containments][2][Applets][7][General]
-extraItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement
+extraItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,io.github.dscafati.lightdarktoggle
 hiddenItems=indicator-solaar,ibus-ui-gtk3
-knownItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.keyboardlayout,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod
+knownItems=org.kde.plasma.vault,org.kde.kupapplet,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.networkmanagement,org.kde.plasma.clipboard,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.keyboardlayout,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.manage-inputmethod,io.github.dscafati.lightdarktoggle
 shownItems=ViberPC,dropbox-client-PID,org.kde.plasma.battery,indicator-cpufreq,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement
 
 [Containments][2][General]
