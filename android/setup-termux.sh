@@ -76,6 +76,9 @@ function install_claude_code() {
     # via a thin wrapper. Termux $HOME and $PREFIX are auto-bound inside the
     # container, so every entry uses `env -i` with an ubuntu-only PATH; otherwise
     # Termux's node/npm/bash (and this wrapper itself) shadow the ubuntu ones.
+    # Claude runs as the container user of the Termux uid, with the Termux name (proot-distro adds it as aid_<user>,
+    # renamed here) and the Termux home at the same path as its home: one user, ~/.claude, ~/.ssh and git config for
+    # both sides. It cannot write the npm package as that user, so the setup below (as root) is what updates it.
     # Background: `git log -L '/^function install_claude_code/,/^}/:android/setup-termux.sh'`.
     # The HOME/PATH/TERM lines are repeated in the wrapper below on purpose: it is a
     # quoted heredoc, and sharing them would need expansion tricks that read worse.
@@ -96,7 +99,14 @@ function install_claude_code() {
         PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
         TERM="${TERM:-xterm-256color}" \
         DEBIAN_FRONTEND=noninteractive \
+        AID_USER="aid_$(id -un)" \
+        LOGIN_USER="$(id -un)" \
+        LOGIN_HOME="${HOME}" \
         bash -eu <<'SETUP'
+# Not usermod: under proot every process runs as the Termux uid, so it refuses a user "currently used by process"
+sed -i "s/\b${AID_USER}\b/${LOGIN_USER}/g" /etc/passwd /etc/shadow /etc/group /etc/gshadow
+passwd=$(awk -F: -v OFS=: -v u="$LOGIN_USER" -v h="$LOGIN_HOME" '$1 == u { $6 = h; $7 = "/bin/bash" } 1' /etc/passwd)
+printf '%s\n' "$passwd" > /etc/passwd
 apt-get update
 apt-get install -y --no-install-recommends ca-certificates curl gnupg
 if ! command -v node >/dev/null; then
@@ -110,16 +120,18 @@ SETUP
 #!/bin/bash
 # Scrub Termux PATH so the wrapper doesn't re-resolve `claude` to itself inside
 # the container (Termux $HOME/$PREFIX is auto-bound → /data/.../usr/bin is visible).
-# /sdcard and /storage are bound by proot-distro too; any other cwd falls back to /root.
-exec proot-distro login ubuntu --shared-tmp -- env -i \
-    HOME=/root \
+# /sdcard and /storage are bound by proot-distro too; any other cwd falls back to $HOME.
+# No login shell: it would read the Termux rc files of the shared home.
+exec proot-distro login ubuntu --user "$(id -un)" --shared-tmp -- env -i \
+    HOME="${HOME}" \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     TERM="${TERM:-xterm-256color}" \
     LANG="${LANG:-C.UTF-8}" \
     ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY:-}" \
     SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-}" \
+    DISABLE_AUTOUPDATER=1 \
     USER_PWD="$(pwd)" \
-    bash -lc 'cd "$USER_PWD" 2>/dev/null || echo "claude: $USER_PWD is not visible in the container, starting in $HOME" >&2
+    sh -c 'cd "$USER_PWD" 2>/dev/null || echo "claude: $USER_PWD is not visible in the container, starting in $HOME" >&2
 exec claude "$@"' -- "$@"
 WRAP
 }
