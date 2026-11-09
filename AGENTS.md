@@ -14,6 +14,11 @@ Personal dotfiles managed by [dotbot](https://github.com/anishathalye/dotbot).
 
 Each profile reads its own yaml. Some configs are platform-conditional — e.g., openbox lives under `desktop` (used both on Linux and on Android via Termux:X11).
 
+Further dotfiles dirs of a host (e.g. a second repo) are listed in `~/.config/dotfiles/dirs` (`$XDG_CONFIG_HOME` is
+honored), one path per line, `#` comments allowed. For each profile, `./install` runs this repo's yaml first, then the
+same-named yaml of each listed dir in order, with that dir as the dotbot base dir; a dir without that profile is
+skipped. The file belongs to the host, no repo manages it.
+
 The `vendor/` submodules follow the dotfiles clone: `./install` clones them with `--depth 1` in a shallow clone (`git clone --depth 1 ...`), and fully in a full clone (for working on the vendors). `.gitmodules` marks them `shallow = true`, so a plain `git submodule update --init` is shallow too; `./install` still passes `--depth 1`, because `shallow = true` alone fetches the full history of a submodule pinned below its branch tip (e.g. dotbot on a release tag). The remotes are never touched. An existing submodule clone is not re-cloned, so to switch between shallow and full, drop the submodule clones first (`deinit` alone keeps them in `.git/modules`, and they would be reused as they are):
 
 ```bash

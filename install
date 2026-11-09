@@ -15,6 +15,9 @@ DOTBOT_MIN_PYTHON = (3, 7)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOTBOT_BIN = os.path.join(BASE_DIR, 'vendor', 'dotbot', 'bin', 'dotbot')
+# Further dotfiles dirs of the host, one path per line: a profile of theirs runs after the same profile of this repo
+DIRS_FILE = os.path.join(os.environ.get('XDG_CONFIG_HOME') or os.path.expanduser(os.path.join('~', '.config')),
+                         'dotfiles', 'dirs')
 
 
 def main():
@@ -26,8 +29,26 @@ def main():
     parameters, configs = get_arguments()
 
     setup_submodules()
+    dirs = [BASE_DIR] + get_extra_dirs()
     for config in [DEFAULT_CONFIG] + configs:
-        run(*([DOTBOT_BIN] + parameters + ['-d', BASE_DIR, '-c', '{}{}'.format(config, CONFIG_SUFFIX)]))
+        candidates = (os.path.join(d, config + CONFIG_SUFFIX) for d in dirs)
+        config_files = [path for path in candidates if os.path.exists(path)]
+        if not config_files:
+            sys.exit('Unknown profile: {}'.format(config))
+        for config_file in config_files:
+            run(*([DOTBOT_BIN] + parameters + ['-d', os.path.dirname(config_file), '-c', config_file]))
+
+
+def get_extra_dirs() -> list:
+    if not os.path.exists(DIRS_FILE):
+        return []
+    with open(DIRS_FILE) as f:
+        lines = [line.strip() for line in f]
+    dirs = [os.path.abspath(os.path.expanduser(line)) for line in lines if line and not line.startswith('#')]
+    missing = [d for d in dirs if not os.path.isdir(d)]
+    if missing:
+        sys.exit('Missing dotfiles dir in {}: {}'.format(DIRS_FILE, ', '.join(missing)))
+    return [d for d in dirs if d != BASE_DIR]
 
 
 def get_arguments() -> tuple:
