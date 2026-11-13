@@ -29,9 +29,34 @@ function run_gpg_for_sign()
 {
     local gpg_key="${GPGKEY:-${*: -1}}"
 
+    if is_passphrase_cached "${gpg_key}"; then
+        run_gpg --no-tty --pinentry-mode error "$@" || handle_fail "$?" "${gpg_key}"
+        return
+    fi
+
     exec 3< <("${BIN_DIR}/tia-get-credentials" get-user-password 'https://andras-tim.pgpkey/' "${gpg_key}" 2>/dev/null)
     run_gpg --no-tty --pinentry-mode loopback --passphrase-fd 3 "$@" || handle_fail "$?" "${gpg_key}"
     exec 3<&-
+}
+
+# Skips the KeePass lookup (a Python process and a KeePass request per signature, e.g. in a mass rebase) while
+# gpg-agent still caches the passphrase of every signing key (KEYINFO field 7 = 1); any missing tool or doubt means
+# "not cached", the KeePass path
+function is_passphrase_cached()
+{
+    local gpg_key="$1"
+    local keygrips keygrip
+
+    command -v gpg-connect-agent >/dev/null || return 1
+    keygrips="$(run_gpg --with-colons --with-keygrip --list-secret-keys "${gpg_key}" 2>/dev/null \
+        | awk -F: '$1 == "sec" || $1 == "ssb" { cap = $12 } $1 == "grp" && cap ~ /s/ { print $10 }')" || return 1
+    [ -n "${keygrips}" ] || return 1
+
+    for keygrip in ${keygrips}; do
+        gpg-connect-agent "KEYINFO ${keygrip}" /bye 2>/dev/null \
+            | awk -v g="${keygrip}" '$1 == "S" && $2 == "KEYINFO" && $3 == g && $7 == "1" { ok = 1 } END { exit !ok }' \
+            || return 1
+    done
 }
 
 function run_gpg()
