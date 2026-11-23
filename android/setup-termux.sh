@@ -140,33 +140,6 @@ exec claude "$@"' -- "$@"
 WRAP
 }
 
-function install_opentofu() {
-    # No Termux package exists; the official linux_arm64 build is a static Go binary.
-    # Providers are not mirrored here:
-    # tofu fetches them from the registry at the versions pinned in each root's .terraform.lock.hcl.
-    local version='1.12.6'
-    local sha256='e573979ba68a17fe7b881752051a694a7efcd970e39521f6a25775197861ed4d'
-    local zip="${TMPDIR}/tofu_${version}_linux_arm64.zip"
-
-    pkg install -y curl unzip
-    curl -fL -o "${zip}" "https://github.com/opentofu/opentofu/releases/download/v${version}/tofu_${version}_linux_arm64.zip"
-    echo "${sha256}  ${zip}" | sha256sum -c -
-    unzip -o -d "${TMPDIR}" "${zip}" tofu
-    install -m 755 "${TMPDIR}/tofu" "${PREFIX}/bin/tofu"
-    rm -f "${zip}" "${TMPDIR}/tofu"
-    tofu version
-}
-
-function cleanup_opentofu() {
-    # TODO: temporary, until a working setup (e.g. proot-distro) replaces install_opentofu.
-    # The linux_arm64 build is static non-PIE (ELF e_type 2) and Android's linker refuses it ("unexpected e_type: 2");
-    # remove the unusable binary an earlier install_opentofu left behind. A tofu that runs is kept.
-    if [ -e "${PREFIX}/bin/tofu" ] && ! "${PREFIX}/bin/tofu" version >/dev/null 2>&1; then
-        echo "Removing unusable ${PREFIX}/bin/tofu" >&2
-        rm -f "${PREFIX}/bin/tofu"
-    fi
-}
-
 function _inject_myrc_line() {
     local header="$1"
     local cmd="$2"
@@ -208,8 +181,6 @@ function main() {
     install_build_toolchain
     install_tools
     install_claude_code
-    # install_opentofu  # TODO: disabled, the binary does not run on Android (see cleanup_opentofu)
-    cleanup_opentofu
 
     setup_user_env
 }
