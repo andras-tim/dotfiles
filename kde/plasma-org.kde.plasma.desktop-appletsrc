@@ -47,8 +47,8 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][22][Configuration]
-popupHeight=475
-popupWidth=834
+popupHeight=479
+popupWidth=838
 
 [Containments][2][Applets][22][Configuration][Appearance]
 customDateFormat=ddd, MMM d
@@ -76,8 +76,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
-popupHeight=601
-popupWidth=739
+popupHeight=613
+popupWidth=751
 
 [Containments][2][Applets][3][Configuration][ConfigDialog]
 DialogHeight=630
@@ -471,8 +471,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=488
-popupWidth=504
+popupHeight=500
+popupWidth=516
 wallpaperplugin=org.kde.image
 
 [Containments][2][Applets][7][Applets][10]
