@@ -101,7 +101,8 @@ alias rdesktop='rdesktop -zN'
 alias rd='rdesktop -g 1670x980'
 
 alias gka='gk --all'
-alias gl='git log --graph --decorate --color --oneline'
+alias gl="git log --graph --color --format='%C(auto)%h %G?%d %s'"
+alias .gl='git log --graph --color --decorate --oneline'  # DEPRECATED
 alias gf='git fetch --all --prune --tags; git submodule foreach git fetch --all --prune --tags'
 alias gr='git rebase -i'
 alias gra='git rebase -i --autosquash'
